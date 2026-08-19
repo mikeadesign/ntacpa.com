@@ -1,23 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <!--
-    Favicon rendition of the NTA mark (see src/components/Logo.astro,
-    markOnly). Geometry uses the same standards ratios: tick inset 0.085S,
-    tick size 0.115S, stroke 0.019S, glyph 0.32S. Text font falls back to a
-    generic bold sans — at favicon sizes the Archivo/Spectral distinction is
-    imperceptible, and webfonts aren't reliably loaded in favicon context.
+    Favicon master — the NTA mark, ticks on. Ratios are the ones the brand
+    guidance fixes for real favicon export sizes (see "NTA Brand
+    Applications.dc.html", §01 Favicon & App Icon), not the continuous
+    UI-scale formula in src/components/Logo.astro: glyph 0.3125S, tick
+    inset 0.09375S, tick size 0.114583S, stroke 0.020833S.
+
+    Font is the brand's own documented fallback for --font-display
+    (Spectral) — Georgia — not a generic sans, so the glyph reads as the
+    same serif mark everywhere. Outline text at favicon size would need a
+    remote font fetch a favicon context won't reliably make.
   -->
   <rect width="256" height="256" fill="#16324d" />
-  <path d="M204.8 21.76 H234.24 V51.2" fill="none" stroke="#c9a24a" stroke-width="5" />
-  <path d="M21.76 204.8 V234.24 H51.2" fill="none" stroke="#c9a24a" stroke-width="5" />
+  <path d="M202.667 24 H232 V53.333" fill="none" stroke="#c9a24a" stroke-width="5.333" />
+  <path d="M24 202.667 V232 H53.333" fill="none" stroke="#c9a24a" stroke-width="5.333" />
   <text
     x="128"
     y="132"
     text-anchor="middle"
     dominant-baseline="central"
-    font-family="Arial, Helvetica, sans-serif"
+    font-family="Georgia, 'Times New Roman', serif"
     font-weight="700"
-    font-size="82"
-    letter-spacing="2"
+    font-size="80"
+    letter-spacing="1"
     fill="#ffffff"
   >NTA</text>
 </svg>

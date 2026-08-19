@@ -81,9 +81,11 @@ const isProduction = import.meta.env.PROD && !isPreviewBuild;
     <link rel="canonical" href={canonical} />
     {isPreviewBuild && <meta name="robots" content="noindex, nofollow" />}
 
+    {/* Sizes/degradation per "NTA Brand Applications.dc.html" §01 — ticks
+        drop at 32px, the mark reduces to a single "N" at 16px. */}
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32.png')} />
-    <link rel="icon" type="image/png" sizes="48x48" href={withBase('/favicon-48.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16.png')} />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
 
     <meta property="og:type" content="website" />
