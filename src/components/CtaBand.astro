@@ -1,0 +1,34 @@
+---
+/**
+ * Closing band: an H2 (plus optional supporting line) and a single button.
+ * No phone number here — the CTA is the only action, deliberately.
+ */
+import { ctaHref, ctaLabel } from '../data/site';
+
+interface Props {
+  heading: string;
+  body?: string;
+  /** Measure class for the heading, e.g. "measure-24". */
+  headingMeasure?: string;
+}
+
+const { heading, body, headingMeasure = 'measure-26' } = Astro.props;
+---
+
+<section class="section section--paper section--rule-top">
+  <div class="container cta-band">
+    <div>
+      <h2 class:list={['h2', headingMeasure, { 'cta-band__heading': !!body }]}>{heading}</h2>
+      {body && <p class="body body--soft measure-48">{body}</p>}
+    </div>
+    <div>
+      <a href={ctaHref} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band__heading {
+    margin-bottom: 14px;
+  }
+</style>

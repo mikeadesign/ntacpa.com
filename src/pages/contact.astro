@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Contact"
+  description="Tell me what you're dealing with. A few sentences is enough to start — I read everything that comes in and reply myself, usually within a business day."
+>
+  <section id="form" class="contact">
+    <div class="container contact__inner">
+      <div>
+        <h1 class="h1 contact__title">Contact</h1>
+        {/* Page opener: the one horizontal gold rule on this page. */}
+        <hr class="gold-rule contact__rule" />
+        <p class="deck measure-30 contact__deck">Tell me what you're dealing with.</p>
+        <p class="lead measure-44 contact__lead">
+          A few sentences is enough to start. I read everything that comes in and reply myself,
+          usually within a business day.
+        </p>
+
+        <div class="details">
+          <div>
+            <span class="label details__label">TELEPHONE</span>
+            <a href={site.phoneHref} class="details__value">{site.phone}</a>
+          </div>
+          <div>
+            <span class="label details__label">EMAIL</span>
+            <a href={`mailto:${site.email}`} class="details__value">{site.email}</a>
+          </div>
+          <div>
+            <span class="label details__label">WHERE I WORK</span>
+            <p class="body measure-40">
+              Chicago area, plus remote clients nationwide. Engagements by appointment — there is no
+              walk-in office.
+            </p>
+          </div>
+          <div>
+            <span class="label label--strong details__label">WHO I WORK WITH</span>
+            <p class="body measure-40">
+              Individuals, families and small businesses; hedge funds, broker-dealers, and FINOP
+              engagements.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <ContactForm />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact__inner {
+    padding-block: 88px 96px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .contact__title {
+    font-size: var(--type-h1-contact);
+    line-height: 1;
+    letter-spacing: -0.022em;
+    margin-bottom: 22px;
+  }
+
+  .contact__rule {
+    margin: 0 0 22px;
+  }
+
+  .contact__deck {
+    margin-bottom: 24px;
+  }
+
+  .contact__lead {
+    margin-bottom: 40px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 32px;
+    border-top: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .details__label {
+    margin-bottom: 8px;
+  }
+
+  .details__value {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.2vw, 26px);
+    color: var(--nta-navy);
+  }
+
+  .details__value:hover {
+    color: var(--nta-slate);
+  }
+
+  @media (max-width: 860px) {
+    .contact__inner {
+      padding-block: 56px 56px;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>

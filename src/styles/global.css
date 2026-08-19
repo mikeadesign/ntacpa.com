@@ -1,0 +1,497 @@
+/* ── NTA, Inc. — base + shared patterns ───────────────────────────────────
+   Everything here is site-wide. Page-specific layout lives in a scoped
+   <style> block on the page itself. */
+
+@import './tokens.css';
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  font-family: var(--font-text);
+  font-size: var(--type-body);
+  color: var(--text-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Hard accessibility requirement — not optional polish. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-offset);
+}
+
+input,
+textarea,
+button {
+  font-family: var(--font-text);
+}
+
+::placeholder {
+  color: var(--nta-muted-light);
+  opacity: 1;
+}
+
+/* ── Layout primitives ──────────────────────────────────────────────────── */
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--wide {
+  max-width: var(--container-hero);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--paper {
+  background: var(--surface-sunken);
+}
+
+.section--rule-top {
+  border-top: var(--rule-hairline) solid var(--nta-line);
+}
+
+.section--rule-bottom {
+  border-bottom: var(--rule-hairline) solid var(--nta-line);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 40;
+  background: var(--nta-navy);
+  color: var(--nta-white);
+  padding: 14px 20px;
+  font-size: var(--type-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.3px;
+}
+
+.skip-link:focus {
+  left: 0;
+  color: var(--nta-white);
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
+/* ── Type ───────────────────────────────────────────────────────────────── */
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  color: var(--text-heading);
+  line-height: 1.02;
+  letter-spacing: -0.023em;
+  text-wrap: pretty;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--type-h2);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.016em;
+  color: var(--text-heading);
+  text-wrap: pretty;
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--type-h3);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  color: var(--text-heading);
+  text-wrap: pretty;
+}
+
+/* Serif deck paragraph that sits under an H1. */
+.deck {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-deck);
+  line-height: 1.4;
+  color: var(--text-heading);
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--type-lead);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+
+.body {
+  font-size: var(--type-body);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+}
+
+.body--soft {
+  color: var(--text-soft);
+}
+
+.fine {
+  font-size: var(--type-fine);
+  line-height: var(--leading-normal);
+  color: var(--text-soft);
+}
+
+/* Measure helpers — the comps set these per element, in ch. */
+.measure-20 { max-width: 20ch; }
+.measure-22 { max-width: 22ch; }
+.measure-24 { max-width: 24ch; }
+.measure-26 { max-width: 26ch; }
+.measure-28 { max-width: 28ch; }
+.measure-30 { max-width: 30ch; }
+.measure-34 { max-width: 34ch; }
+.measure-38 { max-width: 38ch; }
+.measure-40 { max-width: 40ch; }
+.measure-42 { max-width: 42ch; }
+.measure-44 { max-width: 44ch; }
+.measure-48 { max-width: 48ch; }
+.measure-55 { max-width: 55ch; }
+.measure-56 { max-width: 56ch; }
+.measure-58 { max-width: 58ch; }
+.measure-60 { max-width: 60ch; }
+.measure-62 { max-width: 62ch; }
+.measure-64 { max-width: 64ch; }
+.measure-68 { max-width: 68ch; }
+
+/* ── Uppercase tracked labels ────────────────────────────────────────────
+   Reserved for eyebrows, tags, column heads and form labels. Never a
+   heading level — an H2/H3 gets real serif type at real heading size.
+   `nowrap` is mandatory: the tracking consumes the last pixel of the line
+   box, so these silently re-break without it. */
+
+.label {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--type-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-eyebrow);
+  white-space: nowrap;
+  color: var(--text-soft);
+}
+
+.label--eyebrow {
+  letter-spacing: var(--track-descriptor);
+  color: var(--nta-gold-deep); /* gold as type only ever in Deep Gold */
+}
+
+.label--on-navy {
+  letter-spacing: var(--track-descriptor);
+  color: var(--nta-gold);
+}
+
+.label--tag {
+  letter-spacing: var(--track-name);
+}
+
+.label--strong {
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--track-name);
+  color: var(--nta-navy);
+}
+
+.label--footer {
+  letter-spacing: var(--track-descriptor);
+  color: var(--nta-on-navy-label);
+}
+
+/* A tracked label that will not fit at 390px gets SHORTER COPY, never a
+   wrap — see the hero eyebrow and the numbers band, which both carry a
+   mobile short form. Wrapping one is how the tracking breaks a lockup. */
+.label__long { display: inline; }
+.label__short { display: none; }
+
+@media (max-width: 620px) {
+  .label__long { display: none; }
+  .label__short { display: inline; }
+}
+
+/* ── The gold rule ───────────────────────────────────────────────────────
+   Two sanctioned uses only: (1) one horizontal rule under a page's own H1,
+   (2) a vertical rule binding two things that belong together — the logo
+   lockup, and a pull quote to its attribution. Any other gold rule is a bug.
+   See _design-system/readme.md. */
+
+.gold-rule {
+  display: block;
+  width: 88px;
+  height: var(--rule-brand);
+  background: var(--nta-gold);
+  border: 0;
+}
+
+.gold-rule--hero {
+  width: 160px;
+  height: 4px;
+}
+
+@media (max-width: 620px) {
+  .gold-rule--hero {
+    width: 96px;
+    height: var(--rule-heavy);
+  }
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-block;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-family: var(--font-text);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+/* Sizes — from the comps. */
+.btn--sm {
+  padding: 13px 24px;
+  font-size: var(--type-small);
+}
+
+.btn--md {
+  padding: 17px 34px;
+  font-size: var(--type-lead);
+}
+
+.btn--lg {
+  padding: 22px 46px;
+  font-size: var(--type-lead);
+}
+
+/* Variants — solid fills darken, the on-navy white button inverts to gold.
+   No shadows, no scale, no offset blocks. */
+.btn--navy {
+  background: var(--nta-navy);
+  border-color: var(--nta-navy);
+  color: var(--nta-white);
+}
+
+.btn--navy:hover {
+  background: var(--nta-navy-hover);
+  border-color: var(--nta-navy-hover);
+  color: var(--nta-white);
+}
+
+.btn--on-navy {
+  background: var(--nta-white);
+  border-color: var(--nta-white);
+  color: var(--nta-navy);
+}
+
+.btn--on-navy:hover {
+  background: var(--nta-gold);
+  border-color: var(--nta-gold);
+  color: var(--nta-navy);
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: var(--nta-navy);
+  color: var(--nta-navy);
+  font-size: var(--type-body);
+  padding: 13px 26px;
+}
+
+.btn--outline:hover {
+  background: var(--nta-navy);
+  color: var(--nta-white);
+}
+
+@media (max-width: 620px) {
+  .btn--block-mobile {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ── Corner ticks ────────────────────────────────────────────────────────
+   The mark's registration ticks, reused as a framing device on the hero and
+   the headshot. Diagonal placement (top-right, bottom-left) keeps them
+   reading as a detail rather than a border. */
+
+.ticks {
+  position: relative;
+}
+
+.ticks > .tick {
+  position: absolute;
+  width: var(--tick-size, 56px);
+  height: var(--tick-size, 56px);
+  pointer-events: none;
+}
+
+.ticks > .tick--tr {
+  top: var(--tick-inset, 24px);
+  right: var(--tick-inset, 24px);
+  border-top: var(--tick-weight, 2px) solid var(--nta-gold);
+  border-right: var(--tick-weight, 2px) solid var(--nta-gold);
+}
+
+.ticks > .tick--bl {
+  bottom: var(--tick-inset, 24px);
+  left: var(--tick-inset, 24px);
+  border-bottom: var(--tick-weight, 2px) solid var(--nta-gold);
+  border-left: var(--tick-weight, 2px) solid var(--nta-gold);
+}
+
+/* ── Definition lists (credentials, milestones, contact rows) ───────────── */
+
+.dl {
+  display: flex;
+  flex-direction: column;
+}
+
+.dl__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  padding: 16px 0;
+  border-top: var(--rule-hairline) solid var(--nta-line);
+}
+
+.dl__row:last-child {
+  border-bottom: var(--rule-hairline) solid var(--nta-line);
+}
+
+.dl__term {
+  font-size: var(--type-body);
+  font-weight: var(--weight-medium);
+  color: var(--nta-navy);
+}
+
+.dl__value {
+  font-size: var(--type-small);
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+/* ── Pull quote — quote bound to its attribution by a vertical gold rule ── */
+
+.pullquote {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.pullquote__rule {
+  width: var(--rule-heavy);
+  align-self: stretch;
+  background: var(--nta-gold);
+  flex: 0 0 auto;
+}
+
+.pullquote__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: var(--type-quote);
+  line-height: 1.35;
+  color: var(--nta-navy);
+  text-wrap: pretty;
+}
+
+@media (max-width: 620px) {
+  .pullquote {
+    gap: 20px;
+  }
+}
+
+/* ── CTA band — heading left, single button right ───────────────────────── */
+
+.cta-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+/* ── [CONFIRM] callout — drafted-but-unconfirmed legal language ──────────── */
+
+.confirm-note {
+  font-size: 15px;
+  line-height: var(--leading-relaxed);
+  color: var(--text-soft);
+  background: var(--surface-sunken);
+  border-left: var(--rule-heavy) solid var(--nta-gold);
+  padding: 14px 18px;
+}

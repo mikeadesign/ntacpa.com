@@ -1,0 +1,292 @@
+---
+import Base from '../layouts/Base.astro';
+import PullQuote from '../components/PullQuote.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, credentials, pending } from '../data/site';
+
+const milestones = [
+  { year: '1983', event: 'Certified as a Public Accountant.', note: null },
+  {
+    year: '1986',
+    event: 'Registered Series 27 — Financial and Operations Principal.',
+    note: pending.series27Year,
+  },
+  { year: '1990', event: 'Founded NTA, Inc.', note: null },
+  {
+    year: 'Today',
+    event: 'Forty-plus years in the securities and futures industries, still filing.',
+    note: null,
+  },
+];
+---
+
+<Base
+  fullTitle={`${site.principal} — ${site.name}`}
+  title="About"
+  description="Nicholas T. Avello has been a Certified Public Accountant since 1983 and a registered Series 27 Financial and Operations Principal for four decades. NTA, Inc. has been his practice since 1990."
+>
+  {/* ── Page header ── */}
+  <section class="about-header">
+    <div class="container about-header__inner">
+      <div>
+        <h1 class="h1 about-header__title measure-22">{site.principal}</h1>
+        {/* Page opener: the one horizontal gold rule on this page. */}
+        <hr class="gold-rule about-header__rule" />
+        <p class="deck deck--sm measure-38 about-header__deck">
+          Four decades at the intersection of accounting and the markets.
+        </p>
+        <p class="lead measure-60 about-header__lead">
+          I have been a Certified Public Accountant since 1983. Most of the forty-odd years since
+          have been spent inside the securities and futures industries — as a registered Financial
+          and Operations Principal, in the part of a brokerage where the numbers have to reconcile to
+          the rule, not to an expectation.
+        </p>
+        <p class="body measure-60 about-header__para">
+          {site.name} has been my practice since 1990. It is deliberately one person. When you call,
+          you get the accountant who prepared the return, and when a notice arrives three years
+          later, you get the same one.
+        </p>
+        <p class="body measure-60">
+          That is also why the client list looks unusual: hedge funds and broker-dealers on one side,
+          individuals, families and small businesses on the other. The regulatory work keeps the
+          standard high. The private work keeps it human.
+        </p>
+      </div>
+
+      <div>
+        {/* The ticks live in their own positioning context, deliberately not
+            shared with the caption block below — see the handoff. */}
+        <div class="portrait ticks">
+          <img
+            src="/assets/nicholas-avello-headshot.png"
+            alt={site.principal}
+            width="1122"
+            height="1402"
+            class="portrait__img"
+          />
+          <span class="tick tick--tr" aria-hidden="true"></span>
+          <span class="tick tick--bl" aria-hidden="true"></span>
+        </div>
+        <div class="portrait__caption">
+          <span class="portrait__name">{site.principalName}</span>
+          <span class="label">CERTIFIED PUBLIC ACCOUNTANT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Credentials + milestones ──────────────────────────────────────────
+      One grid, both headings on their own row, so the two columns' content
+      starts flush no matter how either heading wraps. */}
+  <section class="section section--paper section--rule-top section--rule-bottom">
+    <div class="container credentials">
+      {/* Each heading stays next to its own list in the DOM; `display: contents`
+          plus explicit placement puts both headings on grid row 1, so the two
+          columns start flush however either heading wraps. */}
+      <div class="credentials__group">
+        <h2 class="h2 measure-16">Credentials &amp; registrations</h2>
+        <div>
+          <dl class="dl">
+            {
+              credentials.map((credential) => (
+                <div class="dl__row">
+                  <dt class="dl__term">{credential.long}</dt>
+                  <dd class="dl__value">{credential.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="fine credentials__note">
+            Licensure jurisdiction: {pending.licensureJurisdictionShort}
+          </p>
+        </div>
+      </div>
+
+      <div class="credentials__group">
+        <h2 class="h2">Milestones</h2>
+        <div>
+          <dl class="dl">
+            {
+              milestones.map((milestone) => (
+                <div class="dl__row milestone">
+                  <dt class="milestone__year">{milestone.year}</dt>
+                  <dd class="milestone__event">
+                    {milestone.event}
+                    {milestone.note && <span class="milestone__note"> {milestone.note}</span>}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Voice ── */}
+  <section class="section">
+    <div class="container">
+      <PullQuote quote="Always, Never, Except For…" quoteMeasure="measure-30">
+        <p class="measure-60">
+          It has been my shorthand for this work for a long time. Every absolute in the tax code
+          comes with a carve-out, and the carve-out is usually where your situation actually lives.
+          Finding it is not a trick; it is reading, and then reading the part everyone skips.
+        </p>
+        <p class="measure-60">
+          Which is also why I will tell you when the answer is no. A firm that has filed accurately
+          since 1983 stays in business by being right, not by being agreeable.
+        </p>
+      </PullQuote>
+    </div>
+  </section>
+
+  <CtaBand heading="If that sounds like the accountant you want, write to me." />
+</Base>
+
+<style>
+  .about-header__inner {
+    padding-block: 88px 80px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-header__title {
+    font-size: var(--type-h1-about);
+    line-height: 1.02;
+    letter-spacing: -0.023em;
+    margin-bottom: 22px;
+  }
+
+  .about-header__rule {
+    margin: 0 0 22px;
+  }
+
+  .deck--sm {
+    font-size: var(--type-deck-sm);
+  }
+
+  .about-header__deck {
+    margin-bottom: 28px;
+  }
+
+  .about-header__lead,
+  .about-header__para {
+    margin-bottom: 20px;
+  }
+
+  /* ── Portrait ── */
+
+  .portrait {
+    --tick-size: 26px;
+    --tick-inset: 14px;
+  }
+
+  .portrait__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+
+  .portrait__caption {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .portrait__name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--nta-navy);
+  }
+
+  /* ── Credentials + milestones ── */
+
+  .credentials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 72px;
+    align-items: start;
+  }
+
+  .credentials__group {
+    display: contents;
+  }
+
+  .credentials__group:nth-child(1) > h2 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .credentials__group:nth-child(1) > div {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .credentials__group:nth-child(2) > h2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .credentials__group:nth-child(2) > div {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .measure-16 {
+    max-width: 16ch;
+  }
+
+  .credentials__note {
+    margin-top: 16px;
+  }
+
+  .milestone {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+  }
+
+  .milestone__year {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--nta-navy);
+  }
+
+  .milestone__event {
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  .milestone__note {
+    color: var(--text-soft);
+  }
+
+  @media (max-width: 860px) {
+    .about-header__inner {
+      padding-block: 56px 48px;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    /* Cap the portrait so it stays a portrait rather than a full-bleed band. */
+    .portrait {
+      max-width: 340px;
+    }
+    /* Stacked: drop the explicit placement and let each group flow as a
+       heading-then-list block. */
+    .credentials {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .credentials__group {
+      display: block;
+    }
+    .credentials__group > h2 {
+      margin-bottom: 12px;
+    }
+  }
+</style>

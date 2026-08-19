@@ -1,0 +1,281 @@
+---
+/**
+ * Site header. Full lockup + inline nav on desktop; mark alone + a
+ * full-screen navy menu below 860px, per the 390px mobile reference.
+ *
+ * The active page carries a 2px gold underline (see handoff, "The gold rule"
+ * §3 — the one nav use, flagged as confirm-with-team).
+ */
+import Logo from './Logo.astro';
+import { nav, ctaLabel, ctaHref, site } from '../data/site';
+
+interface Props {
+  /** Pathname of the current page, e.g. "/services". */
+  current?: string;
+}
+
+const { current } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo" aria-label={`${site.name} — home`}>
+      <span class="site-header__logo-full"><Logo size={64} /></span>
+      <span class="site-header__logo-mark"><Logo size={40} markOnly /></span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      {
+        nav.map((link) => (
+          <a
+            href={link.href}
+            class:list={['site-nav__link', { 'is-current': current === link.href }]}
+            aria-current={current === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={ctaHref}
+        class:list={['btn', 'btn--navy', 'btn--sm', { 'is-current': current === ctaHref }]}
+        aria-current={current === ctaHref ? 'page' : undefined}
+      >
+        {ctaLabel}
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-open
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden data-menu-panel>
+  <div class="mobile-menu__bar">
+    <Logo size={40} markOnly reversed />
+    <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-menu__nav" aria-label="Primary, mobile">
+    {nav.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+
+  <div class="mobile-menu__foot">
+    <a href={ctaHref} class="btn btn--on-navy btn--md btn--block-mobile">{ctaLabel}</a>
+    <div class="mobile-menu__contact">
+      <span class="label label--footer">CONTACT</span>
+      <a href={site.phoneHref}>{site.phone}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .site-header {
+    background: var(--surface-page);
+    border-bottom: var(--rule-hairline) solid var(--nta-line);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-block: 20px;
+  }
+
+  .site-header__logo-mark {
+    display: none;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .site-nav__link {
+    font-size: var(--type-small);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.2px;
+  }
+
+  /* Gold underline as the active-page indicator. */
+  .site-nav__link.is-current {
+    font-weight: var(--weight-semibold);
+    color: var(--nta-navy);
+    border-bottom: var(--rule-brand) solid var(--nta-gold);
+    padding-bottom: 3px;
+  }
+
+  .btn.is-current {
+    border-bottom-color: var(--nta-gold);
+    border-bottom-width: var(--rule-brand);
+  }
+
+  /* ── Mobile toggle ── */
+
+  .menu-toggle,
+  .menu-close {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .menu-toggle {
+    width: 24px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--nta-navy);
+  }
+
+  .menu-close {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .menu-close span {
+    position: absolute;
+    top: 11px;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--nta-white);
+  }
+
+  .menu-close span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .menu-close span:last-child {
+    transform: rotate(-45deg);
+  }
+
+  /* ── Full-screen navy menu ── */
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: var(--nta-navy);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .mobile-menu__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px var(--gutter);
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    padding: 48px var(--gutter);
+  }
+
+  .mobile-menu__nav a {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--nta-white);
+    padding: 20px 0;
+    border-bottom: var(--rule-hairline) solid var(--nta-slate);
+  }
+
+  .mobile-menu__foot {
+    margin-top: auto;
+    padding: 24px var(--gutter) 40px;
+  }
+
+  .mobile-menu__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .mobile-menu__contact a {
+    color: var(--nta-on-navy-soft);
+    font-size: 15px;
+  }
+
+  .mobile-menu__contact a:hover {
+    color: var(--nta-white);
+  }
+
+  @media (max-width: 860px) {
+    .site-header__logo-full {
+      display: none;
+    }
+    .site-header__logo-mark {
+      display: block;
+    }
+    .site-header__inner {
+      padding-block: 16px;
+    }
+    .site-nav {
+      display: none;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+
+  if (panel && openBtn && closeBtn) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      openBtn.setAttribute('aria-expanded', String(open));
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      (open ? closeBtn : openBtn).focus();
+    };
+
+    openBtn.addEventListener('click', () => setOpen(true));
+    closeBtn.addEventListener('click', () => setOpen(false));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+
+    // The menu is a viewport-width behaviour; if the window grows past the
+    // breakpoint while it is open, close it so focus doesn't get stranded.
+    const mq = window.matchMedia('(min-width: 861px)');
+    mq.addEventListener('change', (e) => {
+      if (e.matches && !panel.hidden) setOpen(false);
+    });
+  }
+</script>

@@ -1,0 +1,135 @@
+/* ── NTA, Inc. — design tokens ─────────────────────────────────────────────
+   Carried over from _design-system/tokens/, plus the site-level type scale
+   the website design adds on top of it.
+
+   Load-bearing brand rules, repeated here because they are easy to break:
+     · Gold (#c9a24a) is NEVER text on a light field — 2.3:1, fails AA.
+       Use Deep Gold (#8a6a1e) when gold has to be typographic.
+     · Radius is 0 everywhere. No shadows, no gradients.
+     · Uppercase tracked labels always carry white-space: nowrap — the
+       tracking leaves them zero slack and they re-break on a font fallback.
+   ------------------------------------------------------------------------ */
+
+:root {
+  /* ── Brand ── */
+  --nta-navy: #16324d;
+  --nta-navy-hover: #0f2437;
+  --nta-slate: #2c5f8a;
+  --nta-gold: #c9a24a;
+  --nta-gold-deep: #8a6a1e;
+  --nta-paper: #faf8f3;
+
+  /* ── Neutrals ── */
+  --nta-white: #ffffff;
+  --nta-body: #3c4652;
+  --nta-body-soft: #4a5562;
+  --nta-muted-light: #b3b8bf;
+  --nta-line: #ece8df; /* warm hairline, on white or paper */
+  --nta-line-warm: #e6dcc3; /* paper band edge */
+  --nta-line-warm-strong: #ddd2b8; /* numbers-band divider */
+  --nta-line-cool: #e2e5e9; /* input border */
+
+  /* ── On-navy ── */
+  --nta-on-navy: #ffffff;
+  --nta-on-navy-lede: #d7dfe8;
+  --nta-on-navy-soft: #9fb2c6;
+  --nta-on-navy-muted: #7ba3c4;
+  --nta-on-navy-label: #4d7a9e;
+
+  /* ── Semantic ── */
+  --text-heading: var(--nta-navy);
+  --text-body: var(--nta-body);
+  --text-soft: var(--nta-body-soft);
+  --surface-page: var(--nta-white);
+  --surface-sunken: var(--nta-paper);
+  --surface-inverse: var(--nta-navy);
+  --link: var(--nta-slate);
+  --link-hover: var(--nta-navy);
+  --focus-ring-color: var(--nta-slate);
+
+  /* ── Type families ── */
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-text: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Display scale ───────────────────────────────────────────────────────
+     Each clamp runs from the 390px mobile reference value up to the desktop
+     comp value. Letter-spacing is expressed in `em` so it tracks the clamp
+     instead of needing a second set of breakpoints. */
+  --type-h1-hero: clamp(34px, 8.5vw, 108px); /* home hero */
+  --type-h1-services: clamp(34px, 5.6vw, 60px);
+  --type-h1-about: clamp(34px, 5.8vw, 62px);
+  --type-h1-contact: clamp(34px, 6.8vw, 72px);
+  --type-h1-legal: clamp(34px, 4.9vw, 52px);
+
+  --type-h2: clamp(24px, 3.6vw, 38px); /* universal on marketing pages */
+  --type-h2-legal: clamp(24px, 2.6vw, 28px);
+  --type-h2-legal-sm: clamp(22px, 2.3vw, 24px);
+
+  --type-h3: clamp(22px, 2.4vw, 26px); /* home card / group headings */
+  --type-h3-sm: clamp(22px, 2.2vw, 24px); /* service rows */
+  --type-h3-legal: clamp(20px, 2vw, 22px);
+
+  --type-deck: clamp(23px, 2.8vw, 30px); /* page decks */
+  --type-deck-sm: clamp(23px, 2.6vw, 28px);
+  --type-quote: clamp(24px, 3vw, 32px);
+  --type-stat: clamp(44px, 5.2vw, 56px);
+
+  /* ── Text scale ── */
+  --type-hero-lede: clamp(17px, 1.9vw, 22px);
+  --type-lead: clamp(17px, 1.7vw, 19px);
+  --type-legal: clamp(16px, 1.5vw, 17px);
+  --type-body: 16px;
+  --type-small: 14px;
+  --type-fine: 12px;
+  --type-label: 11px;
+
+  /* ── Weights ── */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Tracking ── */
+  --track-descriptor: 3.5px;
+  --track-eyebrow: 3px;
+  --track-name: 2.5px;
+
+  /* ── Leading ── */
+  --leading-hero: 0.98;
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+
+  /* ── Geometry ─────────────────────────────────────────────────────────────
+     Radius is 0 and there is no shadow scale. Deliberate — see readme. */
+  --radius: 0;
+  --rule-hairline: 1px;
+  --rule-brand: 2px;
+  --rule-heavy: 3px;
+
+  --container: 1000px;
+  --container-hero: 1040px;
+  --measure: 68ch;
+
+  --gutter: 56px;
+  --section-y: 80px;
+
+  --transition-base: 180ms ease;
+  --focus-width: 3px;
+  --focus-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 32px;
+    --section-y: 64px;
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --gutter: 24px;
+    --section-y: 48px;
+  }
+}

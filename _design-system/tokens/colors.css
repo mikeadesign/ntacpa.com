@@ -1,0 +1,54 @@
+/* ── NTA, Inc. colour system ──────────────────────────────────────────────
+   Five brand colours plus neutrals. The one rule that matters: Gold is an
+   ACCENT — rules, ticks, fills, and text on navy. It never sets text on a
+   light background (2.3:1, fails AA). Deep Gold exists for that case. */
+
+:root {
+  /* Brand */
+  --nta-navy:        #16324d;
+  --nta-slate:       #2c5f8a;
+  --nta-gold:        #c9a24a;
+  --nta-gold-deep:   #8a6a1e;
+  --nta-paper:       #faf8f3;
+
+  /* Neutrals */
+  --nta-white:       #ffffff;
+  --nta-black:       #111111;
+  --nta-body:        #3c4652;
+  --nta-body-soft:   #4a5562;
+  --nta-muted:       #8a8f98;
+  --nta-muted-light: #b3b8bf;
+  --nta-line:        #ece8df;
+  --nta-line-cool:   #e2e5e9;
+
+  /* On-navy neutrals */
+  --nta-on-navy:       #ffffff;
+  --nta-on-navy-soft:  #9fb2c6;
+  --nta-on-navy-muted: #7ba3c4;
+  --nta-on-navy-label: #4d7a9e;
+
+  /* Status — used sparingly, documentation and form validation only */
+  --nta-danger:      #a83f3f;
+  --nta-success:     #2e7d5b;
+
+  /* ── Semantic aliases — prefer these in components ── */
+  --text-heading:    var(--nta-navy);
+  --text-body:       var(--nta-body);
+  --text-muted:      var(--nta-muted);
+  --text-inverse:    var(--nta-white);
+  --text-inverse-soft: var(--nta-on-navy-soft);
+
+  --surface-page:    var(--nta-white);
+  --surface-sunken:  var(--nta-paper);
+  --surface-card:    var(--nta-white);
+  --surface-inverse: var(--nta-navy);
+
+  --accent:          var(--nta-gold);
+  --accent-text:     var(--nta-gold-deep);
+
+  --border-hairline: var(--nta-line);
+  --border-cool:     var(--nta-line-cool);
+
+  --link:            var(--nta-slate);
+  --link-hover:      var(--nta-navy);
+}

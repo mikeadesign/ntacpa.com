@@ -1,0 +1,147 @@
+---
+/** Navy site footer — full lockup, nav columns, legal lines. */
+import Logo from './Logo.astro';
+import { site, pending, nav, legalLinks } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__top">
+      {/* descriptorSize matches the comp, which sets it smaller relative to
+          the 88px mark than the header lockup does. */}
+      <Logo size={88} reversed showPrincipal descriptorSize={8.5} class="site-footer__logo" />
+
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <span class="label label--footer">SITE</span>
+          {nav.map((link) => <a href={link.href}>{link.label}</a>)}
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="label label--footer">CONTACT</span>
+          <a href={site.phoneHref}>{site.phone}</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <span class="site-footer__area">Chicago area, plus remote<br />clients nationwide</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="site-footer__divider" />
+
+    <p class="site-footer__cookies">Cookies: analytics only. Details in site policies.</p>
+
+    <div class="site-footer__legal">
+      <span>{site.copyright}</span>
+      <span>Licensure: {pending.licensureJurisdiction}</span>
+      <div class="site-footer__legal-links">
+        {legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--surface-inverse);
+  }
+
+  .site-footer__inner {
+    padding: 72px var(--gutter) 44px;
+  }
+
+  .site-footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .site-footer__cols {
+    display: flex;
+    gap: 64px;
+  }
+
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .site-footer__col .label {
+    margin-bottom: 4px;
+  }
+
+  .site-footer__col a,
+  .site-footer__area {
+    color: var(--nta-on-navy-soft);
+    font-size: var(--type-small);
+  }
+
+  .site-footer__col a:hover {
+    color: var(--nta-white);
+  }
+
+  .site-footer__area {
+    line-height: 1.5;
+  }
+
+  .site-footer__divider {
+    height: 1px;
+    border: 0;
+    background: var(--nta-slate);
+    margin: 48px 0 24px;
+  }
+
+  .site-footer__cookies {
+    font-size: var(--type-fine);
+    color: var(--nta-on-navy-muted);
+    margin-bottom: 16px;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: var(--type-fine);
+    color: var(--nta-on-navy-muted);
+  }
+
+  .site-footer__legal-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .site-footer__legal-links a {
+    color: var(--nta-on-navy-soft);
+    font-size: var(--type-fine);
+  }
+
+  .site-footer__legal-links a:hover {
+    color: var(--nta-white);
+  }
+
+  @media (max-width: 860px) {
+    .site-footer__inner {
+      padding-top: 56px;
+    }
+    .site-footer__cols {
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .site-footer__top {
+      gap: 36px;
+    }
+    .site-footer__cols {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .site-footer__legal {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

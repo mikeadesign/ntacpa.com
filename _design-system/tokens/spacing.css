@@ -1,0 +1,37 @@
+/* ── NTA, Inc. spacing & geometry ─────────────────────────────────────────
+   The identity is square-cornered. Radius is 0 on brand surfaces; the only
+   rounded things are circular avatar crops and the rounded-square app icon. */
+
+:root {
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  22px;
+  --space-6:  28px;
+  --space-7:  36px;
+  --space-8:  48px;
+  --space-9:  64px;
+  --space-10: 80px;
+  --space-11: 104px;
+
+  --section-y:   80px;
+  --section-x:   56px;
+  --measure:     68ch;   /* max line length for body copy */
+  --container:   1000px;
+
+  /* Geometry */
+  --radius-none:   0;
+  --radius-app:    10px;   /* rounded-square app icon only */
+  --radius-full:   50%;    /* avatar crops only */
+
+  /* Rules — the gold divider is the brand's signature line */
+  --rule-hairline: 1px;
+  --rule-brand:    2px;
+  --rule-heavy:    3px;
+
+  /* Logo geometry */
+  --logo-clear-space:  0.5;    /* × mark height, on all sides */
+  --logo-min-width:    120px;  /* full lockup floor */
+  --logo-tick-inset:   0.085;  /* × mark size */
+}

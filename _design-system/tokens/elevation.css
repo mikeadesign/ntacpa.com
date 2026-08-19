@@ -1,0 +1,15 @@
+/* ── NTA, Inc. elevation ──────────────────────────────────────────────────
+   Shadows are near-absent by design: this is a print-derived identity. Cards
+   sit on tone (Paper vs White) or a hairline border, not on a shadow. The two
+   defined shadows are for genuinely floating UI only — never on the logo. */
+
+:root {
+  --shadow-none:  none;
+  --shadow-card:  0 1px 3px rgba(22, 50, 77, 0.08);
+  --shadow-float: 0 3px 16px rgba(22, 50, 77, 0.12);
+
+  --focus-ring:   0 0 0 3px rgba(44, 95, 138, 0.35);
+
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+}

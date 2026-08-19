@@ -1,0 +1,5 @@
+/* NTA, Inc. webfonts — both families are Google Fonts under the SIL Open Font
+   License, so there is no ongoing licensing cost and no binaries to ship.
+   If the site build needs self-hosted files, download the woff2 subsets and
+   replace this import with local @font-face rules. */
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Archivo:wght@400;500;600;700;800&display=swap");

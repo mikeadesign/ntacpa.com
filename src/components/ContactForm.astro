@@ -1,0 +1,232 @@
+---
+/**
+ * Inquiry form — Name / Email / Message only. No phone field, by design.
+ *
+ * State is local to this component: `form` → `sent`, with a reset back.
+ * It is a panel swap, not a navigation.
+ *
+ * TRANSPORT: the prototype had no endpoint wired. Set PUBLIC_CONTACT_ENDPOINT
+ * in .env to the URL that should receive the POST (a form service, a mail
+ * function, whatever the practice ends up using). Until it is set the form
+ * refuses to pretend it sent anything and shows the fallback panel instead.
+ *
+ * The error panel is an addition, not something the comps specified — it
+ * reuses the confirmation panel's treatment, no new colours or geometry.
+ */
+import { site } from '../data/site';
+import { legalLinks } from '../data/site';
+
+const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
+const taxNotice = legalLinks[1]!;
+---
+
+<div class="contact-panels" data-contact-form data-endpoint={endpoint}>
+  <form class="panel form" novalidate data-state="form">
+    <label class="field">
+      <span class="label label--eyebrow field__label">NAME</span>
+      <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+    </label>
+
+    <label class="field">
+      <span class="label label--eyebrow field__label">EMAIL</span>
+      <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+    </label>
+
+    <label class="field">
+      <span class="label label--eyebrow field__label">MESSAGE</span>
+      <textarea
+        name="message"
+        rows="8"
+        required
+        placeholder="What you need, and any deadline you're working against."></textarea>
+    </label>
+
+    <button type="submit" class="btn btn--navy btn--md">Start a conversation</button>
+
+    <p class="fine" role="status" data-form-error hidden></p>
+
+    <p class="fine">
+      Nothing you send here is a client engagement until we both say so in writing. Please don't
+      include Social Security numbers or account numbers in a first message.
+      <a href={taxNotice.href}>Read the tax advice notice.</a>
+    </p>
+  </form>
+
+  <div class="panel confirm" data-state="sent" hidden tabindex="-1">
+    <h2 class="h2 confirm__heading">Received. Thank you.</h2>
+    <p class="body measure-44 confirm__body">
+      I'll read it myself and reply, usually within a business day. If it's urgent, call {site.phone}.
+    </p>
+    <button type="button" class="btn btn--outline" data-form-reset>Send another note</button>
+  </div>
+
+  <div class="panel confirm" data-state="unavailable" hidden tabindex="-1">
+    <h2 class="h2 confirm__heading">The form isn't sending right now.</h2>
+    <p class="body measure-44 confirm__body">
+      Rather than lose your note, please call <a href={site.phoneHref}>{site.phone}</a> or write to
+      <a href={`mailto:${site.email}`}>{site.email}</a> directly. I read both myself.
+    </p>
+    <button type="button" class="btn btn--outline" data-form-reset>Back to the form</button>
+  </div>
+</div>
+
+<style>
+  .panel {
+    background: var(--surface-sunken);
+    border: var(--rule-hairline) solid var(--nta-line);
+    border-radius: var(--radius);
+  }
+
+  .panel[hidden] {
+    display: none;
+  }
+
+  .form {
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field__label {
+    color: var(--nta-navy);
+  }
+
+  .field input,
+  .field textarea {
+    border: 1px solid var(--nta-line-cool);
+    border-radius: var(--radius);
+    padding: 14px;
+    font-size: var(--type-body);
+    line-height: 1.6;
+    color: var(--text-body);
+    background: var(--nta-white);
+    outline: none;
+    transition: border-color var(--transition-base);
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--nta-slate);
+  }
+
+  /* Native validation styling, once the field has actually been touched. */
+  .field input:user-invalid,
+  .field textarea:user-invalid {
+    border-color: #a83f3f;
+  }
+
+  [data-form-error] {
+    color: #a83f3f;
+  }
+
+  [data-form-error][hidden] {
+    display: none;
+  }
+
+  .confirm {
+    padding: 56px 44px;
+  }
+
+  .confirm:focus {
+    outline: none;
+  }
+
+  .confirm__heading {
+    font-size: var(--type-h2-legal);
+    line-height: var(--leading-snug);
+    margin-bottom: 14px;
+  }
+
+  .confirm__body {
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 620px) {
+    .form {
+      padding: 32px 24px;
+    }
+    .confirm {
+      padding: 40px 24px;
+    }
+    .form .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-contact-form]');
+
+  if (root) {
+    const endpoint = root.dataset.endpoint ?? '';
+    const form = root.querySelector<HTMLFormElement>('[data-state="form"]')!;
+    const sent = root.querySelector<HTMLElement>('[data-state="sent"]')!;
+    const unavailable = root.querySelector<HTMLElement>('[data-state="unavailable"]')!;
+    const error = root.querySelector<HTMLElement>('[data-form-error]')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+    const show = (panel: HTMLElement) => {
+      for (const p of [form, sent, unavailable]) p.hidden = p !== panel;
+      if (panel !== form) panel.focus();
+    };
+
+    const fail = (message: string) => {
+      error.textContent = message;
+      error.hidden = false;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      error.hidden = true;
+
+      if (!form.reportValidity()) return;
+
+      if (!endpoint) {
+        console.warn(
+          '[contact] PUBLIC_CONTACT_ENDPOINT is not set — the form has no transport wired up.',
+        );
+        show(unavailable);
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        form.reset();
+        show(sent);
+      } catch (err) {
+        console.error('[contact] submission failed', err);
+        fail('That didn’t send. Please try again, or email the address on the left.');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Start a conversation';
+      }
+    });
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>('[data-form-reset]')) {
+      button.addEventListener('click', () => {
+        error.hidden = true;
+        show(form);
+        form.querySelector<HTMLInputElement>('input')?.focus();
+      });
+    }
+  }
+</script>

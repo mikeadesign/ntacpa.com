@@ -1,0 +1,70 @@
+---
+/**
+ * Shared document shell. `chrome` picks between the full site header/footer
+ * and the stripped legal chrome.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import LegalFooter from '../components/LegalFooter.astro';
+import { site } from '../data/site';
+
+interface Props {
+  /** Page H1, per the handoff title convention: "{H1} — NTA, Inc., CPA". */
+  title: string;
+  description: string;
+  /** Override the derived title outright (About uses its own form). */
+  fullTitle?: string;
+  chrome?: 'site' | 'legal';
+  /** Sibling legal page, for the legal footer cross-link. */
+  legalSibling?: { label: string; href: string };
+}
+
+const {
+  title,
+  description,
+  fullTitle,
+  chrome = 'site',
+  legalSibling = { label: 'Site policies', href: '/site-policies' },
+} = Astro.props;
+
+const documentTitle = fullTitle ?? `${title} — ${site.titleSuffix}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Archivo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    {chrome === 'legal' ? <LegalHeader /> : <Header current={Astro.url.pathname} />}
+
+    <main id="main" class="site-main">
+      <slot />
+    </main>
+
+    {chrome === 'legal' ? <LegalFooter sibling={legalSibling} /> : <Footer />}
+  </body>
+</html>

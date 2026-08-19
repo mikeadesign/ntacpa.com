@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceGroups } from '../data/site';
+---
+
+<Base
+  title="Services"
+  description="Individual and business tax preparation, bookkeeping, tax planning, and IRS representation — plus FINOP engagements, broker-dealer and hedge fund accounting. One accountant, both kinds of work."
+>
+  {/* ── Page header ── */}
+  <section class="page-header">
+    <div class="container page-header__inner">
+      <h1 class="h1 page-header__title measure-28">
+        Tax, Bookkeeping &amp; Regulatory Accounting Services
+      </h1>
+      {/* Page opener: the one horizontal gold rule on this page. */}
+      <hr class="gold-rule page-header__rule" />
+      <p class="deck measure-40 page-header__deck">
+        Everyday accounting, and the regulatory work most solo practices don't do.
+      </p>
+      <p class="lead measure-62">
+        Two groups of work, one accountant. If you are not sure which side of the list you belong on,
+        say what you're dealing with and I'll tell you.
+      </p>
+    </div>
+  </section>
+
+  {/* ── Service groups ── */}
+  {
+    serviceGroups.map((group, index) => (
+      <section
+        id={group.id}
+        class:list={[
+          'section',
+          index % 2 === 0 && 'section--paper section--rule-top section--rule-bottom',
+        ]}
+      >
+        <div class="container">
+          <h2 class="h2 group__heading">{group.heading}</h2>
+          <p class="body body--soft measure-56 group__intro">{group.intro}</p>
+
+          <div class="service-rows">
+            {group.services.map((service) => (
+              <article class="service-row">
+                <h3 class="service-row__name">{service.name}</h3>
+                <div>
+                  <p class="body service-row__detail">{service.detail}</p>
+                  {/* A label, not a heading — see the handoff on tracked caps. */}
+                  <span class="label label--tag">{service.tag}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <CtaBand
+    heading="Not sure which of these you need?"
+    body="Describe the situation in a few sentences. I'll tell you what it takes, and whether it's worth doing at all."
+    headingMeasure="measure-24"
+  />
+</Base>
+
+<style>
+  .page-header__inner {
+    padding-block: 88px 72px;
+  }
+
+  .page-header__title {
+    font-size: var(--type-h1-services);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    margin-bottom: 22px;
+  }
+
+  .page-header__rule {
+    margin: 0 0 22px;
+  }
+
+  .page-header__deck {
+    margin-bottom: 24px;
+  }
+
+  .group__heading {
+    margin-bottom: 14px;
+  }
+
+  .group__intro {
+    margin-bottom: 48px;
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
+    padding: 28px 0;
+    border-top: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .service-row:last-child {
+    border-bottom: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .service-row__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-medium);
+    font-size: var(--type-h3-sm);
+    line-height: 1.25;
+    color: var(--nta-navy);
+    text-wrap: pretty;
+  }
+
+  .service-row__detail {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 860px) {
+    .page-header__inner {
+      padding-block: 56px 48px;
+    }
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 24px 0;
+    }
+    .group__intro {
+      margin-bottom: 32px;
+    }
+  }
+</style>

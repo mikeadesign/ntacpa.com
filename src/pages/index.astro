@@ -1,0 +1,493 @@
+---
+import Base from '../layouts/Base.astro';
+import PullQuote from '../components/PullQuote.astro';
+import { site, credentials, serviceGroups, ctaHref, ctaLabel, legalLinks } from '../data/site';
+
+/* Both were show/hide flags during design iteration. Production always shows
+   them; kept as constants so making them configurable stays a one-line change. */
+const showNumbers = true;
+const showQuote = true;
+
+const taxNotice = legalLinks[1]!;
+---
+
+<Base
+  fullTitle={`${site.name} — ${site.principal}`}
+  title="Home"
+  description="Nicholas T. Avello, CPA — tax preparation, bookkeeping, and regulatory accounting for individuals, small businesses, hedge funds, and broker-dealers. Certified since 1983."
+>
+  {/* ── Hero ── */}
+  <section class="hero ticks">
+    <span class="tick tick--tr" aria-hidden="true"></span>
+    <span class="tick tick--bl" aria-hidden="true"></span>
+    <div class="container container--wide hero__inner">
+      {/* Tracked caps never wrap — below 620px the comp drops the second
+          clause rather than breaking the line. */}
+      <span class="label label--on-navy hero__eyebrow">
+        <span class="label__long">NICHOLAS T. AVELLO, CPA &nbsp;·&nbsp; CERTIFIED SINCE 1983</span>
+        <span class="label__short">NICHOLAS T. AVELLO, CPA</span>
+      </span>
+      <h1 class="h1 hero__title">Always, Never, Except For…</h1>
+      {/* Page opener: the one horizontal gold rule on this page. */}
+      <hr class="gold-rule gold-rule--hero hero__rule" />
+      <p class="hero__lede measure-55">
+        Every absolute in the tax code has a carve-out, and the carve-outs are where the work is. I
+        prepare returns, keep books, and handle regulatory accounting — for individuals and small
+        businesses, and for the hedge funds and broker-dealers I have worked with for four decades.
+      </p>
+      <a href={ctaHref} class="btn btn--on-navy btn--lg btn--block-mobile">{ctaLabel}</a>
+    </div>
+  </section>
+
+  {/* ── Numbers band ── */}
+  {
+    showNumbers && (
+      <section class="numbers">
+        <div class="container numbers__inner">
+          <div class="numbers__cell">
+            <span class="label numbers__label">
+              <span class="label__long">IN THE SECURITIES &amp; FUTURES INDUSTRIES</span>
+              <span class="label__short">IN SECURITIES &amp; FUTURES</span>
+            </span>
+            <p class="numbers__figure">
+              40<span class="numbers__plus">+</span> <span class="numbers__unit">years</span>
+            </p>
+          </div>
+          <div class="numbers__cell numbers__cell--divided">
+            <span class="label numbers__label">A CERTIFIED PUBLIC ACCOUNTANT</span>
+            <p class="numbers__figure">
+              <span class="numbers__unit">since</span> 1983
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ── Services overview ── */}
+  <section id="services" class="section">
+    <div class="container">
+      <span class="label label--eyebrow services__eyebrow">WHAT I DO</span>
+      <h2 class="h2 measure-26 services__heading">One practice, two kinds of client.</h2>
+      <p class="body body--soft measure-62 services__intro">
+        The same person does the everyday filing work and the regulatory work. Nothing gets handed to
+        a junior associate, because there isn't one.
+      </p>
+
+      <div class="services__groups">
+        {
+          serviceGroups.map((group) => (
+            <div>
+              <h3 class="h3 services__group-heading">{group.heading}</h3>
+              <ul class="service-list">
+                {group.services.map((service) => (
+                  <li class="service-list__item">
+                    <p class="service-list__name">{service.homeName}</p>
+                    <p class="service-list__summary">{service.summary}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ── Pull quote ── */}
+  {
+    showQuote && (
+      <section class="section section--paper section--rule-top section--rule-bottom">
+        <div class="container">
+          <PullQuote quote="Where regulatory expertise meets personal service.">
+            <p class="measure-58">
+              Some clients bring a shoebox of receipts. Others bring a net capital computation under
+              review. Both get the same accountant, and the same answer when the answer is "not yet."
+            </p>
+          </PullQuote>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ── About + credentials ── */}
+  <section id="about" class="section">
+    <div class="container split">
+      <div>
+        <span class="label label--eyebrow about__eyebrow">
+          WHO YOU'RE WORKING WITH
+        </span>
+        <h2 class="h2 measure-22 about__heading">
+          Forty years at the intersection of accounting and the markets.
+        </h2>
+        <p class="body about__para">
+          I have been a Certified Public Accountant since 1983 and have spent more than forty years
+          in the securities and futures industries — most of it as a registered Financial and
+          Operations Principal. {site.name} has been my practice since 1990.
+        </p>
+        <p class="body">
+          That background is unusual for a solo practice, and it is the reason a broker-dealer and a
+          family filing jointly can both be clients here.
+          <a href="/about">Read the longer version →</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 class="h3 card__heading">Credentials</h3>
+        <dl class="dl">
+          {
+            credentials.map((credential) => (
+              <div class="dl__row dl__row--tight">
+                <dt class="dl__term dl__term--sm">{credential.short}</dt>
+                <dd class="dl__value">{credential.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Contact ── */}
+  <section id="contact" class="section section--paper section--rule-top">
+    <div class="container split">
+      <div>
+        <h2 class="h2 measure-20 contact__heading">Tell me what you're dealing with.</h2>
+        <p class="body measure-44 contact__intro">
+          A short note is enough to start. I read everything that comes in and reply myself, usually
+          within a business day.
+        </p>
+        <div class="contact__details">
+          <div>
+            <span class="label contact__label">TELEPHONE</span>
+            <a href={site.phoneHref} class="contact__value">{site.phone}</a>
+          </div>
+          <div>
+            <span class="label contact__label">EMAIL</span>
+            <a href={`mailto:${site.email}`} class="contact__value">{site.email}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card--white">
+        <span class="label label--strong contact__kicker">SEND AN INQUIRY</span>
+        <h3 class="h3 h3--lg measure-22 contact__card-heading">Name, email, and a few sentences.</h3>
+        <p class="body measure-42 contact__card-body">
+          That's the whole form. Deadlines, prior-year filings, an examination underway — say
+          whichever applies and I'll tell you what it takes.
+        </p>
+        <a href={ctaHref} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
+        <p class="fine contact__disclaimer">
+          Nothing you send is a client engagement until we both say so in writing.
+          <a href={taxNotice.href}>Read the tax advice notice.</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+
+  .hero {
+    background: var(--surface-inverse);
+    border-top: var(--rule-heavy) solid var(--nta-gold);
+    border-bottom: var(--rule-heavy) solid var(--nta-gold);
+  }
+
+  .hero__inner {
+    padding-block: 144px 128px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 40px;
+  }
+
+  .hero__title {
+    font-size: var(--type-h1-hero);
+    line-height: var(--leading-hero);
+    letter-spacing: -0.024em;
+    color: var(--nta-white);
+    max-width: 13ch;
+    margin-bottom: 44px;
+  }
+
+  .hero__rule {
+    margin: 0 0 40px;
+  }
+
+  .hero__lede {
+    font-size: var(--type-hero-lede);
+    line-height: 1.62;
+    color: var(--nta-on-navy-lede);
+    margin-bottom: 48px;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 860px) {
+    .hero__inner {
+      padding-block: 88px 80px;
+    }
+    .hero__title {
+      margin-bottom: 28px;
+    }
+    .hero__eyebrow {
+      margin-bottom: 24px;
+    }
+    .hero__rule {
+      margin-bottom: 28px;
+    }
+    .hero__lede {
+      margin-bottom: 32px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero__inner {
+      padding-block: 48px 40px;
+    }
+    /* The 56px ticks crowd the copy at 390px — scale them with the gutter. */
+    .hero {
+      --tick-size: 32px;
+      --tick-inset: 14px;
+    }
+    .hero__title {
+      line-height: 1.06;
+    }
+  }
+
+  /* ── Numbers band ─────────────────────────────────────────────────────── */
+
+  .numbers {
+    background: var(--surface-sunken);
+    border-bottom: var(--rule-hairline) solid var(--nta-line-warm);
+  }
+
+  .numbers__inner {
+    padding-block: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .numbers__cell {
+    padding-right: 48px;
+  }
+
+  .numbers__cell--divided {
+    padding-right: 0;
+    padding-left: 48px;
+    border-left: var(--rule-hairline) solid var(--nta-line-warm-strong);
+  }
+
+  .numbers__label {
+    margin-bottom: 16px;
+  }
+
+  .numbers__figure {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--type-stat);
+    line-height: 1;
+    color: var(--nta-navy);
+  }
+
+  /* Gold as type only ever in Deep Gold — #c9a24a on cream is 2.3:1. */
+  .numbers__plus {
+    color: var(--nta-gold-deep);
+  }
+
+  .numbers__unit {
+    font-size: 0.5em;
+    font-weight: var(--weight-medium);
+  }
+
+  @media (max-width: 620px) {
+    .numbers__inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-block: 36px;
+    }
+    .numbers__cell {
+      padding-right: 0;
+    }
+    .numbers__cell--divided {
+      padding-left: 0;
+      padding-top: 28px;
+      border-left: 0;
+      border-top: var(--rule-hairline) solid var(--nta-line);
+    }
+  }
+
+  /* ── Services overview ────────────────────────────────────────────────── */
+
+  .services__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .services__heading {
+    margin-bottom: 12px;
+  }
+
+  .services__intro {
+    margin-bottom: 64px;
+  }
+
+  .services__groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .services__group-heading {
+    margin-bottom: 24px;
+  }
+
+  .service-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .service-list__item {
+    padding: 20px 0;
+    border-top: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .service-list__item:last-child {
+    border-bottom: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .service-list__name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: var(--weight-medium);
+    color: var(--nta-navy);
+    margin-bottom: 6px;
+  }
+
+  .service-list__summary {
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-soft);
+  }
+
+  @media (max-width: 860px) {
+    .services__groups {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .services__intro {
+      margin-bottom: 40px;
+    }
+  }
+
+  /* ── Split sections (about, contact) ──────────────────────────────────── */
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .split {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .card {
+    background: var(--surface-sunken);
+    border: var(--rule-hairline) solid var(--nta-line);
+    padding: 36px 32px;
+  }
+
+  .card--white {
+    background: var(--nta-white);
+    padding: 44px 40px;
+  }
+
+  .card__heading {
+    margin-bottom: 22px;
+  }
+
+  .about__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .about__heading {
+    margin-bottom: 24px;
+  }
+
+  .about__para {
+    margin-bottom: 18px;
+  }
+
+  /* The Home credentials card runs a slightly tighter row than About's. */
+  .dl__row--tight {
+    padding: 14px 0;
+  }
+
+  .dl__term--sm {
+    font-size: 15px;
+  }
+
+  .contact__heading {
+    margin-bottom: 20px;
+  }
+
+  .contact__intro {
+    margin-bottom: 36px;
+  }
+
+  .contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact__label {
+    margin-bottom: 6px;
+  }
+
+  .contact__value {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--nta-navy);
+  }
+
+  .contact__value:hover {
+    color: var(--nta-slate);
+  }
+
+  .contact__kicker {
+    margin-bottom: 18px;
+  }
+
+  .h3--lg {
+    font-size: var(--type-h2-legal);
+    line-height: var(--leading-snug);
+  }
+
+  .contact__card-heading {
+    margin-bottom: 14px;
+  }
+
+  .contact__card-body {
+    margin-bottom: 32px;
+  }
+
+  .contact__disclaimer {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 620px) {
+    .card {
+      padding: 28px 24px;
+    }
+    .card--white {
+      padding: 32px 24px;
+    }
+  }
+</style>

@@ -1,0 +1,134 @@
+/* ── Shared styling for the two legal pages ──────────────────────────
+   Site policies and the tax advice notice share one layout: stripped
+   chrome, a jump nav, H2 sections and H3 sub-points at a smaller scale
+   than the marketing pages. Kept in one file so they can't drift. */
+
+/* ── Shared legal-page styling ─────────────────────────────────────────
+     Both legal pages use this; keeping it global rather than duplicating a
+     scoped copy in each. */
+
+  .legal {
+    padding-block: 80px 96px;
+  }
+
+  .legal__title {
+    font-size: var(--type-h1-legal);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.006em;
+    font-weight: var(--weight-semibold);
+    max-width: 20ch;
+    margin-bottom: 20px;
+  }
+
+  .legal__rule {
+    margin: 0 0 20px;
+  }
+
+  .legal__intro {
+    margin-bottom: 12px;
+  }
+
+  .legal__effective {
+    margin-bottom: 8px;
+  }
+
+  .legal__draft {
+    font-size: var(--type-small);
+    margin-bottom: 56px;
+  }
+
+  .toc {
+    border-top: var(--rule-hairline) solid var(--nta-line);
+    border-bottom: var(--rule-hairline) solid var(--nta-line);
+    padding-block: 28px;
+    margin-bottom: 56px;
+  }
+
+  .toc__label {
+    margin-bottom: 18px;
+  }
+
+  .toc__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+  }
+
+  .toc__links a {
+    font-size: 15px;
+  }
+
+  .legal__body {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: var(--measure);
+  }
+
+  .legal__h2 {
+    font-size: var(--type-h2-legal);
+    line-height: var(--leading-snug);
+    margin-bottom: 16px;
+  }
+
+  .legal__h2--sm {
+    font-size: var(--type-h2-legal-sm);
+    margin-bottom: 14px;
+  }
+
+  .legal__h3 {
+    font-size: var(--type-h3-legal);
+    line-height: var(--leading-snug);
+    margin-bottom: 10px;
+  }
+
+  .legal__p {
+    font-size: var(--type-legal);
+    line-height: var(--leading-relaxed);
+  }
+
+  .legal__p + .legal__p,
+  .legal__p + .confirm-note {
+    margin-top: 14px;
+  }
+
+  .legal__p--spaced {
+    margin-bottom: 10px;
+  }
+
+  /* The one gold rule that separates privacy from terms — a section divider
+     the comp specifies explicitly, not a decorative addition. */
+  .legal__terms {
+    padding-top: 48px;
+    border-top: var(--rule-brand) solid var(--nta-gold);
+  }
+
+  .subsections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .legal__questions {
+    padding-top: 40px;
+    border-top: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  @media (max-width: 620px) {
+    .legal {
+      padding-block: 40px 56px;
+    }
+    .legal__draft {
+      margin-bottom: 32px;
+    }
+    .toc {
+      margin-bottom: 32px;
+    }
+    .toc__links {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .legal__body {
+      gap: 32px;
+    }
+  }

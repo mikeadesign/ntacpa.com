@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style> body { margin:0; } </style>
+</helmet>
+
+<!-- ===================== 02 · THE LEDGER ===================== -->
+<div data-screen-label="02 — The Ledger (refined)" style="position:absolute; left:40px; top:40px; width:660px;">
+  <div data-drags-parent="1" style="font-family:Archivo,sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin-bottom:12px; padding-left:2px;">02 — The Ledger</div>
+  <div style="background:#ffffff; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow:hidden;">
+
+    <div style="padding:18px 28px; border-bottom:1px solid #ece8df; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#c9a24a;"></div>
+      <span style="font-family:Archivo,sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; color:#16324d;">THE LEDGER</span>
+    </div>
+
+    <!-- Primary -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">PRIMARY</span>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <div style="display:flex; align-items:flex-end; gap:15px;">
+          <div style="font-family:Spectral,serif; font-weight:700; font-size:62px; letter-spacing:.5px; color:#16324d; line-height:.86;">NTA</div>
+          <div style="width:2px; height:48px; background:#c9a24a;"></div>
+          <div style="font-family:Archivo,sans-serif; font-weight:700; font-size:14px; letter-spacing:3px; color:#2c5f8a; padding-bottom:5px;">INC.</div>
+        </div>
+        <div style="width:236px; height:0; border-top:2px solid #16324d;"></div>
+        <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; color:#8a8f98;">CERTIFIED PUBLIC ACCOUNTANT</div>
+      </div>
+    </div>
+
+    <!-- Reversed -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df; background:#16324d;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#5b7593;">REVERSED</span>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <div style="display:flex; align-items:flex-end; gap:15px;">
+          <div style="font-family:Spectral,serif; font-weight:700; font-size:62px; letter-spacing:.5px; color:#ffffff; line-height:.86;">NTA</div>
+          <div style="width:2px; height:48px; background:#c9a24a;"></div>
+          <div style="font-family:Archivo,sans-serif; font-weight:700; font-size:14px; letter-spacing:3px; color:#c9a24a; padding-bottom:5px;">INC.</div>
+        </div>
+        <div style="width:236px; height:0; border-top:2px solid #ffffff;"></div>
+        <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; color:#9fb2c6;">CERTIFIED PUBLIC ACCOUNTANT</div>
+      </div>
+    </div>
+
+    <!-- Stacked + Monogram -->
+    <div style="display:flex;">
+      <div style="position:relative; flex:1; padding:40px 24px 34px; border-right:1px solid #ece8df; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">STACKED</span>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:9px;">
+          <div style="font-family:Spectral,serif; font-weight:700; font-size:44px; letter-spacing:.5px; color:#16324d; line-height:.9;">NTA</div>
+          <div style="width:64px; height:2px; background:#c9a24a;"></div>
+          <div style="font-family:Archivo,sans-serif; font-weight:700; font-size:11px; letter-spacing:3px; color:#2c5f8a;">INC.</div>
+        </div>
+      </div>
+      <div style="position:relative; flex:0 0 200px; padding:40px 24px 34px; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">MARK</span>
+        <div style="width:88px; height:88px; border-radius:10px; background:#16324d; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+          <div style="font-family:Spectral,serif; font-weight:700; font-size:27px; letter-spacing:.5px; color:#ffffff; line-height:1;">NTA</div>
+          <div style="width:34px; height:2px; background:#c9a24a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== 03 · THE BLOCK ===================== -->
+<div data-screen-label="03 — The Block (refined)" style="position:absolute; left:760px; top:40px; width:660px;">
+  <div data-drags-parent="1" style="font-family:Archivo,sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin-bottom:12px; padding-left:2px;">03 — The Block</div>
+  <div style="background:#ffffff; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow:hidden;">
+
+    <div style="padding:18px 28px; border-bottom:1px solid #ece8df; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#c9a24a;"></div>
+      <span style="font-family:Archivo,sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; color:#16324d;">THE BLOCK</span>
+    </div>
+
+    <!-- Primary -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">PRIMARY</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:22px;">
+        <div style="position:relative; width:100px; height:100px; background:#16324d; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:33px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+          <div style="position:absolute; top:9px; right:9px; width:11px; height:11px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+          <div style="position:absolute; bottom:9px; left:9px; width:11px; height:11px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-family:Spectral,serif; font-weight:600; font-size:33px; letter-spacing:.5px; color:#16324d;">NTA, Inc.</div>
+          <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; color:#8a8f98;">CERTIFIED PUBLIC ACCOUNTANT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reversed -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df; background:#16324d;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#5b7593;">REVERSED</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:22px;">
+        <div style="position:relative; width:100px; height:100px; background:#c9a24a; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:33px; letter-spacing:.5px; color:#16324d;">NTA</span>
+          <div style="position:absolute; top:9px; right:9px; width:11px; height:11px; border-top:2px solid #16324d; border-right:2px solid #16324d;"></div>
+          <div style="position:absolute; bottom:9px; left:9px; width:11px; height:11px; border-bottom:2px solid #16324d; border-left:2px solid #16324d;"></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-family:Spectral,serif; font-weight:600; font-size:33px; letter-spacing:.5px; color:#ffffff;">NTA, Inc.</div>
+          <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; color:#9fb2c6;">CERTIFIED PUBLIC ACCOUNTANT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stacked + Monogram -->
+    <div style="display:flex;">
+      <div style="position:relative; flex:1; padding:40px 24px 34px; border-right:1px solid #ece8df; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">STACKED</span>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+          <div style="position:relative; width:74px; height:74px; background:#16324d; display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:Spectral,serif; font-weight:700; font-size:25px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+            <div style="position:absolute; top:7px; right:7px; width:9px; height:9px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+            <div style="position:absolute; bottom:7px; left:7px; width:9px; height:9px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+            <div style="font-family:Spectral,serif; font-weight:600; font-size:23px; letter-spacing:.5px; color:#16324d;">NTA, Inc.</div>
+            <div style="font-family:Archivo,sans-serif; font-size:8px; font-weight:600; letter-spacing:2.5px; color:#8a8f98;">CERTIFIED PUBLIC ACCOUNTANT</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative; flex:0 0 200px; padding:40px 24px 34px; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">MARK</span>
+        <div style="position:relative; width:88px; height:88px; background:#16324d; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:29px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+          <div style="position:absolute; top:8px; right:8px; width:10px; height:10px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+          <div style="position:absolute; bottom:8px; left:8px; width:10px; height:10px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ===================== BLEND · LEDGER + BLOCK MARK ===================== -->
+<div data-screen-label="Blend — Ledger + Block mark" style="position:absolute; left:1480px; top:40px; width:660px;">
+  <div data-drags-parent="1" style="font-family:Archivo,sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280; margin-bottom:12px; padding-left:2px;">Blend — Ledger wordmark + Block mark</div>
+  <div style="background:#ffffff; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow:hidden;">
+
+    <div style="padding:18px 28px; border-bottom:1px solid #ece8df; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#c9a24a;"></div>
+      <span style="font-family:Archivo,sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; color:#16324d;">THE BLEND</span>
+    </div>
+
+    <!-- Primary -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">PRIMARY</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:22px;">
+        <div style="position:relative; width:100px; height:100px; background:#16324d; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:33px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+          <div style="position:absolute; top:9px; right:9px; width:11px; height:11px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+          <div style="position:absolute; bottom:9px; left:9px; width:11px; height:11px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+        </div>
+        <div style="width:2px; height:100px; background:#c9a24a;"></div>
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <div style="font-family:Spectral,serif; font-weight:600; font-size:33px; letter-spacing:.5px; color:#16324d; line-height:1;">NTA, Inc.</div>
+          <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; color:#8a8f98;">CERTIFIED PUBLIC ACCOUNTANT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reversed -->
+    <div style="position:relative; padding:42px 28px 36px; border-bottom:1px solid #ece8df; background:#16324d;">
+      <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#5b7593;">REVERSED</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:22px;">
+        <div style="position:relative; width:100px; height:100px; background:#ffffff; display:flex; align-items:center; justify-content:center; flex:0 0 auto;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:33px; letter-spacing:.5px; color:#16324d;">NTA</span>
+          <div style="position:absolute; top:9px; right:9px; width:11px; height:11px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+          <div style="position:absolute; bottom:9px; left:9px; width:11px; height:11px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+        </div>
+        <div style="width:2px; height:100px; background:#c9a24a;"></div>
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <div style="font-family:Spectral,serif; font-weight:600; font-size:33px; letter-spacing:.5px; color:#ffffff; line-height:1;">NTA, Inc.</div>
+          <div style="font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; color:#9fb2c6;">CERTIFIED PUBLIC ACCOUNTANT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stacked + Mark -->
+    <div style="display:flex;">
+      <div style="position:relative; flex:1; padding:40px 24px 34px; border-right:1px solid #ece8df; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">STACKED</span>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+          <div style="position:relative; width:64px; height:64px; background:#16324d; display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:Spectral,serif; font-weight:700; font-size:21px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+            <div style="position:absolute; top:6px; right:6px; width:8px; height:8px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+            <div style="position:absolute; bottom:6px; left:6px; width:8px; height:8px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+          </div>
+          <div style="width:36px; height:2px; background:#c9a24a;"></div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+            <div style="font-family:Spectral,serif; font-weight:600; font-size:22px; letter-spacing:.5px; color:#16324d;">NTA, Inc.</div>
+            <div style="font-family:Archivo,sans-serif; font-size:8px; font-weight:600; letter-spacing:2.5px; color:#8a8f98;">CERTIFIED PUBLIC ACCOUNTANT</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative; flex:0 0 200px; padding:40px 24px 34px; display:flex; align-items:center; justify-content:center;">
+        <span style="position:absolute; top:14px; left:22px; font-family:Archivo,sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:#c2c7ce;">MARK</span>
+        <div style="position:relative; width:88px; height:88px; background:#16324d; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:Spectral,serif; font-weight:700; font-size:29px; letter-spacing:.5px; color:#ffffff;">NTA</span>
+          <div style="position:absolute; top:8px; right:8px; width:10px; height:10px; border-top:2px solid #c9a24a; border-right:2px solid #c9a24a;"></div>
+          <div style="position:absolute; bottom:8px; left:8px; width:10px; height:10px; border-bottom:2px solid #c9a24a; border-left:2px solid #c9a24a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

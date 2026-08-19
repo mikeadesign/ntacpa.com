@@ -1,0 +1,49 @@
+/* ── NTA, Inc. typography ─────────────────────────────────────────────────
+   Two families, strictly divided:
+     Spectral (serif)  — the voice of the firm: headlines, the wordmark, pull
+                         quotes and the tagline (italic).
+     Archivo (sans)    — the voice of the interface: descriptors, body copy,
+                         labels, navigation, tables, forms.
+   Descriptors and eyebrows are ALWAYS uppercase with wide tracking, and
+   always carry white-space:nowrap — the tracking leaves them zero slack. */
+
+:root {
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-text:    "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Display scale — Spectral */
+  --type-hero:       clamp(2.75rem, 5vw, 4.25rem);  /* 44 → 68px */
+  --type-h1:         clamp(2.25rem, 4vw, 3.25rem);  /* 36 → 52px */
+  --type-h2:         clamp(1.75rem, 3vw, 2.25rem);  /* 28 → 36px */
+  --type-h3:         1.375rem;                      /* 22px */
+  --type-quote:      clamp(1.5rem, 2.6vw, 2rem);    /* 24 → 32px */
+
+  /* Text scale — Archivo */
+  --type-lead:       1.1875rem;   /* 19px */
+  --type-body:       1rem;        /* 16px */
+  --type-small:      0.875rem;    /* 14px */
+  --type-fine:       0.75rem;     /* 12px */
+
+  /* Descriptor / eyebrow — uppercase, tracked */
+  --type-eyebrow:    0.625rem;    /* 10px */
+  --type-descriptor: 0.625rem;    /* 10px */
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  /* Tracking */
+  --track-wordmark:  0.5px;
+  --track-eyebrow:   3px;
+  --track-descriptor: 3.5px;
+  --track-name:      2.5px;
+
+  /* Leading */
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.7;
+}

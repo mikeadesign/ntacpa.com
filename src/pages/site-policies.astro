@@ -1,0 +1,204 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/legal.css';
+import { site, pending } from '../data/site';
+
+/* Was a show/hide flag during design iteration; production always shows it. */
+const showContents = true;
+
+const contents = [
+  { id: 'collect', label: 'What I collect' },
+  { id: 'cookies', label: 'Cookies and analytics' },
+  { id: 'inquiry-form', label: 'The inquiry form' },
+  { id: 'keep', label: 'How long I keep it' },
+  { id: 'clients', label: 'Client records are different' },
+  { id: 'requests', label: 'Your requests' },
+  { id: 'terms', label: 'Terms of use' },
+];
+---
+
+<Base
+  title="Site policies"
+  description="How this website handles your information, and the terms on which you use it."
+  chrome="legal"
+  legalSibling={{ label: 'Tax advice notice', href: '/tax-advice-notice' }}
+>
+  <div class="container legal">
+    <h1 class="h1 legal__title">Site policies</h1>
+    {/* Page opener: the one horizontal gold rule on this page. */}
+    <hr class="gold-rule legal__rule" />
+    <p class="lead measure-64 legal__intro">
+      How this website handles your information, and the terms on which you use it. Two sections:
+      privacy first, then terms of use.
+    </p>
+    <p class="label legal__effective">EFFECTIVE {pending.legalEffectiveDate}</p>
+    <p class="confirm-note measure-64 legal__draft">
+      Draft for your review. I am not a lawyer and this text has not been reviewed by one — the
+      bracketed notes mark the points that need your confirmation or an attorney's eye before this
+      page goes live.
+    </p>
+
+    {
+      showContents && (
+        <nav aria-label="On this page" class="toc">
+          <p class="label label--strong toc__label">ON THIS PAGE</p>
+          <div class="toc__links">
+            {contents.map((entry) => (
+              <a href={`#${entry.id}`}>{entry.label}</a>
+            ))}
+          </div>
+        </nav>
+      )
+    }
+
+    <div class="legal__body">
+      <section id="collect">
+        <h2 class="h2 legal__h2">What I collect</h2>
+        <p class="legal__p">
+          Two things, and nothing else. First, basic traffic measurement — which pages were viewed,
+          when, roughly where the visit came from, and what kind of device it was. Second, whatever
+          you choose to type into the inquiry form.
+        </p>
+        <p class="legal__p">
+          I do not sell information, share it with advertisers, or add anyone to a mailing list.
+          There is no advertising on this site and no third-party tracking beyond the analytics
+          described below.
+        </p>
+      </section>
+
+      <section id="cookies">
+        <h2 class="h2 legal__h2">Cookies and analytics</h2>
+        <p class="legal__p">
+          This site uses Google Analytics to count visits and see which pages get read. Google
+          Analytics sets cookies in your browser — small files that let it recognise a returning
+          visit. That data goes to Google and is subject to Google's own privacy terms.
+        </p>
+        <p class="legal__p">
+          You can refuse or delete these cookies in your browser settings, or install Google's
+          opt-out browser add-on. Nothing on this site stops working if you do.
+        </p>
+        <p class="confirm-note">
+          [CONFIRM] Whether IP anonymisation is switched on in your Analytics property, and whether
+          you want a cookie consent banner. This site currently discloses cookies in the footer
+          rather than asking for consent — appropriate for a US-only audience, but not sufficient if
+          you expect visitors in the EU or UK.
+        </p>
+      </section>
+
+      <section id="inquiry-form">
+        <h2 class="h2 legal__h2">The inquiry form</h2>
+        <p class="legal__p">
+          The form asks for a name, an email address, and a message. When you send it, that becomes
+          an email to me. It is not stored in a database on this website, and no one else receives a
+          copy.
+        </p>
+        <p class="legal__p">
+          Please don't put Social Security numbers, account numbers, or tax documents in a first
+          message. Ordinary email is not a secure channel; once you're a client, I'll tell you how to
+          send documents properly.
+        </p>
+      </section>
+
+      <section id="keep">
+        <h2 class="h2 legal__h2">How long I keep it</h2>
+        <p class="legal__p">
+          Inquiry emails stay in my mail account while a conversation is live and for a reasonable
+          period afterwards. Analytics data is retained on the schedule set in the Analytics
+          property.
+        </p>
+        <p class="confirm-note">
+          [CONFIRM] A stated retention period — for example, inquiry emails deleted after 12 months
+          if no engagement follows, and Analytics set to 14 months. Naming a period is better than "a
+          reasonable period."
+        </p>
+      </section>
+
+      <section id="clients">
+        <h2 class="h2 legal__h2">Client records are different</h2>
+        <p class="legal__p">
+          This page is about the website. Tax documents, books, and anything else you give me as a
+          client are handled under your engagement letter and the confidentiality rules that apply to
+          a CPA — not under this notice. Those obligations are stricter, and they continue after an
+          engagement ends.
+        </p>
+      </section>
+
+      <section id="requests">
+        <h2 class="h2 legal__h2">Your requests</h2>
+        <p class="legal__p">
+          Write to <a href={`mailto:${site.email}`}>{site.email}</a> to ask what I hold about you, to
+          correct it, or to have it deleted. I'll answer myself.
+        </p>
+        <p class="confirm-note">
+          [CONFIRM] Whether any state privacy statute applies to the practice — this depends on
+          client residency and revenue thresholds, and it's the clause most worth an attorney's five
+          minutes.
+        </p>
+      </section>
+
+      <section id="terms" class="legal__terms">
+        <h2 class="h2 legal__h2">Terms of use</h2>
+        <p class="legal__p legal__p--spaced">
+          By using this site you accept the following. It is short on purpose.
+        </p>
+
+        <div class="subsections">
+          <div>
+            <h3 class="h3 legal__h3">This site is information, not advice</h3>
+            <p class="legal__p">
+              Everything here describes services in general terms. None of it is tax, accounting, or
+              regulatory advice for your situation, and reading it does not make you a client. The
+              <a href="/tax-advice-notice">tax advice notice</a> covers this in full.
+            </p>
+          </div>
+          <div>
+            <h3 class="h3 legal__h3">Accuracy</h3>
+            <p class="legal__p">
+              I keep this site current, but tax law changes constantly and pages can fall behind.
+              Nothing here is warranted to be complete or up to date on the day you read it.
+            </p>
+          </div>
+          <div>
+            <h3 class="h3 legal__h3">Links out</h3>
+            <p class="legal__p">
+              Where this site links to the IRS, FINRA, or anyone else, that is a convenience. I don't
+              control those sites and a link is not an endorsement.
+            </p>
+          </div>
+          <div>
+            <h3 class="h3 legal__h3">The content itself</h3>
+            <p class="legal__p">
+              The text, marks, and design of this site belong to {site.name}. You're welcome to quote
+              a sentence with attribution; please don't republish pages wholesale.
+            </p>
+          </div>
+          <div>
+            <h3 class="h3 legal__h3">Changes</h3>
+            <p class="legal__p">
+              These policies can change. The effective date at the top tells you which version you're
+              reading.
+            </p>
+          </div>
+          <div>
+            <h3 class="h3 legal__h3">Governing law</h3>
+            <p class="legal__p legal__p--spaced">
+              These terms are governed by the law of {pending.governingLawState}.
+            </p>
+            <p class="confirm-note">
+              [CONFIRM] The state, and whether you want a limitation-of-liability clause here. I've
+              deliberately left one out rather than draft it unreviewed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="legal__questions">
+        <h2 class="h2 legal__h2 legal__h2--sm">Questions about any of this</h2>
+        <p class="legal__p">
+          Call <a href={site.phoneHref}>{site.phone}</a> or write to
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</Base>

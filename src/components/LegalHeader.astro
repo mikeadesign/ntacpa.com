@@ -1,0 +1,55 @@
+---
+/**
+ * Stripped chrome for the two legal pages: mark, wordmark, back link.
+ * No nav, no CTA, not sticky — deliberately quieter than the site header.
+ */
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+---
+
+<header class="legal-header">
+  <div class="container legal-header__inner">
+    <a href="/" class="legal-header__logo" aria-label={`${site.name} — home`}>
+      <span class="legal-header__logo-full"><Logo size={64} showDescriptor={false} /></span>
+      <span class="legal-header__logo-mark"><Logo size={40} markOnly /></span>
+    </a>
+    <a href="/" class="legal-header__back">← Back to site</a>
+  </div>
+</header>
+
+<style>
+  .legal-header {
+    background: var(--surface-page);
+    border-bottom: var(--rule-hairline) solid var(--nta-line);
+  }
+
+  .legal-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-block: 20px;
+  }
+
+  .legal-header__logo-mark {
+    display: none;
+  }
+
+  .legal-header__back {
+    font-size: var(--type-small);
+    font-weight: var(--weight-medium);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 620px) {
+    .legal-header__logo-full {
+      display: none;
+    }
+    .legal-header__logo-mark {
+      display: block;
+    }
+    .legal-header__inner {
+      padding-block: 16px;
+    }
+  }
+</style>

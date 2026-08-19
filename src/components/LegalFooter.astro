@@ -1,0 +1,71 @@
+---
+/** Compact navy footer for the legal pages. */
+import { site } from '../data/site';
+
+interface Props {
+  /** The sibling legal page to cross-link to. */
+  sibling: { label: string; href: string };
+}
+
+const { sibling } = Astro.props;
+---
+
+<footer class="legal-footer">
+  <div class="container legal-footer__inner">
+    <div class="legal-footer__brand">
+      <span class="legal-footer__wordmark">{site.name}</span>
+      <span class="legal-footer__copy">{site.copyright}</span>
+    </div>
+    <div class="legal-footer__links">
+      <a href="/">Home</a>
+      <a href={sibling.href}>{sibling.label}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .legal-footer {
+    background: var(--surface-inverse);
+  }
+
+  .legal-footer__inner {
+    padding: 48px var(--gutter) 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .legal-footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legal-footer__wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: 22px;
+    color: var(--nta-white);
+  }
+
+  .legal-footer__copy {
+    font-size: var(--type-fine);
+    color: var(--nta-on-navy-muted);
+  }
+
+  .legal-footer__links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .legal-footer__links a {
+    font-size: var(--type-fine);
+    color: var(--nta-on-navy-soft);
+  }
+
+  .legal-footer__links a:hover {
+    color: var(--nta-white);
+  }
+</style>

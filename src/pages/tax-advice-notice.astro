@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/legal.css';
+import { site, pending } from '../data/site';
+---
+
+<Base
+  title="Tax advice notice"
+  description="What this website is, what it isn't, and where the line sits between reading a page here and being a client of NTA, Inc."
+  chrome="legal"
+  legalSibling={{ label: 'Site policies', href: '/site-policies' }}
+>
+  <div class="container legal">
+    <h1 class="h1 legal__title">Tax advice notice</h1>
+    {/* Page opener: the one horizontal gold rule on this page. */}
+    <hr class="gold-rule legal__rule" />
+    <p class="lead measure-64 legal__intro">
+      What this website is, what it isn't, and where the line sits between reading a page here and
+      being a client.
+    </p>
+    <p class="label legal__effective">EFFECTIVE {pending.legalEffectiveDate}</p>
+    <p class="confirm-note measure-64 legal__draft">
+      Draft for your review. I am not a lawyer and this text has not been reviewed by one — the
+      bracketed notes mark what needs your confirmation before this page goes live.
+    </p>
+
+    <div class="legal__body">
+      <section>
+        <h2 class="h2 legal__h2">Nothing here is advice for your situation</h2>
+        <p class="legal__p">
+          The pages on this site describe the work I do in general terms. General is the operative
+          word: a sentence that is true for most filers may be exactly wrong for you, and the useful
+          answer almost always depends on facts that aren't on a website.
+        </p>
+        <p class="legal__p">
+          Do not act, or decline to act, on the basis of anything you read here. Ask me, or ask
+          another qualified professional, about your own circumstances first.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">You become a client when we sign, not before</h2>
+        <p class="legal__p">
+          Sending an inquiry does not create a professional relationship. Neither does a phone call,
+          an email exchange, or my answering a question at no charge. An engagement begins when there
+          is a written engagement letter naming the work, the period, and the fee, signed by both of
+          us.
+        </p>
+        <p class="legal__p">
+          Until then I have no duty to act on a deadline you are facing, and you should not assume a
+          filing is being handled.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">Don't send sensitive information</h2>
+        <p class="legal__p">
+          The inquiry form and ordinary email are not secure channels. Please keep Social Security
+          and taxpayer ID numbers, bank and brokerage account numbers, and copies of returns out of a
+          first message. A description is enough — "three years unfiled, sole proprietor, Illinois"
+          tells me what I need.
+        </p>
+        <p class="legal__p">
+          Once we're working together, I'll tell you how to send documents properly.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">Links to other sites</h2>
+        <p class="legal__p">
+          Where this site links to the IRS, FINRA, a state revenue department, or any other outside
+          source, it is for convenience. I don't control those pages, I'm not responsible for what
+          they say, and a link is not an endorsement.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">Past results are not a promise</h2>
+        <p class="legal__p">
+          Descriptions of past engagements — an examination resolved, a filing brought current, a net
+          capital issue cleared — describe what happened in those matters. Facts differ, examiners
+          differ, and the law changes. Nothing here should be read as a prediction about your
+          outcome.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">Written advice and Circular 230</h2>
+        <p class="legal__p">
+          Practice before the IRS is governed by Treasury Department Circular 230. Any written advice
+          I give a client is prepared for that client's specific facts, and it isn't intended for
+          anyone else to rely on or to use to avoid penalties.
+        </p>
+        <p class="confirm-note">
+          [CONFIRM] Whether you want the formal Circular 230 wording your engagement letters already
+          use, so the site and the letters read the same. If you send it to me I'll drop it in
+          verbatim.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="h2 legal__h2">Who is behind this site</h2>
+        <p class="legal__p">
+          {site.name} — {site.principalName}, Certified Public Accountant since 1983. Chicago area,
+          plus remote clients nationwide.
+        </p>
+        <p class="confirm-note">
+          [CONFIRM] Licensure jurisdiction ({pending.licensureJurisdictionShort}), and whether a PTIN
+          should be displayed here.
+        </p>
+      </section>
+
+      <section class="legal__questions">
+        <h2 class="h2 legal__h2 legal__h2--sm">Questions about any of this</h2>
+        <p class="legal__p">
+          Call <a href={site.phoneHref}>{site.phone}</a> or write to
+          <a href={`mailto:${site.email}`}>{site.email}</a>. See also
+          <a href="/site-policies">site policies</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,196 @@
+---
+/**
+ * The NTA lockup: a ledger cell with registration ticks, bound to the
+ * wordmark by a vertical gold rule.
+ *
+ * All geometry derives from the mark's edge length `size` using the ratios
+ * fixed in _design-system (tick inset 0.085S, tick size 0.115S, stroke
+ * 0.019S, glyph 0.32S). Never hand-build a lockup — that is what this
+ * component exists to prevent.
+ *
+ * Degradation, per the standards: ticks thin under 64px and drop entirely
+ * under 32px. The full lockup is never used below 120px wide, so narrow
+ * contexts pass `markOnly`.
+ */
+import { site } from '../data/site';
+
+interface Props {
+  size?: number;
+  /** Navy cell on a light field (default), or a white cell on navy. */
+  reversed?: boolean;
+  /** Drop the wordmark and rule — for the mobile header. */
+  markOnly?: boolean;
+  showDescriptor?: boolean;
+  /** The "NICHOLAS T. AVELLO, CPA" line — footer lockup only. */
+  showPrincipal?: boolean;
+  /**
+   * Descriptor type size. Defaults to the derived 0.117S; the footer lockup
+   * in the comps sets it smaller relative to its mark, so it overrides.
+   */
+  descriptorSize?: number;
+  class?: string;
+}
+
+const {
+  size = 64,
+  reversed = false,
+  markOnly = false,
+  showDescriptor = true,
+  showPrincipal = false,
+  descriptorSize,
+  class: className = '',
+} = Astro.props;
+
+const round = (n: number) => Math.round(n * 10) / 10;
+
+const tickInset = round(size * 0.085);
+const tickSize = round(size * 0.115);
+const tickWeight = Math.max(1, Math.round(size * 0.019));
+const glyph = round(size * 0.32);
+const gap = round(size * 0.245);
+const wordmark = round(size * 0.35);
+const descriptor = descriptorSize ?? round(size * 0.117);
+const principal = round(descriptor * 0.94);
+const stackGap = round(size * 0.085);
+
+// Ticks clip badly below 32px; the standards drop them there.
+const showTicks = size >= 32;
+
+const cellBg = reversed ? 'var(--nta-white)' : 'var(--nta-navy)';
+const glyphColor = reversed ? 'var(--nta-navy)' : 'var(--nta-white)';
+const wordColor = reversed ? 'var(--nta-white)' : 'var(--nta-navy)';
+---
+
+<span class:list={['logo', className]}>
+  <span class="logo__mark">
+    <span class="logo__glyph">NTA</span>
+    {
+      showTicks && (
+        <>
+          <span class="logo__tick logo__tick--tr" />
+          <span class="logo__tick logo__tick--bl" />
+        </>
+      )
+    }
+  </span>
+  {
+    !markOnly && (
+      <>
+        {/* Gold rule, vertical bind: mark to wordmark. A sanctioned use. */}
+        <span class="logo__bind" />
+        <span class="logo__type">
+          <span class="logo__wordmark">{site.name}</span>
+          {showDescriptor && <span class="logo__descriptor">{site.descriptor}</span>}
+          {showPrincipal && <span class="logo__principal">NICHOLAS T. AVELLO, CPA</span>}
+        </span>
+      </>
+    )
+  }
+</span>
+
+<style
+  define:vars={{
+    size: `${size}px`,
+    tickInset: `${tickInset}px`,
+    tickSize: `${tickSize}px`,
+    tickWeight: `${tickWeight}px`,
+    glyph: `${glyph}px`,
+    gap: `${gap}px`,
+    wordmark: `${wordmark}px`,
+    descriptor: `${descriptor}px`,
+    principal: `${principal}px`,
+    stackGap: `${stackGap}px`,
+    cellBg,
+    glyphColor,
+    wordColor,
+  }}
+>
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    color: inherit;
+  }
+
+  .logo__mark {
+    position: relative;
+    flex: 0 0 auto;
+    width: var(--size);
+    height: var(--size);
+    background: var(--cellBg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo__glyph {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--glyph);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    color: var(--glyphColor);
+  }
+
+  .logo__tick {
+    position: absolute;
+    width: var(--tickSize);
+    height: var(--tickSize);
+  }
+
+  .logo__tick--tr {
+    top: var(--tickInset);
+    right: var(--tickInset);
+    border-top: var(--tickWeight) solid var(--nta-gold);
+    border-right: var(--tickWeight) solid var(--nta-gold);
+  }
+
+  .logo__tick--bl {
+    bottom: var(--tickInset);
+    left: var(--tickInset);
+    border-bottom: var(--tickWeight) solid var(--nta-gold);
+    border-left: var(--tickWeight) solid var(--nta-gold);
+  }
+
+  .logo__bind {
+    flex: 0 0 auto;
+    width: var(--rule-brand);
+    height: var(--size);
+    background: var(--nta-gold);
+  }
+
+  .logo__type {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stackGap);
+  }
+
+  .logo__wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--wordmark);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    color: var(--wordColor);
+    white-space: nowrap;
+  }
+
+  /* Tracked descriptors carry zero slack — nowrap is mandatory. */
+  .logo__descriptor {
+    font-family: var(--font-text);
+    font-weight: var(--weight-semibold);
+    font-size: var(--descriptor);
+    letter-spacing: var(--track-descriptor);
+    color: var(--wordColor);
+    white-space: nowrap;
+  }
+
+  .logo__principal {
+    font-family: var(--font-text);
+    font-weight: var(--weight-medium);
+    font-size: var(--principal);
+    letter-spacing: var(--track-name);
+    color: var(--nta-on-navy-soft);
+    white-space: nowrap;
+  }
+</style>
