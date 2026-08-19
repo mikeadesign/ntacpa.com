@@ -124,7 +124,7 @@ Container `1000px`, section padding `80px` vertical / `56px` horizontal, body me
 
 The one photographic asset is Nicholas's headshot (`assets/nicholas-avello-headshot.png`, 1122×1402) — a **professional studio portrait on a charcoal ground**, dark jacket, dark shirt. The charcoal reads as a natural extension of Navy, so the portrait sits comfortably on both Navy and Paper without a cutout or a protection gradient.
 
-> **Note:** the current headshot is AI-augmented and the client expects to replace it. Keep it in one referenced location so a swap is a single file change.
+> **Note:** confirmed as final by the client during the website build — no replacement pending. Still keep it in one referenced location.
 
 **Portrait rules:** keep the eyeline in the upper third; square or circular crops both work (circular not below 96px); **do not** tint, duotone, apply gold as an overlay, or cut Nicholas out of the background. Warm-neutral, low-saturation imagery only — no cool-blue corporate stock, no grain, no filters.
 
@@ -142,11 +142,21 @@ If the site build needs icons, **Lucide** (CDN, 1.5–2px stroke, square-ish ter
 
 ## Contact
 
-- **Email:** `ntainc@att.net` — *interim.* The client expects to move to something like `contact@ntacpa.com` with the new site. Reference it from one constant.
+- **Phone:** 312-339-3750 — confirmed during the website build.
+- **Email:** `contact@ntacpa.com` — confirmed; `ntainc@att.net` retired.
 - **Domain:** ntacpa.com
-- **Still outstanding:** office address, phone number, state licensure jurisdiction, client testimonials.
+- **Still outstanding:** office address, state licensure jurisdiction, PTIN (if any), client testimonials.
 
 ---
+
+## Website status
+
+The first production build against this system is live: `nta-home-document.dc.html`, `nta-services.dc.html`, `nta-about.dc.html`, `nta-contact.dc.html`, plus `nta-site-policies.dc.html` and `nta-tax-notice.dc.html` (legal, drafted pending counsel review). Decisions made there that now read back onto this system:
+
+- **Hero is Navy**, not Paper — full-bleed `--nta-navy` field, gold rule top and bottom, white Spectral display type. This is a website-specific application of the existing palette, not a new token.
+- **The gold rule has exactly two sanctioned uses** on a page: a horizontal page-opener rule directly under a page's own H1, and a vertical rule binding two related elements (mark to wordmark; a pull-quote to its attribution). No other placement is correct — several were tried and removed during the build for being decorative rather than systematic.
+- **One page, one H1, and it is the largest type on the page** — matching the nav label and `<title>`, in sentence case per the voice rule above. A friendly supporting line lives underneath as a Spectral "deck" paragraph, not as a second heading.
+- Real brand assets (favicons, apple-touch-icon, OG image) are now wired into the site's `<head>` from `brand-assets/`.
 
 ## Index
 

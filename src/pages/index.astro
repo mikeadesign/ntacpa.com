@@ -321,6 +321,15 @@ const taxNotice = legalLinks[1]!;
 
   /* ── Services overview ────────────────────────────────────────────────── */
 
+  /* Comp gives these three content sections 96px, 16px more than the
+     `.section` default (80px) other pages use — Home's own pull-quote band
+     keeps the default, so this is scoped to these ids, not `.section`. */
+  #services,
+  #about,
+  #contact {
+    padding-block: 96px;
+  }
+
   .services__eyebrow {
     margin-bottom: 18px;
   }
@@ -467,7 +476,9 @@ const taxNotice = legalLinks[1]!;
   }
 
   .h3--lg {
-    font-size: var(--type-h2-legal);
+    /* It's a real h3 (see markup) — was borrowing an H2-scaled token, which
+       gave it the wrong mobile size relative to every other H3 on the site. */
+    font-size: var(--type-h3-lg);
     line-height: var(--leading-snug);
   }
 

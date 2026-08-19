@@ -11,6 +11,9 @@ Display: **Spectral** (serif) · Text/UI: **Archivo** (sans) — both Google Fon
 ## Colors
 Navy `#16324D` · Slate Blue `#2C5F8A` · Gold `#C9A24A` (accent only — never text on light) · Deep Gold `#8A6A1E` (gold-as-text, 4.6:1) · Paper `#FAF8F3`
 
+## Confirmed contact facts
+Phone 312-339-3750 · Email contact@ntacpa.com · Hero treatment: Navy (see readme "Website status")
+
 ## /svg — vector masters (mark only, exact geometry, no font dependency)
 | File | Use |
 |---|---|

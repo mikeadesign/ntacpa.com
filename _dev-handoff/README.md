@@ -96,9 +96,10 @@ No other horizontal or vertical gold rules should appear — several were added 
 
 ## Open Items — needs resolution before ship
 1. **Legal review required**: 7 `[CONFIRM]` blocks across Site policies and Tax advice notice — analytics retention period, IP anonymisation setting, applicable state privacy statute, governing-law state, Circular 230 wording, licensure jurisdiction, PTIN disclosure. Do not ship this copy as final; route to counsel.
-2. **Three content facts pending**: licensure jurisdiction (appears in every page footer + both legal pages, currently `[STATE JURISDICTION TO CONFIRM]`), Series 27 registration year (About + Services + both Home variants + mobile, currently "[year to confirm]" / "40 years"), PTIN if the practice uses one.
-3. Per-page `<title>` / meta description tags are not yet defined — draft convention: "{Page H1} — NTA, Inc., CPA" (e.g. "Services — NTA, Inc., CPA"; About uses "Nicholas T. Avello, CPA — NTA, Inc.").
-4. Service item names inside the two Services groups render as styled text, not consistently tagged as H3 in the current markup — verify heading level when rebuilding and tag accordingly (should be H3, matching About/Home's outline).
+2. **Two content facts still pending** (phone number is now confirmed — 312-339-3750, live everywhere): licensure jurisdiction (every page footer + both legal pages, currently `[STATE JURISDICTION TO CONFIRM]`), and Series 27 registration year (About milestones list, currently "[year to confirm]"; the "40 years registered" figure elsewhere is separately confirmed). PTIN if the practice uses one.
+3. Per-page `<title>` / meta description tags are now live on every page (see each file's `<helmet>`) — review the drafted copy.
+4. Favicon, apple-touch-icon, and OG share image are wired in from `assets/` — confirm the OG image once real photography/brand assets are finalized upstream.
+5. Service item names inside the two Services groups render as styled text, not consistently tagged as H3 in the current markup — verify heading level when rebuilding and tag accordingly (should be H3, matching About/Home's outline).
 
 ## Files
 - `nta-home-document.dc.html` — Home page (navy hero, confirmed final)

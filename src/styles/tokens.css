@@ -63,11 +63,12 @@
 
   --type-h2: clamp(24px, 3.6vw, 38px); /* universal on marketing pages */
   --type-h2-legal: clamp(24px, 2.6vw, 28px);
-  --type-h2-legal-sm: clamp(22px, 2.3vw, 24px);
+  --type-h2-legal-sm: 24px; /* was a 22-24px clamp — floor didn't match every other H2's 24px mobile size */
 
   --type-h3: clamp(22px, 2.4vw, 26px); /* home card / group headings */
   --type-h3-sm: clamp(22px, 2.2vw, 24px); /* service rows */
-  --type-h3-legal: clamp(20px, 2vw, 22px);
+  --type-h3-legal: 22px; /* was a 20-22px clamp — floor didn't match every other H3's 22px mobile size */
+  --type-h3-lg: clamp(22px, 2.6vw, 28px); /* contact card heading — H3 mobile floor, home comp's 28px desktop value */
 
   --type-deck: clamp(23px, 2.8vw, 30px); /* page decks */
   --type-deck-sm: clamp(23px, 2.6vw, 28px);
