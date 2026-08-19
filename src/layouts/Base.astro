@@ -81,19 +81,26 @@ const isProduction = import.meta.env.PROD && !isPreviewBuild;
     <link rel="canonical" href={canonical} />
     {isPreviewBuild && <meta name="robots" content="noindex, nofollow" />}
 
-    {/* Sizes/degradation per "NTA Brand Applications.dc.html" §01 — ticks
-        drop at 32px, the mark reduces to a single "N" at 16px. */}
+    {/* Official exports from _design-system/brand-assets — real Spectral
+        rendering, not approximated. Degradation per its MANIFEST.md: thin
+        ticks at 32px, the mark reduces to a single "N" at 16px. */}
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32.png')} />
     <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16.png')} />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
+    <meta name="theme-color" content="#16324d" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={documentTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL(withBase('/og-image.png'), Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL(withBase('/og-image.png'), Astro.site)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
