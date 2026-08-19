@@ -1,6 +1,7 @@
 ---
 /** Compact navy footer for the legal pages. */
 import { site } from '../data/site';
+import { withBase } from '../utils/url';
 
 interface Props {
   /** The sibling legal page to cross-link to. */
@@ -17,8 +18,8 @@ const { sibling } = Astro.props;
       <span class="legal-footer__copy">{site.copyright}</span>
     </div>
     <div class="legal-footer__links">
-      <a href="/">Home</a>
-      <a href={sibling.href}>{sibling.label}</a>
+      <a href={withBase('/')}>Home</a>
+      <a href={withBase(sibling.href)}>{sibling.label}</a>
     </div>
   </div>
 </footer>

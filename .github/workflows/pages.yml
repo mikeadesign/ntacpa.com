@@ -1,0 +1,58 @@
+# Beta preview only. This deploys to https://mikeadesign.github.io/ntacpa.com/
+# via GitHub Pages — a project-subpath preview for review, not the production
+# ntacpa.com deploy (that's a separate step once DNS/hosting is decided).
+#
+# BASE_PATH/SITE_URL below make astro.config.mjs build every internal link
+# and the canonical URL for that subpath; see src/utils/url.ts. The preview
+# also ships a noindex tag automatically (Base.astro) so it never competes
+# with the real domain in search results.
+name: Deploy beta preview to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy in flight at a time; let an in-progress run finish
+# rather than cancelling it mid-deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (GitHub Pages subpath)
+        env:
+          BASE_PATH: /ntacpa.com
+          SITE_URL: https://mikeadesign.github.io/ntacpa.com
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PullQuote from '../components/PullQuote.astro';
 import { site, credentials, serviceGroups, ctaHref, ctaLabel, legalLinks } from '../data/site';
+import { withBase } from '../utils/url';
 
 /* Both were show/hide flags during design iteration. Production always shows
    them; kept as constants so making them configurable stays a one-line change. */
@@ -35,7 +36,7 @@ const taxNotice = legalLinks[1]!;
         prepare returns, keep books, and handle regulatory accounting — for individuals and small
         businesses, and for the hedge funds and broker-dealers I have worked with for four decades.
       </p>
-      <a href={ctaHref} class="btn btn--on-navy btn--lg btn--block-mobile">{ctaLabel}</a>
+      <a href={withBase(ctaHref)} class="btn btn--on-navy btn--lg btn--block-mobile">{ctaLabel}</a>
     </div>
   </section>
 
@@ -128,7 +129,7 @@ const taxNotice = legalLinks[1]!;
         <p class="body">
           That background is unusual for a solo practice, and it is the reason a broker-dealer and a
           family filing jointly can both be clients here.
-          <a href="/about">Read the longer version →</a>
+          <a href={withBase('/about')}>Read the longer version →</a>
         </p>
       </div>
 
@@ -176,10 +177,10 @@ const taxNotice = legalLinks[1]!;
           That's the whole form. Deadlines, prior-year filings, an examination underway — say
           whichever applies and I'll tell you what it takes.
         </p>
-        <a href={ctaHref} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
+        <a href={withBase(ctaHref)} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
         <p class="fine contact__disclaimer">
           Nothing you send is a client engagement until we both say so in writing.
-          <a href={taxNotice.href}>Read the tax advice notice.</a>
+          <a href={withBase(taxNotice.href)}>Read the tax advice notice.</a>
         </p>
       </div>
     </div>

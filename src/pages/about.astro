@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import PullQuote from '../components/PullQuote.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { site, credentials, pending } from '../data/site';
+import { withBase } from '../utils/url';
 
 const milestones = [
   { year: '1983', event: 'Certified as a Public Accountant.', note: null },
@@ -58,7 +59,7 @@ const milestones = [
             shared with the caption block below — see the handoff. */}
         <div class="portrait ticks">
           <img
-            src="/assets/nicholas-avello-headshot.png"
+            src={withBase('/assets/nicholas-avello-headshot.png')}
             alt={site.principal}
             width="1122"
             height="1402"

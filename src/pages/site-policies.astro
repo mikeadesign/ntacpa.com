@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import '../styles/legal.css';
 import { site, pending } from '../data/site';
+import { withBase } from '../utils/url';
 
 /* Was a show/hide flag during design iteration; production always shows it. */
 const showContents = true;
@@ -148,7 +149,7 @@ const contents = [
             <p class="legal__p">
               Everything here describes services in general terms. None of it is tax, accounting, or
               regulatory advice for your situation, and reading it does not make you a client. The
-              <a href="/tax-advice-notice">tax advice notice</a> covers this in full.
+              <a href={withBase('/tax-advice-notice')}>tax advice notice</a> covers this in full.
             </p>
           </div>
           <div>

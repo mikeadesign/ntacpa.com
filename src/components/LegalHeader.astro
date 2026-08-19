@@ -5,15 +5,16 @@
  */
 import Logo from './Logo.astro';
 import { site } from '../data/site';
+import { withBase } from '../utils/url';
 ---
 
 <header class="legal-header">
   <div class="container legal-header__inner">
-    <a href="/" class="legal-header__logo" aria-label={`${site.name} — home`}>
+    <a href={withBase('/')} class="legal-header__logo" aria-label={`${site.name} — home`}>
       <span class="legal-header__logo-full"><Logo size={64} showDescriptor={false} /></span>
       <span class="legal-header__logo-mark"><Logo size={40} markOnly /></span>
     </a>
-    <a href="/" class="legal-header__back">← Back to site</a>
+    <a href={withBase('/')} class="legal-header__back">← Back to site</a>
   </div>
 </header>
 

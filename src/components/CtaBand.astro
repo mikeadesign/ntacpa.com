@@ -4,6 +4,7 @@
  * No phone number here — the CTA is the only action, deliberately.
  */
 import { ctaHref, ctaLabel } from '../data/site';
+import { withBase } from '../utils/url';
 
 interface Props {
   heading: string;
@@ -22,7 +23,7 @@ const { heading, body, headingMeasure = 'measure-26' } = Astro.props;
       {body && <p class="body body--soft measure-48">{body}</p>}
     </div>
     <div>
-      <a href={ctaHref} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
+      <a href={withBase(ctaHref)} class="btn btn--navy btn--md btn--block-mobile">{ctaLabel}</a>
     </div>
   </div>
 </section>

@@ -15,6 +15,7 @@
  */
 import { site } from '../data/site';
 import { legalLinks } from '../data/site';
+import { withBase } from '../utils/url';
 
 const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
 const taxNotice = legalLinks[1]!;
@@ -48,7 +49,7 @@ const taxNotice = legalLinks[1]!;
     <p class="fine">
       Nothing you send here is a client engagement until we both say so in writing. Please don't
       include Social Security numbers or account numbers in a first message.
-      <a href={taxNotice.href}>Read the tax advice notice.</a>
+      <a href={withBase(taxNotice.href)}>Read the tax advice notice.</a>
     </p>
   </form>
 

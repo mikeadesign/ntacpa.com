@@ -8,9 +8,10 @@
  */
 import Logo from './Logo.astro';
 import { nav, ctaLabel, ctaHref, site } from '../data/site';
+import { withBase } from '../utils/url';
 
 interface Props {
-  /** Pathname of the current page, e.g. "/services". */
+  /** Astro.url.pathname of the current page — already base-prefixed. */
   current?: string;
 }
 
@@ -19,7 +20,7 @@ const { current } = Astro.props;
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a href="/" class="site-header__logo" aria-label={`${site.name} — home`}>
+    <a href={withBase('/')} class="site-header__logo" aria-label={`${site.name} — home`}>
       <span class="site-header__logo-full"><Logo size={64} /></span>
       <span class="site-header__logo-mark"><Logo size={40} markOnly /></span>
     </a>
@@ -28,18 +29,18 @@ const { current } = Astro.props;
       {
         nav.map((link) => (
           <a
-            href={link.href}
-            class:list={['site-nav__link', { 'is-current': current === link.href }]}
-            aria-current={current === link.href ? 'page' : undefined}
+            href={withBase(link.href)}
+            class:list={['site-nav__link', { 'is-current': current === withBase(link.href) }]}
+            aria-current={current === withBase(link.href) ? 'page' : undefined}
           >
             {link.label}
           </a>
         ))
       }
       <a
-        href={ctaHref}
-        class:list={['btn', 'btn--navy', 'btn--sm', { 'is-current': current === ctaHref }]}
-        aria-current={current === ctaHref ? 'page' : undefined}
+        href={withBase(ctaHref)}
+        class:list={['btn', 'btn--navy', 'btn--sm', { 'is-current': current === withBase(ctaHref) }]}
+        aria-current={current === withBase(ctaHref) ? 'page' : undefined}
       >
         {ctaLabel}
       </a>
@@ -67,11 +68,11 @@ const { current } = Astro.props;
   </div>
 
   <nav class="mobile-menu__nav" aria-label="Primary, mobile">
-    {nav.map((link) => <a href={link.href}>{link.label}</a>)}
+    {nav.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}
   </nav>
 
   <div class="mobile-menu__foot">
-    <a href={ctaHref} class="btn btn--on-navy btn--md btn--block-mobile">{ctaLabel}</a>
+    <a href={withBase(ctaHref)} class="btn btn--on-navy btn--md btn--block-mobile">{ctaLabel}</a>
     <div class="mobile-menu__contact">
       <span class="label label--footer">CONTACT</span>
       <a href={site.phoneHref}>{site.phone}</a>

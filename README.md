@@ -25,6 +25,21 @@ npm run dev
 onto any static host. Hosts that strip `.html` — Netlify, Cloudflare Pages,
 Vercel, S3+CloudFront — serve the `/services` links as-is.
 
+## Beta preview
+
+Every push to `main` deploys to **https://mikeadesign.github.io/ntacpa.com/**
+via [`.github/workflows/pages.yml`](.github/workflows/pages.yml) — GitHub
+Pages, building through Actions. That's a review link, not the production
+deploy; it ships with `<meta name="robots" content="noindex, nofollow">` so it
+never gets indexed alongside the real domain.
+
+It serves from a project subpath rather than a root, which internal links
+have to account for — `BASE_PATH`/`SITE_URL` (set by the workflow) drive
+`astro.config.mjs`, and every internal `href`/`src` in the templates runs
+through [`withBase()`](src/utils/url.ts) so it resolves correctly under that
+subpath. A plain `npm run build` (no env vars) is unaffected and still
+produces the root-relative production build.
+
 ## Layout
 
 ```

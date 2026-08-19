@@ -2,6 +2,7 @@
 /** Navy site footer — full lockup, nav columns, legal lines. */
 import Logo from './Logo.astro';
 import { site, pending, nav, legalLinks } from '../data/site';
+import { withBase } from '../utils/url';
 ---
 
 <footer class="site-footer">
@@ -14,8 +15,8 @@ import { site, pending, nav, legalLinks } from '../data/site';
       <div class="site-footer__cols">
         <div class="site-footer__col">
           <span class="label label--footer">SITE</span>
-          {nav.map((link) => <a href={link.href}>{link.label}</a>)}
-          <a href="/contact">Contact</a>
+          {nav.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}
+          <a href={withBase('/contact')}>Contact</a>
         </div>
         <div class="site-footer__col">
           <span class="label label--footer">CONTACT</span>
@@ -34,7 +35,7 @@ import { site, pending, nav, legalLinks } from '../data/site';
       <span>{site.copyright}</span>
       <span>Licensure: {pending.licensureJurisdiction}</span>
       <div class="site-footer__legal-links">
-        {legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        {legalLinks.map((link) => <a href={withBase(link.href)}>{link.label}</a>)}
       </div>
     </div>
   </div>

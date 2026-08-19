@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import '../styles/legal.css';
 import { site, pending } from '../data/site';
+import { withBase } from '../utils/url';
 ---
 
 <Base
@@ -115,7 +116,7 @@ import { site, pending } from '../data/site';
         <p class="legal__p">
           Call <a href={site.phoneHref}>{site.phone}</a> or write to
           <a href={`mailto:${site.email}`}>{site.email}</a>. See also
-          <a href="/site-policies">site policies</a>.
+          <a href={withBase('/site-policies')}>site policies</a>.
         </p>
       </section>
     </div>
