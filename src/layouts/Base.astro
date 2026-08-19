@@ -45,6 +45,12 @@ const canonical = new URL(routePath, Astro.site);
    production — keep it out of search results so it never competes with
    ntacpa.com once that's live. */
 const isPreviewBuild = import.meta.env.BASE_URL !== '/';
+
+/* Analytics only where real visitors are: production, not the GH Pages
+   preview, and not `astro dev` (PROD is false there) — so local editing
+   and the beta link never pollute production traffic data. */
+const GA_MEASUREMENT_ID = 'G-SQ5BYHD541';
+const isProduction = import.meta.env.PROD && !isPreviewBuild;
 ---
 
 <!doctype html>
@@ -52,6 +58,24 @@ const isPreviewBuild = import.meta.env.BASE_URL !== '/';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Google tag (gtag.js) — production only, see isProduction above. */}
+    {
+      isProduction && (
+        <>
+          <script async is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+          <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', GA_MEASUREMENT_ID);
+          </script>
+        </>
+      )
+    }
+
     <title>{documentTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

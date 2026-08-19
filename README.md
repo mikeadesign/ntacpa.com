@@ -40,6 +40,10 @@ through [`withBase()`](src/utils/url.ts) so it resolves correctly under that
 subpath. A plain `npm run build` (no env vars) is unaffected and still
 produces the root-relative production build.
 
+Google Analytics (`src/layouts/Base.astro`) only fires on that production
+build — it's gated off on the preview and on `astro dev` so beta and local
+traffic never lands in production analytics.
+
 ## Layout
 
 ```
