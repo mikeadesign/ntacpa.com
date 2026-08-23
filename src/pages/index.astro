@@ -137,12 +137,17 @@ const taxNotice = legalLinks[1]!;
         <h3 class="h3 card__heading">Credentials</h3>
         <dl class="dl">
           {
-            credentials.map((credential) => (
-              <div class="dl__row dl__row--tight">
-                <dt class="dl__term dl__term--sm">{credential.short}</dt>
-                <dd class="dl__value">{credential.value}</dd>
-              </div>
-            ))
+            /* Teaser card — only the headline registrations. The full list
+               (10 entries as of Aug 2026) lives on About, where there's
+               room for it; see credentials' `featured` flag in site.ts. */
+            credentials
+              .filter((credential) => credential.featured)
+              .map((credential) => (
+                <div class="dl__row dl__row--tight">
+                  <dt class="dl__term dl__term--sm">{credential.short}</dt>
+                  <dd class="dl__value">{credential.value}</dd>
+                </div>
+              ))
           }
         </dl>
       </div>

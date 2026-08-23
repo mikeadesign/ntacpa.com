@@ -50,29 +50,70 @@ export const legalLinks: NavLink[] = [
 
 /* ── Credentials ─────────────────────────────────────────────────────────
    Two renderings of the same facts: the short form for the Home card, the
-   long form for the About page. Kept as one source so they can't drift. */
+   long form for the About page. Kept as one source so they can't drift.
 
-export type Credential = { short: string; long: string; value: string };
+   `featured` picks the short list for the Home card (CPA + the headline
+   FINOP registration); About always renders the full list — confirmed by
+   Nicholas directly (Aug 2026) as his complete current FINRA/NFA
+   registration history, corroborated against his resume where it overlaps
+   (27, 6, 3, 62). Series 9/10 and 23/24 are conventionally cited as
+   combined-exam pairs, hence the slash. */
+
+export type Credential = { short: string; long: string; value: string; featured?: boolean };
 
 export const credentials: Credential[] = [
   {
     short: 'Certified Public Accountant',
     long: 'Certified Public Accountant',
     value: 'since 1983',
+    featured: true,
   },
   {
     short: 'Series 27 — FINOP',
     long: 'Series 27 — Financial & Operations Principal',
     value: '40 years',
+    featured: true,
   },
   {
     short: 'Series 6 — Investment Company',
     long: 'Series 6 — Investment Company Products',
     value: 'registered',
+    featured: true,
   },
   {
     short: 'Series 62 — Corporate Securities',
     long: 'Series 62 — Corporate Securities',
+    value: 'registered',
+    featured: true,
+  },
+  {
+    short: 'Series 3 — Commodity Futures',
+    long: 'Series 3 — Commodity Futures Representative',
+    value: 'registered',
+  },
+  {
+    short: 'Series 4 — Options Principal',
+    long: 'Series 4 — Registered Options Principal',
+    value: 'registered',
+  },
+  {
+    short: 'Series 7 — General Securities',
+    long: 'Series 7 — General Securities Representative',
+    value: 'registered',
+  },
+  {
+    short: 'Series 9/10 — Sales Supervisor',
+    long: 'Series 9/10 — General Securities Sales Supervisor',
+    value: 'registered',
+  },
+  {
+    short: 'Series 23/24 — Principal',
+    long: 'Series 23/24 — General Securities Principal',
+    value: 'registered',
+  },
+  {
+    short: 'Series 26 — Investment Co. Principal',
+    long: 'Series 26 — Investment Company Products Principal',
     value: 'registered',
   },
 ];
