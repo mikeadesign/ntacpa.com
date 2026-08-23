@@ -17,17 +17,19 @@ export const site = {
   serviceArea: 'Chicago area, plus remote clients nationwide',
   copyright: '© 2026 NTA, Inc. Certified Public Accountant since 1983.',
   titleSuffix: 'NTA, Inc., CPA',
+  /* Confirmed by Nicholas directly (Aug 2026) — appears in the footer and
+     the tax advice notice. Distinct from `pending.governingLawState`
+     below: that's a legal-review call for the site's own Terms of Use,
+     not necessarily the same as where the practice is licensed. */
+  licensureJurisdiction: 'Illinois',
 } as const;
 
 /* ── PENDING — unresolved before ship ──────────────────────────────────────
    Handoff README, "Open Items". Do not treat these as final copy.
-     1. Licensure jurisdiction — appears in every footer and both legal pages.
-     2. Series 27 registration year — About milestones.
-     3. Legal effective date — both legal pages.
-   The 7 [CONFIRM] blocks in the legal pages are marked inline there. */
+     1. Series 27 registration year — About milestones.
+     2. Legal effective date — both legal pages.
+   The remaining [CONFIRM] blocks in the legal pages are marked inline there. */
 export const pending = {
-  licensureJurisdiction: '[STATE JURISDICTION TO CONFIRM]',
-  licensureJurisdictionShort: '[STATE TO CONFIRM]',
   series27Year: '[year to confirm]',
   governingLawState: '[STATE]',
   legalEffectiveDate: '[DATE]',
