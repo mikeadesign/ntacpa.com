@@ -26,11 +26,11 @@ export const site = {
 
 /* ── PENDING — unresolved before ship ──────────────────────────────────────
    Handoff README, "Open Items". Do not treat these as final copy.
-     1. Series 27 registration year — About milestones.
-     2. Legal effective date — both legal pages.
-   The remaining [CONFIRM] blocks in the legal pages are marked inline there. */
+     1. Legal effective date — both legal pages.
+   The remaining [CONFIRM] blocks in the legal pages are marked inline there.
+   (Series 27 registration year was here too — confirmed 1986 by Nicholas
+   directly, Aug 2026, so it's now a literal in About's milestones instead.) */
 export const pending = {
-  series27Year: '[year to confirm]',
   governingLawState: '[STATE]',
   legalEffectiveDate: '[DATE]',
 } as const;
@@ -55,11 +55,12 @@ export const legalLinks: NavLink[] = [
    long form for the About page. Kept as one source so they can't drift.
 
    `featured` picks the short list for the Home card (CPA + the headline
-   FINOP registration); About always renders the full list — confirmed by
-   Nicholas directly (Aug 2026) as his complete current FINRA/NFA
-   registration history, corroborated against his resume where it overlaps
-   (27, 6, 3, 62). Series 9/10 and 23/24 are conventionally cited as
-   combined-exam pairs, hence the slash. */
+   FINOP registration); About always renders the full list. This is
+   Nicholas's confirmed current registration set (Aug 2026) — verified
+   against his FINRA/NFA exam-history report, which also corrected the
+   original list he gave verbally: Series 4, 7, 9/10, 23/24, and 26 don't
+   appear on his actual record and were removed; Series 30 and 99 do and
+   were added. */
 
 export type Credential = { short: string; long: string; value: string; featured?: boolean };
 
@@ -89,33 +90,18 @@ export const credentials: Credential[] = [
     featured: true,
   },
   {
+    short: 'Series 30 — NFA Branch Manager',
+    long: 'Series 30 — NFA Branch Manager',
+    value: 'registered',
+  },
+  {
+    short: 'Series 99 — Operations Professional',
+    long: 'Series 99 — Operations Professional',
+    value: 'registered',
+  },
+  {
     short: 'Series 3 — Commodity Futures',
     long: 'Series 3 — Commodity Futures Representative',
-    value: 'registered',
-  },
-  {
-    short: 'Series 4 — Options Principal',
-    long: 'Series 4 — Registered Options Principal',
-    value: 'registered',
-  },
-  {
-    short: 'Series 7 — General Securities',
-    long: 'Series 7 — General Securities Representative',
-    value: 'registered',
-  },
-  {
-    short: 'Series 9/10 — Sales Supervisor',
-    long: 'Series 9/10 — General Securities Sales Supervisor',
-    value: 'registered',
-  },
-  {
-    short: 'Series 23/24 — Principal',
-    long: 'Series 23/24 — General Securities Principal',
-    value: 'registered',
-  },
-  {
-    short: 'Series 26 — Investment Co. Principal',
-    long: 'Series 26 — Investment Company Products Principal',
     value: 'registered',
   },
 ];
