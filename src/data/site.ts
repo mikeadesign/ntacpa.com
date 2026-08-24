@@ -62,32 +62,47 @@ export const legalLinks: NavLink[] = [
    appear on his actual record and were removed; Series 30 and 99 do and
    were added. */
 
-export type Credential = { short: string; long: string; value: string; featured?: boolean };
+export type Credential = {
+  short: string;
+  long: string;
+  value: string;
+  featured?: boolean;
+  /* Home's teaser only shows the featured 4 — this picks their order there
+     (leads with the FINOP registration, the practice's headline
+     differentiator) independent of the full list's own order below. */
+  featuredOrder?: number;
+};
 
+/* Full list order: CPA first (it's not a FINRA/NFA registration, so it
+   doesn't belong in the number sequence), then every registration ascending
+   by series number — the previous order had no rationale behind it, just
+   the sequence things got added in. */
 export const credentials: Credential[] = [
   {
     short: 'Certified Public Accountant',
     long: 'Certified Public Accountant',
     value: 'since 1983',
     featured: true,
+    featuredOrder: 1,
   },
   {
-    short: 'Series 27 — FINOP',
-    long: 'Series 27 — Financial & Operations Principal',
-    value: '40 years',
-    featured: true,
+    short: 'Series 3 — Commodity Futures',
+    long: 'Series 3 — Commodity Futures Representative',
+    value: 'registered',
   },
   {
     short: 'Series 6 — Investment Company',
     long: 'Series 6 — Investment Company Products',
     value: 'registered',
     featured: true,
+    featuredOrder: 3,
   },
   {
-    short: 'Series 62 — Corporate Securities',
-    long: 'Series 62 — Corporate Securities',
-    value: 'registered',
+    short: 'Series 27 — FINOP',
+    long: 'Series 27 — Financial & Operations Principal',
+    value: '40 years',
     featured: true,
+    featuredOrder: 2,
   },
   {
     short: 'Series 30 — NFA Branch Manager',
@@ -95,13 +110,15 @@ export const credentials: Credential[] = [
     value: 'registered',
   },
   {
-    short: 'Series 99 — Operations Professional',
-    long: 'Series 99 — Operations Professional',
+    short: 'Series 62 — Corporate Securities',
+    long: 'Series 62 — Corporate Securities',
     value: 'registered',
+    featured: true,
+    featuredOrder: 4,
   },
   {
-    short: 'Series 3 — Commodity Futures',
-    long: 'Series 3 — Commodity Futures Representative',
+    short: 'Series 99 — Operations Professional',
+    long: 'Series 99 — Operations Professional',
     value: 'registered',
   },
 ];
