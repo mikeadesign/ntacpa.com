@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-25T04:37:19Z",
+  "title": "Design System: NTA, Inc.",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Ledger Navy",
+        "canonical": "oklch(31.0% 0.060 249.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.041 249.6)",
+          "oklch(26.4% 0.046 249.6)",
+          "oklch(37.9% 0.052 249.6)",
+          "oklch(49.3% 0.057 249.6)",
+          "oklch(60.7% 0.057 249.6)",
+          "oklch(72.1% 0.052 249.6)",
+          "oklch(83.6% 0.046 249.6)",
+          "oklch(95.0% 0.041 249.6)"
+        ]
+      },
+      "navy-hover": {
+        "role": "primary",
+        "displayName": "Navy Depressed",
+        "canonical": "oklch(25.3% 0.045 247.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 247.8)",
+          "oklch(26.4% 0.035 247.8)",
+          "oklch(37.9% 0.039 247.8)",
+          "oklch(49.3% 0.043 247.8)",
+          "oklch(60.7% 0.043 247.8)",
+          "oklch(72.1% 0.039 247.8)",
+          "oklch(83.6% 0.035 247.8)",
+          "oklch(95.0% 0.031 247.8)"
+        ]
+      },
+      "slate": {
+        "role": "tertiary",
+        "displayName": "Slate",
+        "canonical": "oklch(47.1% 0.089 246.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.061 246.6)",
+          "oklch(26.4% 0.069 246.6)",
+          "oklch(37.9% 0.077 246.6)",
+          "oklch(49.3% 0.085 246.6)",
+          "oklch(60.7% 0.085 246.6)",
+          "oklch(72.1% 0.077 246.6)",
+          "oklch(83.6% 0.069 246.6)",
+          "oklch(95.0% 0.061 246.6)"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Registration Gold",
+        "canonical": "oklch(73.1% 0.115 85.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.080 85.2)",
+          "oklch(26.4% 0.090 85.2)",
+          "oklch(37.9% 0.100 85.2)",
+          "oklch(49.3% 0.110 85.2)",
+          "oklch(60.7% 0.110 85.2)",
+          "oklch(72.1% 0.100 85.2)",
+          "oklch(83.6% 0.090 85.2)",
+          "oklch(95.0% 0.080 85.2)"
+        ]
+      },
+      "gold-deep": {
+        "role": "secondary",
+        "displayName": "Deep Gold",
+        "canonical": "oklch(54.3% 0.099 84.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.068 84.6)",
+          "oklch(26.4% 0.077 84.6)",
+          "oklch(37.9% 0.086 84.6)",
+          "oklch(49.3% 0.095 84.6)",
+          "oklch(60.7% 0.095 84.6)",
+          "oklch(72.1% 0.086 84.6)",
+          "oklch(83.6% 0.077 84.6)",
+          "oklch(95.0% 0.068 84.6)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(97.9% 0.007 88.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.005 88.6)",
+          "oklch(26.4% 0.005 88.6)",
+          "oklch(37.9% 0.006 88.6)",
+          "oklch(49.3% 0.007 88.6)",
+          "oklch(60.7% 0.007 88.6)",
+          "oklch(72.1% 0.006 88.6)",
+          "oklch(83.6% 0.005 88.6)",
+          "oklch(95.0% 0.005 88.6)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Body Graphite",
+        "canonical": "oklch(39.0% 0.024 253.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 253.1)",
+          "oklch(26.4% 0.019 253.1)",
+          "oklch(37.9% 0.021 253.1)",
+          "oklch(49.3% 0.023 253.1)",
+          "oklch(60.7% 0.023 253.1)",
+          "oklch(72.1% 0.021 253.1)",
+          "oklch(83.6% 0.019 253.1)",
+          "oklch(95.0% 0.017 253.1)"
+        ]
+      },
+      "body-soft": {
+        "role": "neutral",
+        "displayName": "Body Graphite Soft",
+        "canonical": "oklch(44.5% 0.026 252.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.018 252.7)",
+          "oklch(26.4% 0.020 252.7)",
+          "oklch(37.9% 0.022 252.7)",
+          "oklch(49.3% 0.024 252.7)",
+          "oklch(60.7% 0.024 252.7)",
+          "oklch(72.1% 0.022 252.7)",
+          "oklch(83.6% 0.020 252.7)",
+          "oklch(95.0% 0.018 252.7)"
+        ]
+      },
+      "muted-light": {
+        "role": "neutral",
+        "displayName": "Muted Light",
+        "canonical": "oklch(78.1% 0.011 256.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 256.7)",
+          "oklch(26.4% 0.009 256.7)",
+          "oklch(37.9% 0.010 256.7)",
+          "oklch(49.3% 0.011 256.7)",
+          "oklch(60.7% 0.011 256.7)",
+          "oklch(72.1% 0.010 256.7)",
+          "oklch(83.6% 0.009 256.7)",
+          "oklch(95.0% 0.008 256.7)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Warm Hairline",
+        "canonical": "oklch(93.2% 0.013 86.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 86.8)",
+          "oklch(26.4% 0.010 86.8)",
+          "oklch(37.9% 0.011 86.8)",
+          "oklch(49.3% 0.012 86.8)",
+          "oklch(60.7% 0.012 86.8)",
+          "oklch(72.1% 0.011 86.8)",
+          "oklch(83.6% 0.010 86.8)",
+          "oklch(95.0% 0.009 86.8)"
+        ]
+      },
+      "line-warm": {
+        "role": "neutral",
+        "displayName": "Paper Edge",
+        "canonical": "oklch(89.6% 0.035 88.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.024 88.8)",
+          "oklch(26.4% 0.027 88.8)",
+          "oklch(37.9% 0.030 88.8)",
+          "oklch(49.3% 0.034 88.8)",
+          "oklch(60.7% 0.034 88.8)",
+          "oklch(72.1% 0.030 88.8)",
+          "oklch(83.6% 0.027 88.8)",
+          "oklch(95.0% 0.024 88.8)"
+        ]
+      },
+      "line-warm-strong": {
+        "role": "neutral",
+        "displayName": "Band Divider",
+        "canonical": "oklch(86.6% 0.037 87.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.025 87.8)",
+          "oklch(26.4% 0.029 87.8)",
+          "oklch(37.9% 0.032 87.8)",
+          "oklch(49.3% 0.035 87.8)",
+          "oklch(60.7% 0.035 87.8)",
+          "oklch(72.1% 0.032 87.8)",
+          "oklch(83.6% 0.029 87.8)",
+          "oklch(95.0% 0.025 87.8)"
+        ]
+      },
+      "line-cool": {
+        "role": "neutral",
+        "displayName": "Cool Hairline",
+        "canonical": "oklch(92.1% 0.006 255.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 255.5)",
+          "oklch(26.4% 0.005 255.5)",
+          "oklch(37.9% 0.005 255.5)",
+          "oklch(49.3% 0.006 255.5)",
+          "oklch(60.7% 0.006 255.5)",
+          "oklch(72.1% 0.005 255.5)",
+          "oklch(83.6% 0.005 255.5)",
+          "oklch(95.0% 0.004 255.5)"
+        ]
+      },
+      "on-navy-lede": {
+        "role": "neutral",
+        "displayName": "On-Navy Lede",
+        "canonical": "oklch(90.0% 0.015 251.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 251.2)",
+          "oklch(26.4% 0.012 251.2)",
+          "oklch(37.9% 0.013 251.2)",
+          "oklch(49.3% 0.014 251.2)",
+          "oklch(60.7% 0.014 251.2)",
+          "oklch(72.1% 0.013 251.2)",
+          "oklch(83.6% 0.012 251.2)",
+          "oklch(95.0% 0.010 251.2)"
+        ]
+      },
+      "on-navy-soft": {
+        "role": "neutral",
+        "displayName": "On-Navy Soft",
+        "canonical": "oklch(75.6% 0.036 249.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.025 249.7)",
+          "oklch(26.4% 0.028 249.7)",
+          "oklch(37.9% 0.031 249.7)",
+          "oklch(49.3% 0.034 249.7)",
+          "oklch(60.7% 0.034 249.7)",
+          "oklch(72.1% 0.031 249.7)",
+          "oklch(83.6% 0.028 249.7)",
+          "oklch(95.0% 0.025 249.7)"
+        ]
+      },
+      "on-navy-muted": {
+        "role": "neutral",
+        "displayName": "On-Navy Muted",
+        "canonical": "oklch(69.8% 0.065 243.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.045 243.8)",
+          "oklch(26.4% 0.051 243.8)",
+          "oklch(37.9% 0.057 243.8)",
+          "oklch(49.3% 0.062 243.8)",
+          "oklch(60.7% 0.062 243.8)",
+          "oklch(72.1% 0.057 243.8)",
+          "oklch(83.6% 0.051 243.8)",
+          "oklch(95.0% 0.045 243.8)"
+        ]
+      },
+      "on-navy-label": {
+        "role": "neutral",
+        "displayName": "On-Navy Label",
+        "canonical": "oklch(56.2% 0.075 243.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.052 243.8)",
+          "oklch(26.4% 0.058 243.8)",
+          "oklch(37.9% 0.065 243.8)",
+          "oklch(49.3% 0.072 243.8)",
+          "oklch(60.7% 0.072 243.8)",
+          "oklch(72.1% 0.065 243.8)",
+          "oklch(83.6% 0.058 243.8)",
+          "oklch(95.0% 0.052 243.8)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Error",
+        "canonical": "oklch(51.3% 0.139 23.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.096 23.3)",
+          "oklch(26.4% 0.108 23.3)",
+          "oklch(37.9% 0.120 23.3)",
+          "oklch(49.3% 0.133 23.3)",
+          "oklch(60.7% 0.133 23.3)",
+          "oklch(72.1% 0.120 23.3)",
+          "oklch(83.6% 0.108 23.3)",
+          "oklch(95.0% 0.096 23.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page H1 only, one per page. Five per-page clamps share a 34px mobile floor and differ only at the desktop ceiling."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every H2 site-wide. Legal pages take a lower ceiling but the same 24px floor."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "H3 - card headings, service group headings, legal sub-points."
+      },
+      "deck": {
+        "displayName": "Deck",
+        "purpose": "The serif paragraph directly under an H1. A supporting voice, never a second heading."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "Pull quotes only. The system's only italic."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Numbers band figures. Units inside a figure drop to 28px at weight 500."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Intro paragraphs under a deck."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text. Measure set per block in ch (20-68), never left to fill the container."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tracked uppercase for eyebrows, tags, column heads, and field labels. Never a heading level; always nowrap."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "transition-base",
+        "value": "180ms ease",
+        "purpose": "The only transition in the system. Applies to color, background, and border-color on hover and focus - never to transform, opacity, or shadow."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration: 0.01ms; transition-duration: 0.01ms",
+        "purpose": "Global prefers-reduced-motion override; also disables smooth scrolling."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "header",
+        "value": "860px"
+      },
+      {
+        "name": "md",
+        "value": "900px"
+      },
+      {
+        "name": "sm",
+        "value": "620px"
+      }
+    ],
+    "geometry": [
+      {
+        "name": "radius",
+        "value": "0",
+        "purpose": "Every corner in the system. Not a knob to turn."
+      },
+      {
+        "name": "rule-hairline",
+        "value": "1px",
+        "purpose": "Dividers: sections, dl rows, service rows, card borders."
+      },
+      {
+        "name": "rule-brand",
+        "value": "2px",
+        "purpose": "The gold brand rule on interior pages, and the active nav underline."
+      },
+      {
+        "name": "rule-heavy",
+        "value": "3px",
+        "purpose": "Pull-quote bind, CONFIRM callout border, hero top and bottom edges."
+      },
+      {
+        "name": "container",
+        "value": "1000px",
+        "purpose": "Standard content column."
+      },
+      {
+        "name": "container-hero",
+        "value": "1040px",
+        "purpose": "Hero only."
+      },
+      {
+        "name": "focus-ring",
+        "value": "3px solid #2c5f8a, 2px offset",
+        "purpose": "Every interactive element. An accessibility requirement, not styling."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The site's main call to action. Navy fill, square, darkens on hover.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Start a conversation</button>",
+      "css": ".ds-btn { display: inline-block; border-radius: 0; border: 1px solid transparent; font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 600; letter-spacing: 0.3px; white-space: nowrap; cursor: pointer; text-align: center; transition: background 180ms ease, border-color 180ms ease, color 180ms ease; } .ds-btn-primary { background: var(--nta-navy, #16324d); border-color: var(--nta-navy, #16324d); color: #fff; padding: 17px 34px; font-size: 19px; } .ds-btn-primary:hover { background: var(--nta-navy-hover, #0f2437); border-color: var(--nta-navy-hover, #0f2437); } .ds-btn-primary:focus-visible { outline: 3px solid var(--nta-slate, #2c5f8a); outline-offset: 2px; }"
+    },
+    {
+      "name": "On-Navy Button",
+      "kind": "button",
+      "refersTo": "button-on-navy",
+      "description": "For the navy hero. White fill inverting to gold on hover - the one place gold fills an area.",
+      "html": "<div class=\"ds-navy-stage\"><button class=\"ds-btn ds-btn-on-navy\">Start a conversation</button></div>",
+      "css": ".ds-navy-stage { background: var(--nta-navy, #16324d); padding: 32px; } .ds-btn-on-navy { background: #fff; border-color: #fff; color: var(--nta-navy, #16324d); padding: 17px 34px; font-size: 19px; } .ds-btn-on-navy:hover { background: var(--nta-gold, #c9a24a); border-color: var(--nta-gold, #c9a24a); color: var(--nta-navy, #16324d); } .ds-btn-on-navy:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action, such as the contact form's reset. Fills navy on hover.",
+      "html": "<button class=\"ds-btn ds-btn-outline\">Send another</button>",
+      "css": ".ds-btn-outline { background: transparent; border-color: var(--nta-navy, #16324d); color: var(--nta-navy, #16324d); padding: 13px 26px; font-size: 16px; } .ds-btn-outline:hover { background: var(--nta-navy, #16324d); color: #fff; } .ds-btn-outline:focus-visible { outline: 3px solid var(--nta-slate, #2c5f8a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Tracked uppercase label stacked above a square field with a cool hairline border.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field__label\" for=\"ds-name\">NAME</label><input class=\"ds-field__input\" id=\"ds-name\" type=\"text\" placeholder=\"Your name\"></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; max-width: 360px; } .ds-field__label { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; white-space: nowrap; color: var(--nta-navy, #16324d); } .ds-field__input { border: 1px solid var(--nta-line-cool, #e2e5e9); border-radius: 0; padding: 14px; font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.6; color: var(--nta-body, #3c4652); background: #fff; outline: none; transition: border-color 180ms ease; } .ds-field__input::placeholder { color: var(--nta-muted-light, #b3b8bf); opacity: 1; } .ds-field__input:focus { border-color: var(--nta-slate, #2c5f8a); } .ds-field__input:focus-visible { outline: 3px solid var(--nta-slate, #2c5f8a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Paper Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Paper ground on a white section, 1px warm hairline, no shadow. The ground always inverts against its section.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card__heading\">Credentials</h3><p class=\"ds-card__body\">Certified Public Accountant since 1983.</p></div>",
+      "css": ".ds-card { background: var(--nta-paper, #faf8f3); border: 1px solid var(--nta-line, #ece8df); border-radius: 0; padding: 36px 32px; max-width: 420px; } .ds-card__heading { font-family: Spectral, Georgia, 'Times New Roman', serif; font-weight: 600; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; color: var(--nta-navy, #16324d); margin: 0 0 22px; } .ds-card__body { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.7; color: var(--nta-body, #3c4652); margin: 0; }"
+    },
+    {
+      "name": "Definition List Row",
+      "kind": "custom",
+      "description": "The system's workhorse label/value row - credentials, milestones, contact details. Reads as a ruled ledger block.",
+      "html": "<dl class=\"ds-dl\"><div class=\"ds-dl__row\"><dt class=\"ds-dl__term\">Series 27 &mdash; Financial &amp; Operations Principal</dt><dd class=\"ds-dl__value\">40 years</dd></div><div class=\"ds-dl__row\"><dt class=\"ds-dl__term\">Series 30 &mdash; NFA Branch Manager</dt><dd class=\"ds-dl__value\">registered</dd></div></dl>",
+      "css": ".ds-dl { display: flex; flex-direction: column; margin: 0; max-width: 480px; } .ds-dl__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; padding: 16px 0; border-top: 1px solid var(--nta-line, #ece8df); } .ds-dl__row:last-child { border-bottom: 1px solid var(--nta-line, #ece8df); } .ds-dl__term { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 500; color: var(--nta-navy, #16324d); } .ds-dl__value { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; color: var(--nta-body-soft, #4a5562); white-space: nowrap; margin: 0; }"
+    },
+    {
+      "name": "Pull Quote",
+      "kind": "custom",
+      "description": "Italic Spectral quote bound to its attribution by a vertical gold rule - one of only two sanctioned vertical rules.",
+      "html": "<figure class=\"ds-pullquote\"><span class=\"ds-pullquote__rule\" aria-hidden=\"true\"></span><div><blockquote class=\"ds-pullquote__quote\">Where regulatory expertise meets personal service.</blockquote><figcaption class=\"ds-pullquote__body\">Some clients bring a shoebox of receipts. Others bring a net capital computation under review.</figcaption></div></figure>",
+      "css": ".ds-pullquote { display: flex; gap: 36px; align-items: flex-start; margin: 0; max-width: 620px; } .ds-pullquote__rule { width: 3px; align-self: stretch; background: var(--nta-gold, #c9a24a); flex: 0 0 auto; } .ds-pullquote__quote { font-family: Spectral, Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; font-size: 32px; line-height: 1.35; color: var(--nta-navy, #16324d); margin: 0 0 16px; } .ds-pullquote__body { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.7; color: var(--nta-body, #3c4652); }"
+    },
+    {
+      "name": "Numbers Band",
+      "kind": "custom",
+      "description": "Paper band pairing a tracked label with a Spectral stat figure. The plus sign takes Deep Gold, never Registration Gold.",
+      "html": "<div class=\"ds-numbers\"><div class=\"ds-numbers__cell\"><span class=\"ds-numbers__label\">IN THE SECURITIES &amp; FUTURES INDUSTRIES</span><p class=\"ds-numbers__figure\">40<span class=\"ds-numbers__plus\">+</span> <span class=\"ds-numbers__unit\">years</span></p></div><div class=\"ds-numbers__cell ds-numbers__cell--divided\"><span class=\"ds-numbers__label\">A CERTIFIED PUBLIC ACCOUNTANT</span><p class=\"ds-numbers__figure\"><span class=\"ds-numbers__unit\">since</span> 1983</p></div></div>",
+      "css": ".ds-numbers { display: flex; background: var(--nta-paper, #faf8f3); border-top: 1px solid var(--nta-line-warm, #e6dcc3); border-bottom: 1px solid var(--nta-line-warm, #e6dcc3); padding: 40px 32px; gap: 48px; } .ds-numbers__cell { flex: 1; } .ds-numbers__cell--divided { padding-left: 48px; border-left: 1px solid var(--nta-line-warm-strong, #ddd2b8); } .ds-numbers__label { display: block; font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; white-space: nowrap; color: var(--nta-body-soft, #4a5562); margin-bottom: 16px; } .ds-numbers__figure { font-family: Spectral, Georgia, 'Times New Roman', serif; font-weight: 600; font-size: 56px; line-height: 1; color: var(--nta-navy, #16324d); margin: 0; } .ds-numbers__plus { color: var(--nta-gold-deep, #8a6a1e); } .ds-numbers__unit { font-size: 28px; font-weight: 500; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Sticky white header, hairline bottom border. The active link carries a 2px gold underline - the only nav state indicator.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav__link ds-nav__link--current\" href=\"#\" aria-current=\"page\">Services</a><a class=\"ds-nav__link\" href=\"#\">About</a><a class=\"ds-nav__link\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 28px; background: #fff; border-bottom: 1px solid var(--nta-line, #ece8df); padding: 20px 24px; } .ds-nav__link { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; color: var(--nta-slate, #2c5f8a); text-decoration: none; transition: color 180ms ease; } .ds-nav__link:hover { color: var(--nta-navy, #16324d); } .ds-nav__link--current { font-weight: 600; color: var(--nta-navy, #16324d); border-bottom: 2px solid var(--nta-gold, #c9a24a); padding-bottom: 3px; } .ds-nav__link:focus-visible { outline: 3px solid var(--nta-slate, #2c5f8a); outline-offset: 2px; }"
+    },
+    {
+      "name": "CONFIRM Callout",
+      "kind": "custom",
+      "refersTo": "confirm-note",
+      "description": "Marks drafted-but-unconfirmed legal language. Deliberately conspicuous - this copy must not ship as final.",
+      "html": "<p class=\"ds-confirm-note\">[CONFIRM] Whether any state privacy statute applies to the practice &mdash; this depends on client residency.</p>",
+      "css": ".ds-confirm-note { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.7; color: var(--nta-body-soft, #4a5562); background: var(--nta-paper, #faf8f3); border-left: 3px solid var(--nta-gold, #c9a24a); padding: 14px 18px; margin: 0; max-width: 560px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Registered Sheet",
+    "overview": "The system is built on a double meaning that belongs only to this practice. The corner ticks framing the hero and the headshot are printer's registration marks — the crosshairs that prove a sheet was pulled in alignment. Registration is also what a Series 27 is. The mark itself is a ledger cell with those ticks set into it, so the identity's smallest element already carries both readings: a page pulled correctly, and a professional on the register.\n\nEverything follows from treating the surface as a printed sheet rather than a screen. Paper (#faf8f3) and white are the two grounds, separated by tone and a 1px warm hairline rather than by shadow. Corners are square because a trimmed sheet has square corners. Gold appears the way a press mark appears — as trim at the edge of the work, never as a field, and never carrying body copy. Spectral sets the display type with the weight of a set page; Archivo handles everything a form or a label needs. Depth is entirely tonal; there is no elevation ramp, because a sheet does not float.\n\nThe restraint is doing strategic work, not just aesthetic work. This practice's differentiator is that one person handles both a broker-dealer's net capital computation and a family's late return, without changing voice between them. A system that performed for either audience would break that. So the design proves competence by refusing to perform it: correct alignment, exact hairlines, credentials stated as dates and numbers, and no ornament anywhere that a compliance reviewer would have to look past.",
+    "keyCharacteristics": [
+      "Flat by construction — no shadows, no gradients, no radius anywhere.",
+      "Two grounds only: white and paper, divided by 1px warm hairlines.",
+      "Gold is trim, strictly rationed to two sanctioned rule placements plus the tick pairs.",
+      "Serif display against sans UI; tracked uppercase is always a label, never a heading.",
+      "Type scales by clamp() from a 390px reference, so layout breakpoints stay layout-only.",
+      "Registration ticks appear in diagonal pairs, never four corners."
+    ],
+    "rules": [
+      {
+        "name": "The Deep Gold Rule",
+        "body": "Registration Gold is never type on a light field — it measures 2.3:1 and fails AA. When gold must be typographic on white or paper, it is Deep Gold (4.6:1). There is no exception, including for large display sizes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Trim Rule",
+        "body": "Gold marks edges; it does not fill areas. Ticks, rules, a 2px active underline, a 3px callout border. The single exception is the on-navy button's hover fill, where gold sits against navy rather than paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Real Heading Rule",
+        "body": "Tracked uppercase is a label, never a heading level. If a line is an H2 or H3, it gets real serif type at real heading size. Caps treatment marks an eyebrow, tag, column head, or field label — nothing else.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Wrap Rule",
+        "body": "Every tracked uppercase label carries white-space: nowrap. The tracking consumes the last pixel of the line box, so a label silently re-breaks on a font fallback. A label that will not fit at 390px gets shorter copy — the label__long / label__short pair — never a wrap.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Size Per Level Rule",
+        "body": "At the 390px reference, every H1 is 34px, every H2 is 24px, every H3 is 22px — across marketing and legal pages alike. Clamp ceilings differ; the mobile floor does not. Four sizes doing the work of two heading levels is the failure this rule prevents.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clamp-Not-Breakpoint Rule",
+        "body": "Type scales by clamp() from the 390px reference to the desktop comp value, and letter-spacing is expressed in em so it tracks the clamp. The breakpoints that exist (900px, 620px, 860px for the header) are layout-only. Adding a type media query means the clamp was wrong.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Rule",
+        "body": "A box-shadow, gradient, blur, or transform-on-hover anywhere in this system is a bug, not an enhancement. Surfaces separate by tone and hairline. An earlier offset-block button treatment was explicitly rejected during design — do not reintroduce drop-shadow or offset effects under any name.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Corner Rule",
+        "body": "Radius is 0 everywhere. Not softened for cards, not softened for inputs, not softened for images, not softened just for the mobile menu.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Two Sanctioned Gold Rules",
+        "body": "Gold rules have exactly two placements. (1) Page opener — one horizontal rule under a page's own H1, 160x4px on the home hero and 88x2px on interior pages. (2) Vertical bind — a 2-3px vertical rule joining two things that belong together: the mark to the wordmark in the lockup, and a pull quote to its attribution. A third placement is a bug, not a new pattern.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Diagonal Tick Rule",
+        "body": "Ticks are always a top-right / bottom-left pair. Four corners reads as a border and destroys the registration-mark meaning; two reads as alignment. They also degrade — below 32px the mark drops its ticks entirely rather than shipping them clipped.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use Deep Gold (#8a6a1e) whenever gold must be typographic on a light ground; Registration Gold is trim only.",
+      "Do invert the card's ground against its section — paper card on white, white card on paper. That inversion is the entire elevation system.",
+      "Do give a tracked uppercase label white-space: nowrap, and shorten its copy rather than let it wrap at 390px.",
+      "Do hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.",
+      "Do scale type with clamp() from the mobile reference and express letter-spacing in em so it tracks.",
+      "Do set line measure per block with the ch helpers rather than letting text fill the container.",
+      "Do render the lockup through Logo.astro and pass markOnly in narrow contexts.",
+      "Do keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling."
+    ],
+    "donts": [
+      "Don't add a box-shadow, gradient, blur, scale, or offset-block effect anywhere. The system is flat by construction, and the offset-block button was explicitly rejected once already.",
+      "Don't soften a corner. Radius is 0 for buttons, cards, inputs, panels, and images alike.",
+      "Don't place a gold rule anywhere outside the two sanctioned uses — page opener under an H1, or vertical bind between two related elements.",
+      "Don't draw ticks on four corners; the diagonal pair is what makes them registration marks rather than a frame.",
+      "Don't use tracked uppercase as a heading level, or serif display type as a label.",
+      "Don't put Registration Gold on paper or white as text, at any size or weight.",
+      "Don't add a type media query — if the type is wrong at a width, the clamp is wrong.",
+      "Don't introduce a second accent color, a cool grey into the warm hairline family, or a shadow-based card that competes with the paper/white inversion.",
+      "Don't resemble the generic small-practice accountant template (corporate blue, stock handshakes, rounded cards), fintech SaaS (gradient mesh, glassmorphism, neon dark mode), or big-four corporate polish. The last one is the sharpest rejection: faceless enterprise gloss implies a large team, which is the exact opposite of this practice's differentiator."
+    ]
+  }
+}
