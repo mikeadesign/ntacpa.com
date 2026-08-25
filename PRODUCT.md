@@ -53,7 +53,7 @@ Inquiries frequently arrive mid-problem — the week before an examination, or a
 - Astro, no UI framework. Roughly 2 KB of JavaScript total (mobile menu, contact-form panel swap); everything else ships as HTML and CSS. Flat-file output (`/services.html`) so it hosts anywhere static.
 - A GitHub Pages beta preview deploys from `main` for review; it is `noindex` and excluded from analytics. Google Analytics fires on the production build only.
 - **Contact form transport: confirmed as email-to-Nicholas** via a static-hosting-compatible form service (Formspree, Web3Forms, or equivalent). Not yet implemented — `PUBLIC_CONTACT_ENDPOINT` is unset, and until it is, the form deliberately does *not* fake success; it shows a panel pointing at the phone number and email. The specific service is not yet chosen.
-- **Cutover requires URL/SEO preservation.** The existing ntacpa.com has paths that must stay reachable — via preserved URLs or redirects — when this site replaces it. The specific inventory of URLs has not been gathered yet; it must be audited against the live site before launch rather than assumed.
+- **Cutover requires URL/SEO preservation.** The existing ntacpa.com has paths that must stay reachable — via preserved URLs or redirects — when this site replaces it. Inventoried in `URL-AUDIT.md`: a 7-page legacy site, 5 of those URLs need a redirect rule, and the canonical host/scheme, `robots.txt`, and sitemap all still need setting up at cutover.
 - **Legal copy is drafted, not reviewed.** `[CONFIRM]` blocks remain across the two legal pages (analytics retention, IP anonymisation, applicable state privacy statute, governing-law state, Circular 230 wording, PTIN disclosure), plus the legal effective date. This copy must go to counsel before launch and must not be presented as final.
 - Terminology is used at full strength, not translated down — "Form 1099," "Series 27," "net capital," "FOCUS report" appear as themselves.
 
@@ -84,7 +84,8 @@ Voice, confirmed and binding:
 - **Licensure jurisdiction: Illinois**, confirmed directly.
 - **Contact:** phone 312-339-3750 (confirmed); email `contact@ntacpa.com` (confirmed; the interim `ntainc@att.net` is retired with this site).
 - **Resume** on file, used to corroborate credentials and career history.
-- **Absent — do not fabricate:** there are no testimonials, no named clients, no case studies, no press, no pricing, no client counts, no revenue or performance figures, and no office address on hand. Client engagements are confidential by default; nothing implying a specific named client should be invented or implied.
+- **Absent — do not fabricate:** there are no testimonials, no named clients, no case studies, no press, no pricing, no client counts, and no revenue or performance figures. Client engagements are confidential by default; nothing implying a specific named client should be invented or implied.
+- **No office address — confirmed, not a gap.** The practice is home-based and remote (see `serviceArea`); Nicholas confirmed the office listed on the old site (231 S LaSalle St, Chicago) is no longer current. Do not surface any office address anywhere on the site.
 
 ## Product Principles
 

@@ -105,10 +105,8 @@ Verified against the live pages. Several are genuinely new information:
 - **Incorporation:** "formed by Nicholas T. Avello on the 9th of September 1990
   as an Illinois S. Corporation." More precise than the new site's "since 1990,"
   and independently corroborates the Illinois jurisdiction.
-- **Office address:** 231 S LaSalle Street #650, Chicago, IL 60604.
-  `PRODUCT.md` explicitly lists "no office address on hand" — this is one, though
-  it is at least eleven years old and needs confirming before use.
-- **Additional contact numbers:** cell 630-310-6945, fax 630-749-9998.
+- **Additional contact numbers:** cell 630-310-6945, fax 630-749-9998. Not yet
+  confirmed as current — carried here only as a lead, not a fact to publish.
 - **Two services the new site does not offer:** *Anti-Money-Laundering (AML)
   audits* and *PATRIOT Act compliance*. Worth confirming whether these were
   dropped deliberately or simply missed.
@@ -131,5 +129,9 @@ All are time-frozen at roughly 2009 and are now wrong:
   plus Series 3, 6, 27, 30, 62, and 99.
 - `ntainc@att.net` — retired in favour of `contact@ntacpa.com`.
 - Copyright 2009.
+- **231 S LaSalle Street #650, Chicago, IL 60604** — confirmed by Nicholas as
+  no longer the office; the practice is now home-based / remote. `PRODUCT.md`'s
+  "no office address on hand" note stands, now as a confirmed choice rather
+  than a gap. Don't publish this address anywhere.
 
 The phone number **312-339-3750 matches** the new site and needs no change.
