@@ -4,10 +4,13 @@ Crawled 2026-08-25 against the live site, to satisfy the cutover requirement
 recorded in [`PRODUCT.md`](PRODUCT.md) ("the existing ntacpa.com has paths that
 must stay reachable"). This replaces the "inventory not yet gathered" note.
 
-**Scope and limits.** This covers every URL the live site actually serves and
-links to. It does *not* measure inbound links or search rankings — that needs
-Search Console or a backlink tool, neither of which is reachable from here.
-Treat the redirect map as complete for structure, and confirm priority against
+**Scope and limits.** This covers every URL the live site actually serves,
+plus what a link-following crawl finds — which missed one page
+(`/contact_form.html`, unlinked from anything) until the production
+`wwwroot` was read directly. Treat "linked and crawlable" as a floor, not a
+ceiling: an orphaned page can still be live. This also does *not* measure
+inbound links or search rankings — that needs Search Console or a backlink
+tool, neither of which is reachable from here. Confirm priority against
 Search Console before launch if the account exists.
 
 ## What is there
@@ -26,12 +29,24 @@ HTML 4.01, one stylesheet, no CMS, no build. No `robots.txt` and no
 | `/training.html` | Credentials: Special Training | 2363 |
 | `/clients.html` | NTA, INC. Clients | 2530 |
 | `/contact.html` | NTA, INC. Contact | 2298 |
+| `/contact_form.html` | Contact NTA, INC. | 3101 |
 | `/ntainc-stylesheet.css` | stylesheet | — |
+
+**`/contact_form.html` is an eighth page the original crawl missed** — nothing
+on the live site links to it, so it was never queued. Found by reading the
+actual production `wwwroot` directly. Confirmed still live with a
+cache-busted fetch (`200`, exact byte match to the file on disk; a genuinely
+missing path on the same host correctly returns `404` for comparison), so
+it's reachable by anyone with an old bookmark or inbound link even though
+nothing on the current site points to it. It carries an older, different
+address (200 West Adams, not 231 S LaSalle), a personal `@comcast.net`
+email, a pager number, and a `mailto:`-based form — all stale, none of it
+matching `/contact.html`'s numbers. Redirecting it, not just leaving it.
 
 ## Redirect map
 
 The new build emits flat `.html` at the root, which is the same shape the
-legacy site uses — so **three of the seven pages need no rule at all**. Five
+legacy site uses — so **three of the eight pages need no rule at all**. Six
 URLs require a redirect.
 
 | Legacy URL | Action | Target |
@@ -44,6 +59,7 @@ URLs require a redirect.
 | `/experience.html` | **301** | `/about` |
 | `/training.html` | **301** | `/about` |
 | `/clients.html` | **301** | `/about` |
+| `/contact_form.html` | **301** | `/contact` |
 | `/ntainc-stylesheet.css` | none — let it 404 | — |
 
 The three `/education`, `/experience`, `/training` pages were the legacy
@@ -133,5 +149,14 @@ All are time-frozen at roughly 2009 and are now wrong:
   no longer the office; the practice is now home-based / remote. `PRODUCT.md`'s
   "no office address on hand" note stands, now as a confirmed choice rather
   than a gap. Don't publish this address anywhere.
+- **200 West Adams, Chicago, IL 60604** — a second, older office address, from
+  `/contact_form.html` only. Same resolution as above: no longer current, not
+  to be published.
+- **`madtek1029@comcast.net` and `ntainc@comcast.net`** — personal-looking
+  addresses on `/contact_form.html`, not used anywhere else on the old or new
+  site. Don't carry either forward.
+- **24/7 pager (312) 514-9357 and fax (312) 922-3950**, also only on
+  `/contact_form.html` — a different fax number than the one on `/contact.html`
+  (630-749-9998). Neither has been confirmed current; don't publish either.
 
 The phone number **312-339-3750 matches** the new site and needs no change.

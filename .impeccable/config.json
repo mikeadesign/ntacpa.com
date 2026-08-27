@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "15px",
+        "createdAt": "2026-08-27T00:25:58.220Z",
+        "reason": "DESIGN.md Components > [CONFIRM] Callout documents this exact value (15px soft grey on paper); pre-existing code, not part of this change"
+      }
+    ]
+  }
+}

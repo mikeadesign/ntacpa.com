@@ -12,3 +12,13 @@ export function withBase(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   return `${base}${path}`;
 }
+
+/**
+ * True on the GitHub Pages beta preview build, false on production and on
+ * `astro dev`. Single source of truth for "is this the preview" — Base.astro
+ * (noindex, analytics gating) and robots.txt.ts (disallow-all) both key off
+ * this so the two can't drift out of sync on what counts as preview.
+ */
+export function isPreviewBuild(): boolean {
+  return import.meta.env.BASE_URL !== '/';
+}

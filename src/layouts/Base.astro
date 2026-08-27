@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
 import LegalHeader from '../components/LegalHeader.astro';
 import LegalFooter from '../components/LegalFooter.astro';
 import { site } from '../data/site';
-import { withBase } from '../utils/url';
+import { withBase, isPreviewBuild } from '../utils/url';
 
 interface Props {
   /** Page H1, per the handoff title convention: "{H1} — NTA, Inc., CPA". */
@@ -43,14 +43,15 @@ const canonical = new URL(routePath, Astro.site);
 
 /* A non-root base means this is the GitHub Pages beta preview build, not
    production — keep it out of search results so it never competes with
-   ntacpa.com once that's live. */
-const isPreviewBuild = import.meta.env.BASE_URL !== '/';
+   ntacpa.com once that's live. robots.txt.ts applies the harder version of
+   this same rule (Disallow: /) from the same isPreviewBuild() check. */
+const preview = isPreviewBuild();
 
 /* Analytics only where real visitors are: production, not the GH Pages
    preview, and not `astro dev` (PROD is false there) — so local editing
    and the beta link never pollute production traffic data. */
 const GA_MEASUREMENT_ID = 'G-SQ5BYHD541';
-const isProduction = import.meta.env.PROD && !isPreviewBuild;
+const isProduction = import.meta.env.PROD && !preview;
 ---
 
 <!doctype html>
@@ -79,7 +80,7 @@ const isProduction = import.meta.env.PROD && !isPreviewBuild;
     <title>{documentTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {isPreviewBuild && <meta name="robots" content="noindex, nofollow" />}
+    {preview && <meta name="robots" content="noindex, nofollow" />}
 
     {/* Official exports from _design-system/brand-assets — real Spectral
         rendering, not approximated. Degradation per its MANIFEST.md: thin
@@ -88,7 +89,6 @@ const isProduction = import.meta.env.PROD && !isPreviewBuild;
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32.png')} />
     <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16.png')} />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
-    <link rel="manifest" href={withBase('/site.webmanifest')} />
     <meta name="theme-color" content="#16324d" />
 
     <meta property="og:type" content="website" />

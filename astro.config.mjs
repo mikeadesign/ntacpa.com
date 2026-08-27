@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,4 +15,8 @@ export default defineConfig({
     // onto any plain static host without directory-index rewriting.
     format: 'file',
   },
+  // Generates sitemap-index.xml + sitemap-0.xml from `site` above. Left on
+  // for the preview build too — harmless, since every preview page is
+  // noindex and robots.txt.ts never links to it there.
+  integrations: [sitemap()],
 });

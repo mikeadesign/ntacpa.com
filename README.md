@@ -78,8 +78,8 @@ src/
     CtaBand.astro  PullQuote.astro
   layouts/Base.astro    document shell, meta, chrome selection
   pages/                index · services · about · contact · site-policies · tax-advice-notice
-    site.webmanifest.ts generated, not static — so its paths run through withBase()
-public/                 favicons, apple-touch-icon, PWA icon, OG image, headshot
+    robots.txt.ts       generated, not static — Disallow: / on preview, Allow + Sitemap on prod
+public/                 favicons, apple-touch-icon, OG image, headshot
 ```
 
 Icons and the social card are the official exports from
