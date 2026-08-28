@@ -54,7 +54,7 @@ Inquiries frequently arrive mid-problem — the week before an examination, or a
 - A GitHub Pages beta preview deploys from `main` for review; it is `noindex` and excluded from analytics. Google Analytics fires on the production build only.
 - **Contact form transport: confirmed as email-to-Nicholas** via a static-hosting-compatible form service (Formspree, Web3Forms, or equivalent). Not yet implemented — `PUBLIC_CONTACT_ENDPOINT` is unset, and until it is, the form deliberately does *not* fake success; it shows a panel pointing at the phone number and email. The specific service is not yet chosen.
 - **Cutover requires URL/SEO preservation.** The existing ntacpa.com has paths that must stay reachable — via preserved URLs or redirects — when this site replaces it. Inventoried in `URL-AUDIT.md`: a 7-page legacy site, 5 of those URLs need a redirect rule, and the canonical host/scheme, `robots.txt`, and sitemap all still need setting up at cutover.
-- **Legal copy is drafted, not reviewed.** `[CONFIRM]` blocks remain across the two legal pages (analytics retention, IP anonymisation, applicable state privacy statute, governing-law state, Circular 230 wording, PTIN disclosure), plus the legal effective date. This copy must go to counsel before launch and must not be presented as final.
+- **Legal copy is drafted, not reviewed.** `[CONFIRM]` blocks remain across the two legal pages (analytics retention, IP anonymisation, applicable state privacy statute, governing-law state, Circular 230 wording), plus the legal effective date. This copy must go to counsel before launch and must not be presented as final.
 - Terminology is used at full strength, not translated down — "Form 1099," "Series 27," "net capital," "FOCUS report" appear as themselves.
 
 ## Brand Commitments
@@ -86,6 +86,11 @@ Voice, confirmed and binding:
 - **Resume** on file, used to corroborate credentials and career history.
 - **Absent — do not fabricate:** there are no testimonials, no named clients, no case studies, no press, no pricing, no client counts, and no revenue or performance figures. Client engagements are confidential by default; nothing implying a specific named client should be invented or implied.
 - **No office address — confirmed, not a gap.** The practice is home-based and remote (see `serviceArea`); Nicholas confirmed the office listed on the old site (231 S LaSalle St, Chicago) is no longer current. Do not surface any office address anywhere on the site.
+- **No PTIN displayed**, confirmed directly by Nicholas. The `[CONFIRM]` block asking about this on the tax advice notice has been removed.
+- **No limitation-of-liability clause needed**, confirmed directly by Nicholas. The governing-law `[CONFIRM]` block on Site policies now asks only for the state, not the clause.
+- **AML / PATRIOT Act compliance stays off Services**, confirmed directly by Nicholas — dropped on purpose, not a gap to fill.
+- **Governing-law state is still open.** Nicholas answered the liability-clause half of that question but not the state itself. Illinois (the licensure jurisdiction) is the likely answer, but it hasn't been said — don't fill it in from the inference alone.
+- **Circular 230 wording — sent, but not usable as-is.** The text Nicholas provided reads as garbled at the end ("...any tax-related matter(s) said tax advice address(es)."), likely a transcription error. Asked for clean wording before inserting it verbatim into a compliance disclosure.
 
 ## Product Principles
 

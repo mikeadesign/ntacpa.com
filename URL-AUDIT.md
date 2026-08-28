@@ -123,9 +123,6 @@ Verified against the live pages. Several are genuinely new information:
   and independently corroborates the Illinois jurisdiction.
 - **Additional contact numbers:** cell 630-310-6945, fax 630-749-9998. Not yet
   confirmed as current — carried here only as a lead, not a fact to publish.
-- **Two services the new site does not offer:** *Anti-Money-Laundering (AML)
-  audits* and *PATRIOT Act compliance*. Worth confirming whether these were
-  dropped deliberately or simply missed.
 - **Education:** DePaul University, BS Accounting (minor Finance),
   Sept 1975 – June 1979.
 - **Career history:** NASD Examiner 1984–1986; Financial Compliance/Controller
@@ -158,5 +155,8 @@ All are time-frozen at roughly 2009 and are now wrong:
 - **24/7 pager (312) 514-9357 and fax (312) 922-3950**, also only on
   `/contact_form.html` — a different fax number than the one on `/contact.html`
   (630-749-9998). Neither has been confirmed current; don't publish either.
+- **Anti-Money-Laundering (AML) audits and PATRIOT Act compliance** — listed as
+  services on the old site, absent from the new one. Confirmed by Nicholas as
+  dropped on purpose, not missed. Resolved; nothing to add.
 
 The phone number **312-339-3750 matches** the new site and needs no change.
