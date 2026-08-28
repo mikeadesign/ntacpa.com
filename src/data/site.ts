@@ -18,20 +18,24 @@ export const site = {
   copyright: '© 2026 NTA, Inc. Certified Public Accountant since 1983.',
   titleSuffix: 'NTA, Inc., CPA',
   /* Confirmed by Nicholas directly (Aug 2026) — appears in the footer and
-     the tax advice notice. Distinct from `pending.governingLawState`
-     below: that's a legal-review call for the site's own Terms of Use,
-     not necessarily the same as where the practice is licensed. */
+     the tax advice notice. A separate legal question from `governingLawState`
+     below (professional licensure vs. the site's own Terms of Use); the two
+     were confirmed independently and just happen to be the same state. */
   licensureJurisdiction: 'Illinois',
+  /* The Site policies "Governing law" clause. Confirmed by Nicholas directly
+     (Aug 2026) — same value as licensureJurisdiction above, confirmed as its
+     own answer, not inferred from it. */
+  governingLawState: 'Illinois',
 } as const;
 
 /* ── PENDING — unresolved before ship ──────────────────────────────────────
    Handoff README, "Open Items". Do not treat these as final copy.
      1. Legal effective date — both legal pages.
    The remaining [CONFIRM] blocks in the legal pages are marked inline there.
-   (Series 27 registration year was here too — confirmed 1986 by Nicholas
-   directly, Aug 2026, so it's now a literal in About's milestones instead.) */
+   (Series 27 registration year, licensure jurisdiction, and the governing-law
+   state were here too — all confirmed by Nicholas directly, so they're now
+   literals in `site` / the page templates instead.) */
 export const pending = {
-  governingLawState: '[STATE]',
   legalEffectiveDate: '[DATE]',
 } as const;
 

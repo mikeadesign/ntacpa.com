@@ -121,10 +121,9 @@ Two things are unresolved and are deliberately visible in the UI rather than
 guessed at. The remaining placeholders live in `pending` in
 [`src/data/site.ts`](src/data/site.ts).
 
-1. **Legal review.** Five `[CONFIRM]` blocks across the two legal pages —
+1. **Legal review.** Three `[CONFIRM]` blocks across the two legal pages —
    IP anonymisation and the cookie banner, analytics and inquiry retention,
-   applicable state privacy statute, governing-law state, and Circular 230
-   wording — plus the legal effective date.
+   and applicable state privacy statute — plus the legal effective date.
    **This copy is drafted, not reviewed. Route it to counsel before launch.**
 2. **The contact form has no transport.** The intake decision is made — email
    straight to Nicholas via a form service — but nothing is wired yet. Set
@@ -140,8 +139,11 @@ Resolved since the handoff: licensure jurisdiction (**Illinois**), the Series 27
 registration year (**1986**), the phone number, the email address, and the full
 credentials list, which was verified against Nicholas's official FINRA/NFA
 exam-history record. Also resolved, confirmed directly by Nicholas: no PTIN is
-displayed, no limitation-of-liability clause is needed, and AML/PATRIOT Act
-compliance stays off the Services page (dropped on purpose, not missed).
+displayed, no limitation-of-liability clause is needed, AML/PATRIOT Act
+compliance stays off the Services page (dropped on purpose, not missed), the
+Terms of Use governing-law state is **Illinois** (confirmed on its own, not
+inferred from licensure), and the formal Circular 230 disclosure is inserted
+as provided.
 
 ## Where this deviates from the comps
 
