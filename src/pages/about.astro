@@ -5,6 +5,13 @@ import CtaBand from '../components/CtaBand.astro';
 import { site, credentials } from '../data/site';
 import { withBase } from '../utils/url';
 
+/* Grouped for display only — see the `group` field's comment in site.ts.
+   CPA has no group and leads the list; the other two arrays preserve
+   credentials' own ascending-by-number order within each group. */
+const ungroupedCredentials = credentials.filter((c) => !c.group);
+const supervisoryCredentials = credentials.filter((c) => c.group === 'supervisory');
+const generalCredentials = credentials.filter((c) => c.group === 'general');
+
 const milestones = [
   { year: '1983', event: 'Certified as a Public Accountant.', note: null },
   {
@@ -89,7 +96,29 @@ const milestones = [
         <div>
           <dl class="dl">
             {
-              credentials.map((credential) => (
+              ungroupedCredentials.map((credential) => (
+                <div class="dl__row">
+                  <dt class="dl__term">{credential.long}</dt>
+                  <dd class="dl__value">{credential.value}</dd>
+                </div>
+              ))
+            }
+            <div class="dl__group-label">
+              <span class="label label--strong">PRINCIPAL &amp; SUPERVISORY</span>
+            </div>
+            {
+              supervisoryCredentials.map((credential) => (
+                <div class="dl__row">
+                  <dt class="dl__term">{credential.long}</dt>
+                  <dd class="dl__value">{credential.value}</dd>
+                </div>
+              ))
+            }
+            <div class="dl__group-label">
+              <span class="label label--strong">GENERAL INDUSTRY &amp; PRODUCT</span>
+            </div>
+            {
+              generalCredentials.map((credential) => (
                 <div class="dl__row">
                   <dt class="dl__term">{credential.long}</dt>
                   <dd class="dl__value">{credential.value}</dd>

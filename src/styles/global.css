@@ -432,6 +432,18 @@ button {
   border-bottom: var(--rule-hairline) solid var(--nta-line);
 }
 
+/* Sub-headings within one continuous ledger (About's credentials, grouped
+   into Principal & Supervisory / General Industry & Product) — the label
+   itself is the separator, so the row right after it skips its usual
+   top hairline rather than doubling up. */
+.dl__group-label {
+  padding: 22px 0 6px;
+}
+
+.dl__group-label + .dl__row {
+  border-top: none;
+}
+
 .dl__term {
   font-size: var(--type-body);
   font-weight: var(--weight-medium);

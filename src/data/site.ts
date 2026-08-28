@@ -75,12 +75,20 @@ export type Credential = {
      (leads with the FINOP registration, the practice's headline
      differentiator) independent of the full list's own order below. */
   featuredOrder?: number;
+  /* About groups the full list by this — undefined (CPA) leads, ungrouped.
+     Confirmed directly by Nicholas (Aug 2026): he wants 27 and 30 shown as
+     supervisory, matching how his own FINRA/NFA exam-history record
+     categorizes them ("Principal/Supervisory Exams" vs. "General
+     Industry/Product Exams"). Purely a display grouping — doesn't touch
+     this array's own order, which stays ascending by series number. */
+  group?: 'supervisory' | 'general';
 };
 
 /* Full list order: CPA first (it's not a FINRA/NFA registration, so it
    doesn't belong in the number sequence), then every registration ascending
    by series number — the previous order had no rationale behind it, just
-   the sequence things got added in. */
+   the sequence things got added in. About re-groups this by `group` for
+   display; this order is the data's own canonical order, not the page's. */
 export const credentials: Credential[] = [
   {
     short: 'Certified Public Accountant',
@@ -93,6 +101,7 @@ export const credentials: Credential[] = [
     short: 'Series 3 — Commodity Futures',
     long: 'Series 3 — Commodity Futures Representative',
     value: 'registered',
+    group: 'general',
   },
   {
     short: 'Series 6 — Investment Company',
@@ -100,6 +109,7 @@ export const credentials: Credential[] = [
     value: 'registered',
     featured: true,
     featuredOrder: 3,
+    group: 'general',
   },
   {
     short: 'Series 27 — FINOP',
@@ -107,11 +117,13 @@ export const credentials: Credential[] = [
     value: '40 years',
     featured: true,
     featuredOrder: 2,
+    group: 'supervisory',
   },
   {
     short: 'Series 30 — NFA Branch Manager',
     long: 'Series 30 — NFA Branch Manager',
     value: 'registered',
+    group: 'supervisory',
   },
   {
     short: 'Series 62 — Corporate Securities',
@@ -119,11 +131,13 @@ export const credentials: Credential[] = [
     value: 'registered',
     featured: true,
     featuredOrder: 4,
+    group: 'general',
   },
   {
     short: 'Series 99 — Operations Professional',
     long: 'Series 99 — Operations Professional',
     value: 'registered',
+    group: 'general',
   },
 ];
 

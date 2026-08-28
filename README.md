@@ -162,10 +162,14 @@ Every one of these is deliberate; revert any you disagree with.
 - **`aria-label`led landmarks, `<figure>`/`<blockquote>` for pull quotes, and a
   `<dl>` for every label/value pair** — semantics the flat prototype could not
   express.
-- **The credentials list runs longer than the comps'.** Seven entries ordered
-  CPA-first then ascending by series number, since the verified record turned
-  out to be larger than the four the comps showed. Home still shows a
-  four-entry teaser; the full list lives on About.
+- **The credentials list runs longer than the comps', and About groups it.**
+  Seven entries, since the verified record turned out to be larger than the
+  four the comps showed; the array itself stays CPA-first then ascending by
+  series number (`src/data/site.ts`), but About re-groups it into "Principal &
+  Supervisory" (27, 30) and "General Industry & Product" (3, 6, 62, 99) — not
+  in the comps at all, added at Nicholas's request to match how his own
+  FINRA/NFA exam-history record categorizes them. Home still shows an
+  unwrapped four-entry teaser; the grouping only applies to About's full list.
 
 ## Contact constants
 
