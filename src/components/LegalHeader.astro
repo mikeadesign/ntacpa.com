@@ -1,9 +1,11 @@
 ---
 /**
- * Stripped chrome for the two legal pages: mark, wordmark, back link.
+ * Stripped chrome for the two legal pages: mark, back link.
  * No nav, no CTA, not sticky — deliberately quieter than the site header.
+ *
+ * The logo renders from the locked brand-asset SVG (public/assets/), matching
+ * the site header — see _design-system/brand-assets/MANIFEST.md.
  */
-import Logo from './Logo.astro';
 import { site } from '../data/site';
 import { withBase } from '../utils/url';
 ---
@@ -11,8 +13,13 @@ import { withBase } from '../utils/url';
 <header class="legal-header">
   <div class="container legal-header__inner">
     <a href={withBase('/')} class="legal-header__logo" aria-label={`${site.name} — home`}>
-      <span class="legal-header__logo-full"><Logo size={64} showDescriptor={false} /></span>
-      <span class="legal-header__logo-mark"><Logo size={40} markOnly /></span>
+      <img
+        src={withBase('/assets/logo-mark-navy.svg')}
+        alt=""
+        width="48"
+        height="48"
+        class="legal-header__logo-mark"
+      />
     </a>
     <a href={withBase('/')} class="legal-header__back">← Back to site</a>
   </div>
@@ -32,10 +39,6 @@ import { withBase } from '../utils/url';
     padding-block: 20px;
   }
 
-  .legal-header__logo-mark {
-    display: none;
-  }
-
   .legal-header__back {
     font-size: var(--type-small);
     font-weight: var(--weight-medium);
@@ -43,11 +46,9 @@ import { withBase } from '../utils/url';
   }
 
   @media (max-width: 620px) {
-    .legal-header__logo-full {
-      display: none;
-    }
     .legal-header__logo-mark {
-      display: block;
+      width: 40px;
+      height: 40px;
     }
     .legal-header__inner {
       padding-block: 16px;

@@ -71,7 +71,6 @@ src/
     global.css          reset, layout primitives, shared components
     legal.css           shared by the two legal pages
   components/
-    Logo.astro          the lockup — all geometry derived from one `size`
     Header.astro        desktop nav + full-screen mobile menu
     Footer.astro        LegalHeader/LegalFooter for the stripped legal chrome
     ContactForm.astro   form → sent panel swap
@@ -111,9 +110,10 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - **One size per heading level at 390px**: H1 34px, H2 24px, H3 22px, on every
   page type including the legal pages.
 - **Focus-visible**: 3px `#2c5f8a`, 2px offset, on every interactive element.
-- Never hand-build a lockup. `Logo.astro` derives tick inset, tick size, stroke
-  weight and glyph size from the mark's edge length and drops the ticks below
-  32px, per the degradation table.
+- Never hand-build or recreate the logo in HTML/CSS. The lockup renders from
+  the locked exports in `_design-system/brand-assets/` (mirrored into
+  `public/assets/`) — mark SVGs for the header/legal-header, the full
+  four-line lockup PNG for the footer.
 
 ## Before this ships
 

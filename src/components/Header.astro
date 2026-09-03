@@ -1,12 +1,16 @@
 ---
 /**
- * Site header. Full lockup + inline nav on desktop; mark alone + a
- * full-screen navy menu below 860px, per the 390px mobile reference.
+ * Site header. Mark + inline nav on desktop; mark alone + a full-screen
+ * navy menu below 860px, per the 390px mobile reference.
+ *
+ * The logo renders from the locked brand-asset SVGs (public/assets/), not a
+ * hand-built lockup — see _design-system/brand-assets/MANIFEST.md. Only the
+ * mark is used here; the full four-line lockup (mark + wordmark + descriptor
+ * + principal) lives in the footer, the one place with room for it.
  *
  * The active page carries a 2px gold underline (see handoff, "The gold rule"
  * §3 — the one nav use, flagged as confirm-with-team).
  */
-import Logo from './Logo.astro';
 import { nav, ctaLabel, ctaHref, site } from '../data/site';
 import { withBase } from '../utils/url';
 
@@ -21,8 +25,13 @@ const { current } = Astro.props;
 <header class="site-header">
   <div class="container site-header__inner">
     <a href={withBase('/')} class="site-header__logo" aria-label={`${site.name} — home`}>
-      <span class="site-header__logo-full"><Logo size={64} /></span>
-      <span class="site-header__logo-mark"><Logo size={40} markOnly /></span>
+      <img
+        src={withBase('/assets/logo-mark-navy.svg')}
+        alt=""
+        width="48"
+        height="48"
+        class="site-header__logo-mark"
+      />
     </a>
 
     <nav class="site-nav" aria-label="Primary">
@@ -61,7 +70,7 @@ const { current } = Astro.props;
 
 <div class="mobile-menu" id="mobile-menu" hidden data-menu-panel>
   <div class="mobile-menu__bar">
-    <Logo size={40} markOnly reversed />
+    <img src={withBase('/assets/logo-mark-reversed.svg')} alt="" width="40" height="40" />
     <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>
       <span></span><span></span>
     </button>
@@ -99,7 +108,7 @@ const { current } = Astro.props;
   }
 
   .site-header__logo-mark {
-    display: none;
+    display: block;
   }
 
   .site-nav {
@@ -234,11 +243,9 @@ const { current } = Astro.props;
   }
 
   @media (max-width: 860px) {
-    .site-header__logo-full {
-      display: none;
-    }
     .site-header__logo-mark {
-      display: block;
+      width: 40px;
+      height: 40px;
     }
     .site-header__inner {
       padding-block: 16px;

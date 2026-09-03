@@ -1,6 +1,12 @@
 ---
-/** Navy site footer — full lockup, nav columns, legal lines. */
-import Logo from './Logo.astro';
+/**
+ * Navy site footer — full lockup, nav columns, legal lines.
+ *
+ * The lockup renders from the locked brand-asset PNG (public/assets/) —
+ * the one place on the site with room for the full four-line composition
+ * (mark + wordmark + descriptor + principal), matching the asset exactly
+ * as exported. See _design-system/brand-assets/MANIFEST.md.
+ */
 import { site, nav, legalLinks } from '../data/site';
 import { withBase } from '../utils/url';
 ---
@@ -8,9 +14,13 @@ import { withBase } from '../utils/url';
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__top">
-      {/* descriptorSize matches the comp, which sets it smaller relative to
-          the 88px mark than the header lockup does. */}
-      <Logo size={88} reversed showPrincipal descriptorSize={8.5} class="site-footer__logo" />
+      <img
+        src={withBase('/assets/logo-reversed-on-navy.png')}
+        alt={`${site.name} — ${site.descriptor} — ${site.principal}`}
+        width="670"
+        height="248"
+        class="site-footer__logo"
+      />
 
       <div class="site-footer__cols">
         <div class="site-footer__col">
@@ -56,6 +66,12 @@ import { withBase } from '../utils/url';
     align-items: flex-start;
     gap: 48px;
     flex-wrap: wrap;
+  }
+
+  .site-footer__logo {
+    width: 320px;
+    max-width: 100%;
+    height: auto;
   }
 
   .site-footer__cols {
@@ -133,6 +149,9 @@ import { withBase } from '../utils/url';
   }
 
   @media (max-width: 620px) {
+    .site-footer__logo {
+      width: 260px;
+    }
     .site-footer__top {
       gap: 36px;
     }

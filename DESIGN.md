@@ -19,7 +19,7 @@ colors:
   on-navy-lede: "#d7dfe8"
   on-navy-soft: "#9fb2c6"
   on-navy-muted: "#7ba3c4"
-  on-navy-label: "#4d7a9e"
+  on-navy-label: "#7ea6c7"
   error: "#a83f3f"
 typography:
   display:
@@ -291,7 +291,7 @@ A paper band with a warm outer edge, splitting into two cells divided by a verti
 Reusable framing device (`.ticks` + `.tick--tr` / `.tick--bl`), sized entirely by `--tick-size`, `--tick-inset`, and `--tick-weight` custom properties so the hero and headshot instances share one implementation. `pointer-events: none`.
 
 ### Logo Lockup
-Never hand-built. `Logo.astro` derives tick inset (0.085S), tick size (0.115S), stroke weight (0.019S), and glyph size (0.32S) from the mark's edge length `size`, and drops the ticks entirely below 32px per the degradation table. The full lockup is never used below 120px wide — narrow contexts pass `markOnly`.
+Never hand-built or recreated in HTML/CSS — the brand mark is locked. Every instance renders from the official exports in `_design-system/brand-assets/` (mirrored into `public/assets/`), not a live-scaling component: `logo-mark-navy.svg` / `logo-mark-reversed.svg` for the mark-only header/legal-header treatment, and `logo-reversed-on-navy.png` for the full four-line lockup (mark + wordmark + descriptor + principal) in the footer — the one place with room for it. See `_design-system/brand-assets/MANIFEST.md` for the complete asset list and usage rules.
 
 ### [CONFIRM] Callout
 Drafted-but-unconfirmed legal language: 15px soft grey on paper with a 3px gold left border and 14px/18px padding. Deliberately conspicuous — it marks copy that must not ship as final.
@@ -305,7 +305,7 @@ Drafted-but-unconfirmed legal language: 15px soft grey on paper with a 3px gold 
 - **Do** hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.
 - **Do** scale type with `clamp()` from the mobile reference and express letter-spacing in `em` so it tracks.
 - **Do** set line measure per block with the `ch` helpers rather than letting text fill the container.
-- **Do** render the lockup through `Logo.astro` and pass `markOnly` in narrow contexts.
+- **Do** render the logo from the locked brand-asset files in `public/assets/` — mark SVGs for header/legal-header, the full lockup PNG for the footer. Never rebuild it from live text/CSS.
 - **Do** keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling.
 
 ### Don't:
