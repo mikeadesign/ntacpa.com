@@ -3,12 +3,18 @@
  * Site header. Compact lockup + inline nav on desktop; compact lockup alone
  * + a full-screen navy menu below 860px, per the 390px mobile reference.
  *
- * The logo renders from the locked brand-asset SVGs (public/assets/), not a
- * hand-built lockup — see _design-system/brand-assets/MANIFEST.md. "Compact"
- * (mark + gold rule + wordmark, no descriptor/principal) is the preferred
- * header treatment per MANIFEST.md — the firm's name stays legible down to
- * its 32px-mark floor, which both header sizes here clear. The full
- * four-line lockup lives only in the footer, the one place with room for it.
+ * The logo renders from the locked brand-asset PNGs (public/assets/), not a
+ * hand-built lockup — see _design-system/brand-assets/MANIFEST.md. PNG, not
+ * SVG: the compact SVGs set text in Spectral, but an <img src="*.svg"> is an
+ * opaque external resource with no access to the page's loaded webfonts —
+ * it silently falls back to Georgia/system-serif, which is wider and clips
+ * against the SVG's fixed viewBox. The PNG exports bake in the real
+ * rendered glyphs, so there's no runtime font dependency to break.
+ * "Compact" (mark + gold rule + wordmark, no descriptor/principal) is the
+ * preferred header treatment per MANIFEST.md — the firm's name stays
+ * legible down to its 32px-mark floor, which both header sizes here clear.
+ * The full four-line lockup lives only in the footer, the one place with
+ * room for it.
  *
  * The active page carries a 2px gold underline (see handoff, "The gold rule"
  * §3 — the one nav use, flagged as confirm-with-team).
@@ -28,9 +34,9 @@ const { current } = Astro.props;
   <div class="container site-header__inner">
     <a href={withBase('/')} class="site-header__logo" aria-label={`${site.name} — home`}>
       <img
-        src={withBase('/assets/logo-compact.svg')}
+        src={withBase('/assets/logo-compact.png')}
         alt=""
-        width="168"
+        width="178"
         height="56"
         class="site-header__logo-mark"
       />
@@ -72,7 +78,7 @@ const { current } = Astro.props;
 
 <div class="mobile-menu" id="mobile-menu" hidden data-menu-panel>
   <div class="mobile-menu__bar">
-    <img src={withBase('/assets/logo-compact-reversed.svg')} alt="" width="120" height="40" />
+    <img src={withBase('/assets/logo-compact-reversed.png')} alt="" width="127" height="40" />
     <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>
       <span></span><span></span>
     </button>
@@ -246,7 +252,7 @@ const { current } = Astro.props;
 
   @media (max-width: 860px) {
     .site-header__logo-mark {
-      width: 120px;
+      width: 127px;
       height: 40px;
     }
     .site-header__inner {

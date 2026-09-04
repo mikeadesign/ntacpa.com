@@ -292,8 +292,10 @@ Reusable framing device (`.ticks` + `.tick--tr` / `.tick--bl`), sized entirely b
 
 ### Logo Lockup
 Never hand-built or recreated in HTML/CSS — the brand mark is locked. Every instance renders from the official exports in `_design-system/brand-assets/` (mirrored into `public/assets/`), not a live-scaling component:
-- **Header / legal-header**: `logo-compact.svg` / `logo-compact-reversed.svg` — mark + gold rule + wordmark, no descriptor or principal. Preferred over the bare mark per the asset manifest; its 32px-mark floor covers both the desktop (56px mark) and mobile (40px mark) header sizes.
+- **Header / legal-header**: `logo-compact.png` / `logo-compact-reversed.png` — mark + gold rule + wordmark, no descriptor or principal. Preferred over the bare mark per the asset manifest; its 32px-mark floor covers both the desktop (56px mark) and mobile (40px mark) header sizes.
 - **Footer**: the full four-line lockup (mark + wordmark + descriptor + principal) — `logo-reversed-on-navy.png` above 620px, swapping to the vertical `logo-stacked-reversed.png` below it via `<picture>`, so the mark keeps room to breathe instead of shrinking toward the 32px floor.
+
+**PNG, not SVG, for every lockup carrying wordmark text.** The compact/stacked SVGs set their text in Spectral with a Georgia/system-serif fallback — fine for an *inline* SVG that shares the page's loaded webfonts, but an `<img src="*.svg">` is an opaque external resource with no access to the page's fonts. It silently renders the fallback, which is wider than Spectral and clips against the SVG's fixed `viewBox`, truncating the wordmark (verified: `logo-compact.svg` clipped "NTA, Inc." to "NTA, In" when used as an `<img>`). The PNG exports bake in the real rendered glyphs, so there's no runtime font dependency to break. The bare-mark SVGs (`logo-mark-*.svg`) don't have this problem — no text, so no font dependency — but they're unused on this site now that compact replaced them everywhere.
 
 See `_design-system/brand-assets/MANIFEST.md` for the complete asset list and usage rules.
 
@@ -309,7 +311,7 @@ Drafted-but-unconfirmed legal language: 15px soft grey on paper with a 3px gold 
 - **Do** hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.
 - **Do** scale type with `clamp()` from the mobile reference and express letter-spacing in `em` so it tracks.
 - **Do** set line measure per block with the `ch` helpers rather than letting text fill the container.
-- **Do** render the logo from the locked brand-asset files in `public/assets/` — the compact lockup (SVG) for header/legal-header, the full lockup (PNG, wide/stacked-reversed by breakpoint) for the footer. Never rebuild it from live text/CSS.
+- **Do** render the logo from the locked brand-asset files in `public/assets/` — the compact lockup (PNG) for header/legal-header, the full lockup (PNG, wide/stacked-reversed by breakpoint) for the footer. Never rebuild it from live text/CSS, and never use the text-bearing lockup SVGs as an `<img src>` — they clip without the page's webfonts. PNG only for any lockup with a wordmark.
 - **Do** keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling.
 
 ### Don't:
