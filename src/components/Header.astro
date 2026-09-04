@@ -1,12 +1,14 @@
 ---
 /**
- * Site header. Mark + inline nav on desktop; mark alone + a full-screen
- * navy menu below 860px, per the 390px mobile reference.
+ * Site header. Compact lockup + inline nav on desktop; compact lockup alone
+ * + a full-screen navy menu below 860px, per the 390px mobile reference.
  *
  * The logo renders from the locked brand-asset SVGs (public/assets/), not a
- * hand-built lockup — see _design-system/brand-assets/MANIFEST.md. Only the
- * mark is used here; the full four-line lockup (mark + wordmark + descriptor
- * + principal) lives in the footer, the one place with room for it.
+ * hand-built lockup — see _design-system/brand-assets/MANIFEST.md. "Compact"
+ * (mark + gold rule + wordmark, no descriptor/principal) is the preferred
+ * header treatment per MANIFEST.md — the firm's name stays legible down to
+ * its 32px-mark floor, which both header sizes here clear. The full
+ * four-line lockup lives only in the footer, the one place with room for it.
  *
  * The active page carries a 2px gold underline (see handoff, "The gold rule"
  * §3 — the one nav use, flagged as confirm-with-team).
@@ -26,10 +28,10 @@ const { current } = Astro.props;
   <div class="container site-header__inner">
     <a href={withBase('/')} class="site-header__logo" aria-label={`${site.name} — home`}>
       <img
-        src={withBase('/assets/logo-mark-navy.svg')}
+        src={withBase('/assets/logo-compact.svg')}
         alt=""
-        width="48"
-        height="48"
+        width="168"
+        height="56"
         class="site-header__logo-mark"
       />
     </a>
@@ -70,7 +72,7 @@ const { current } = Astro.props;
 
 <div class="mobile-menu" id="mobile-menu" hidden data-menu-panel>
   <div class="mobile-menu__bar">
-    <img src={withBase('/assets/logo-mark-reversed.svg')} alt="" width="40" height="40" />
+    <img src={withBase('/assets/logo-compact-reversed.svg')} alt="" width="120" height="40" />
     <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>
       <span></span><span></span>
     </button>
@@ -244,7 +246,7 @@ const { current } = Astro.props;
 
   @media (max-width: 860px) {
     .site-header__logo-mark {
-      width: 40px;
+      width: 120px;
       height: 40px;
     }
     .site-header__inner {

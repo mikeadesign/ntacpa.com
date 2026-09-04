@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-03T00:00:00Z",
+  "generatedAt": "2026-09-04T00:00:00Z",
   "title": "Design System: NTA, Inc.",
   "extensions": {
     "colorMeta": {
@@ -541,7 +541,7 @@
       "Do hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.",
       "Do scale type with clamp() from the mobile reference and express letter-spacing in em so it tracks.",
       "Do set line measure per block with the ch helpers rather than letting text fill the container.",
-      "Do render the logo from the locked brand-asset files in public/assets/ — mark SVGs for header/legal-header, the full lockup PNG for the footer. Never rebuild it from live text/CSS.",
+      "Do render the logo from the locked brand-asset files in public/assets/ — the compact lockup (SVG) for header/legal-header, the full lockup (PNG, wide/stacked-reversed by breakpoint) for the footer. Never rebuild it from live text/CSS.",
       "Do keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling."
     ],
     "donts": [

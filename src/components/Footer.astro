@@ -2,10 +2,13 @@
 /**
  * Navy site footer — full lockup, nav columns, legal lines.
  *
- * The lockup renders from the locked brand-asset PNG (public/assets/) —
- * the one place on the site with room for the full four-line composition
- * (mark + wordmark + descriptor + principal), matching the asset exactly
- * as exported. See _design-system/brand-assets/MANIFEST.md.
+ * The lockup renders from locked brand-asset PNGs (public/assets/) — the
+ * one place on the site with room for the full four-line composition
+ * (mark + wordmark + descriptor + principal), matching the assets exactly
+ * as exported. Wide (logo-reversed-on-navy) above 620px; below that, the
+ * mark competes with the wordmark for width, so it swaps to the stacked
+ * reversed lockup instead, which gives the mark room by going vertical.
+ * See _design-system/brand-assets/MANIFEST.md.
  */
 import { site, nav, legalLinks } from '../data/site';
 import { withBase } from '../utils/url';
@@ -14,13 +17,16 @@ import { withBase } from '../utils/url';
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__top">
-      <img
-        src={withBase('/assets/logo-reversed-on-navy.png')}
-        alt={`${site.name} — ${site.descriptor} — ${site.principal}`}
-        width="670"
-        height="248"
-        class="site-footer__logo"
-      />
+      <picture>
+        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-stacked-reversed.png')} />
+        <img
+          src={withBase('/assets/logo-reversed-on-navy.png')}
+          alt={`${site.name} — ${site.descriptor} — ${site.principal}`}
+          width="670"
+          height="248"
+          class="site-footer__logo"
+        />
+      </picture>
 
       <div class="site-footer__cols">
         <div class="site-footer__col">
@@ -150,7 +156,10 @@ import { withBase } from '../utils/url';
 
   @media (max-width: 620px) {
     .site-footer__logo {
-      width: 260px;
+      /* Stacked-reversed loads here (see <picture> above) — narrower than
+         the wide breakpoint above since it's a vertical composition, not a
+         horizontal one scaled down. */
+      width: 180px;
     }
     .site-footer__top {
       gap: 36px;
