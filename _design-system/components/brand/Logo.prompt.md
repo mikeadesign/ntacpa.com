@@ -6,6 +6,9 @@ Use this component when a screen needs the firm's identity: site header, footer,
 <Logo variant="mark" size={32} />                        {/* favicon */}
 <Logo variant="mark" size={96} circular />               {/* avatar */}
 <Logo variant="stacked" size={72} showName={false} />    {/* mobile header */}
+<Logo variant="compact" size={56} />                     {/* site header */}
+<Logo variant="compact" tone="reversed" size={56} />     {/* header on navy */}
+<Logo variant="stacked" tone="reversed" size={72} />     {/* navy footer */}
 ```
 
 `size` is the mark's edge length; every other dimension derives from it, so one
@@ -18,6 +21,11 @@ back to `stacked` below 56px (the full lockup's 120px minimum width).
 
 Tones: `navy` (default, on light), `reversed` (on navy), and `mono-navy` /
 `mono-black` / `mono-white` for stamps, engraving, fax, and single-plate print.
+
+`variant="compact"` drops both descriptor lines and keeps mark + gold rule +
+wordmark. It is the scaled-down header lockup — reach for it before the bare
+mark, since the firm's name still reads. Floor is a 32px mark; below that use
+`variant="mark"`. Every variant accepts `tone="reversed"` for navy grounds.
 
 Set `showName={false}` to drop "NICHOLAS T. AVELLO, CPA" where vertical space is
 tight; `showDescriptor={false}` leaves the wordmark alone.

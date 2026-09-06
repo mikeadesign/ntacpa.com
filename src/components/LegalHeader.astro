@@ -3,11 +3,10 @@
  * Stripped chrome for the two legal pages: compact lockup, back link.
  * No nav, no CTA, not sticky — deliberately quieter than the site header.
  *
- * The logo renders from the locked brand-asset PNG (public/assets/), matching
- * the site header's compact treatment — PNG, not SVG, because an
- * <img src="*.svg"> can't see the page's loaded Spectral webfont and falls
- * back to a wider system serif that clips against the SVG's fixed viewBox.
- * See _design-system/brand-assets/MANIFEST.md.
+ * The logo renders from the locked brand-asset SVG (public/assets/), matching
+ * the site header's compact treatment. The current asset package's lockup
+ * SVGs carry outlined text (no font-family dependency), so they're safe as
+ * an <img src> — see _design-system/brand-assets/MANIFEST.md.
  */
 import { site } from '../data/site';
 import { withBase } from '../utils/url';
@@ -17,9 +16,9 @@ import { withBase } from '../utils/url';
   <div class="container legal-header__inner">
     <a href={withBase('/')} class="legal-header__logo" aria-label={`${site.name} — home`}>
       <img
-        src={withBase('/assets/logo-compact.png')}
+        src={withBase('/assets/logo-compact.svg')}
         alt=""
-        width="178"
+        width="175"
         height="56"
         class="legal-header__logo-mark"
       />
@@ -50,7 +49,7 @@ import { withBase } from '../utils/url';
 
   @media (max-width: 620px) {
     .legal-header__logo-mark {
-      width: 127px;
+      width: 125px;
       height: 40px;
     }
     .legal-header__inner {

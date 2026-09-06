@@ -2,12 +2,13 @@
 /**
  * Navy site footer — full lockup, nav columns, legal lines.
  *
- * The lockup renders from locked brand-asset PNGs (public/assets/) — the
+ * The lockup renders from locked brand-asset SVGs (public/assets/) — the
  * one place on the site with room for the full four-line composition
- * (mark + wordmark + descriptor + principal), matching the assets exactly
- * as exported. Wide (logo-reversed-on-navy) above 620px; below that, the
- * mark competes with the wordmark for width, so it swaps to the stacked
- * reversed lockup instead, which gives the mark room by going vertical.
+ * (mark + wordmark + descriptor + principal). The asset package's lockup
+ * SVGs carry outlined text (no font-family dependency), so they're safe as
+ * an <img src>. Wide (logo-reversed) above 620px; below that, the mark
+ * competes with the wordmark for width, so it swaps to the stacked reversed
+ * lockup instead, which gives the mark room by going vertical.
  * See _design-system/brand-assets/MANIFEST.md.
  */
 import { site, nav, legalLinks } from '../data/site';
@@ -18,12 +19,12 @@ import { withBase } from '../utils/url';
   <div class="container site-footer__inner">
     <div class="site-footer__top">
       <picture>
-        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-stacked-reversed.png')} />
+        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-stacked-reversed.svg')} />
         <img
-          src={withBase('/assets/logo-reversed-on-navy.png')}
+          src={withBase('/assets/logo-reversed.svg')}
           alt={`${site.name} — ${site.descriptor} — ${site.principal}`}
-          width="670"
-          height="248"
+          width="400"
+          height="120"
           class="site-footer__logo"
         />
       </picture>

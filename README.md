@@ -113,11 +113,14 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - Never hand-build or recreate the logo in HTML/CSS. The lockup renders from
   the locked exports in `_design-system/brand-assets/` (mirrored into
   `public/assets/`) — the **compact** lockup (mark + gold rule + wordmark,
-  PNG) for the header/legal-header, and the full four-line lockup (PNG) for
-  the footer, wide above 620px and stacked-reversed below it. PNG, not SVG,
-  for every lockup with wordmark text: an `<img src="*.svg">` can't see the
-  page's loaded Spectral webfont, so text-bearing SVGs silently fall back to
-  a wider system serif and clip against their fixed `viewBox`.
+  SVG) for the header/legal-header, and the full four-line lockup (SVG) for
+  the footer, wide above 620px and stacked-reversed below it. SVG is safe
+  here because the asset package's lockup SVGs carry their text as outlined
+  vector paths, not `<text>` + `font-family` — no webfont dependency, so
+  nothing to fall back and clip against the `viewBox`. (An earlier package
+  version set live text instead; that broke exactly this way when loaded via
+  `<img src="*.svg">`, which can't see the host page's loaded fonts — fixed
+  upstream, and PNG is no longer needed for this.)
 
 ## Before this ships
 

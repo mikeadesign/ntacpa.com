@@ -6,8 +6,11 @@ import * as React from "react";
  * @startingPoint section="Brand" subtitle="Logo lockups, tones, and degradation rules" viewport="700x300"
  */
 export interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Lockup configuration. `primary` falls back to `stacked` below 56px. */
-  variant?: "primary" | "stacked" | "mark" | "wordmark";
+  /**
+   * Lockup configuration. `primary` falls back to `stacked` below 56px.
+   * `compact` is mark + gold rule + wordmark only — the header lockup.
+   */
+  variant?: "primary" | "compact" | "stacked" | "mark" | "wordmark";
   /** Colour treatment. Use `reversed` on navy, `mono-*` for one-colour print. */
   tone?: "navy" | "reversed" | "mono-navy" | "mono-black" | "mono-white";
   /** The mark's edge length in px. All other geometry derives from it. */

@@ -25,8 +25,7 @@
   --nta-on-navy:       #ffffff;
   --nta-on-navy-soft:  #9fb2c6;
   --nta-on-navy-muted: #7ba3c4;
-  /* Was #4d7a9e (2.9:1 on navy — fails AA). Lightened to hold 5.1:1. */
-  --nta-on-navy-label: #7ea6c7;
+  --nta-on-navy-label: #7ea6c7;  /* 5.11:1 on navy — dimmest step that still clears AA */
 
   /* Status — used sparingly, documentation and form validation only */
   --nta-danger:      #a83f3f;
