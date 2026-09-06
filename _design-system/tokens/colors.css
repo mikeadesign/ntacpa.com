@@ -25,7 +25,7 @@
   --nta-on-navy:       #ffffff;
   --nta-on-navy-soft:  #9fb2c6;
   --nta-on-navy-muted: #7ba3c4;
-  --nta-on-navy-label: #4d7a9e;
+  --nta-on-navy-label: #7ea6c7;  /* 5.11:1 on navy — dimmest step that still clears AA */
 
   /* Status — used sparingly, documentation and form validation only */
   --nta-danger:      #a83f3f;

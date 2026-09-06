@@ -11,6 +11,8 @@ import React from "react";
  *   • circular crops replace the ticks with a gold underscore
  *   • the full lockup refuses to render below 120px wide and falls back to
  *     the stacked configuration
+ *   • variant="compact" drops the descriptor lines for header-scale use;
+ *     every variant accepts tone="reversed" for navy backgrounds
  */
 
 const TONES = {
@@ -139,6 +141,18 @@ export function Logo({
 
   if (variant === "mark") {
     return <Mark size={size} tone={tone} circular={circular} {...rest} />;
+  }
+
+  // compact — mark, gold rule, wordmark only. The header lockup: no descriptor
+  // lines, so it survives down to a 32px mark where the full lockup can't.
+  if (variant === "compact") {
+    return (
+      <div style={{ display: "inline-flex", alignItems: "center", gap: size * 0.245, ...style }} {...rest}>
+        <Mark size={size} tone={tone} />
+        <span style={{ width: Math.max(2, size * 0.019), height: size, background: t.rule, flex: "0 0 auto" }} />
+        <Wordmark size={size} tone={tone} />
+      </div>
+    );
   }
 
   if (variant === "wordmark") {

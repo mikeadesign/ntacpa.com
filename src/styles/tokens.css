@@ -34,7 +34,10 @@
   --nta-on-navy-lede: #d7dfe8;
   --nta-on-navy-soft: #9fb2c6;
   --nta-on-navy-muted: #7ba3c4;
-  --nta-on-navy-label: #4d7a9e;
+  /* Was #4d7a9e (2.9:1 on navy — fails AA for the 11px bold labels that use
+     it, e.g. footer column heads). Lightened to hold a real 5.1:1 while
+     staying the dimmest step in the on-navy ladder. */
+  --nta-on-navy-label: #7ea6c7;
 
   /* ── Semantic ── */
   --text-heading: var(--nta-navy);
@@ -80,6 +83,10 @@
   --type-lead: clamp(17px, 1.7vw, 19px);
   --type-legal: clamp(16px, 1.5vw, 17px);
   --type-body: 16px;
+  /* Serif name/caption size — About's portrait caption, Home's service-list
+     names. Was a bare 20px in each place; named here so it reads as a
+     deliberate step rather than off-ramp drift. */
+  --type-caption: 20px;
   --type-small: 14px;
   --type-fine: 12px;
   --type-label: 11px;

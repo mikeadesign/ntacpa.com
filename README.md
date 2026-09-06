@@ -71,7 +71,6 @@ src/
     global.css          reset, layout primitives, shared components
     legal.css           shared by the two legal pages
   components/
-    Logo.astro          the lockup — all geometry derived from one `size`
     Header.astro        desktop nav + full-screen mobile menu
     Footer.astro        LegalHeader/LegalFooter for the stripped legal chrome
     ContactForm.astro   form → sent panel swap
@@ -111,9 +110,17 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - **One size per heading level at 390px**: H1 34px, H2 24px, H3 22px, on every
   page type including the legal pages.
 - **Focus-visible**: 3px `#2c5f8a`, 2px offset, on every interactive element.
-- Never hand-build a lockup. `Logo.astro` derives tick inset, tick size, stroke
-  weight and glyph size from the mark's edge length and drops the ticks below
-  32px, per the degradation table.
+- Never hand-build or recreate the logo in HTML/CSS. The lockup renders from
+  the locked exports in `_design-system/brand-assets/` (mirrored into
+  `public/assets/`) — the **compact** lockup (mark + gold rule + wordmark,
+  SVG) for the header/legal-header, and the full four-line lockup (SVG) for
+  the footer, wide above 620px and stacked-reversed below it. SVG is safe
+  here because the asset package's lockup SVGs carry their text as outlined
+  vector paths, not `<text>` + `font-family` — no webfont dependency, so
+  nothing to fall back and clip against the `viewBox`. (An earlier package
+  version set live text instead; that broke exactly this way when loaded via
+  `<img src="*.svg">`, which can't see the host page's loaded fonts — fixed
+  upstream, and PNG is no longer needed for this.)
 
 ## Before this ships
 

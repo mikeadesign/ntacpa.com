@@ -1,6 +1,16 @@
 ---
-/** Navy site footer — full lockup, nav columns, legal lines. */
-import Logo from './Logo.astro';
+/**
+ * Navy site footer — full lockup, nav columns, legal lines.
+ *
+ * The lockup renders from locked brand-asset SVGs (public/assets/) — the
+ * one place on the site with room for the full four-line composition
+ * (mark + wordmark + descriptor + principal). The asset package's lockup
+ * SVGs carry outlined text (no font-family dependency), so they're safe as
+ * an <img src>. Wide (logo-reversed) above 620px; below that, the mark
+ * competes with the wordmark for width, so it swaps to the stacked reversed
+ * lockup instead, which gives the mark room by going vertical.
+ * See _design-system/brand-assets/MANIFEST.md.
+ */
 import { site, nav, legalLinks } from '../data/site';
 import { withBase } from '../utils/url';
 ---
@@ -8,9 +18,16 @@ import { withBase } from '../utils/url';
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__top">
-      {/* descriptorSize matches the comp, which sets it smaller relative to
-          the 88px mark than the header lockup does. */}
-      <Logo size={88} reversed showPrincipal descriptorSize={8.5} class="site-footer__logo" />
+      <picture>
+        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-stacked-reversed.svg')} />
+        <img
+          src={withBase('/assets/logo-reversed.svg')}
+          alt={`${site.name} — ${site.descriptor} — ${site.principal}`}
+          width="400"
+          height="120"
+          class="site-footer__logo"
+        />
+      </picture>
 
       <div class="site-footer__cols">
         <div class="site-footer__col">
@@ -56,6 +73,12 @@ import { withBase } from '../utils/url';
     align-items: flex-start;
     gap: 48px;
     flex-wrap: wrap;
+  }
+
+  .site-footer__logo {
+    width: 320px;
+    max-width: 100%;
+    height: auto;
   }
 
   .site-footer__cols {
@@ -133,6 +156,12 @@ import { withBase } from '../utils/url';
   }
 
   @media (max-width: 620px) {
+    .site-footer__logo {
+      /* Stacked-reversed loads here (see <picture> above) — narrower than
+         the wide breakpoint above since it's a vertical composition, not a
+         horizontal one scaled down. */
+      width: 180px;
+    }
     .site-footer__top {
       gap: 36px;
     }
