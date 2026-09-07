@@ -1,12 +1,14 @@
 ---
 /**
- * Stripped chrome for the two legal pages: compact lockup, back link.
+ * Stripped chrome for the two legal pages: full lockup, back link.
  * No nav, no CTA, not sticky — deliberately quieter than the site header.
  *
- * The logo renders from the locked brand-asset SVG (public/assets/), matching
- * the site header's compact treatment. The current asset package's lockup
- * SVGs carry outlined text (no font-family dependency), so they're safe as
- * an <img src> — see _design-system/brand-assets/MANIFEST.md.
+ * The logo renders from the locked brand-asset SVGs (public/assets/),
+ * matching the site header's treatment: full lockup by default, swapping to
+ * "compact" below 620px via <picture>, since there's no inline nav here to
+ * key the breakpoint off of. The asset package's lockup SVGs carry outlined
+ * text (no font-family dependency), so they're safe as an <img src> — see
+ * _design-system/brand-assets/MANIFEST.md.
  */
 import { site } from '../data/site';
 import { withBase } from '../utils/url';
@@ -15,13 +17,16 @@ import { withBase } from '../utils/url';
 <header class="legal-header">
   <div class="container legal-header__inner">
     <a href={withBase('/')} class="legal-header__logo" aria-label={`${site.name} — home`}>
-      <img
-        src={withBase('/assets/logo-compact.svg')}
-        alt=""
-        width="175"
-        height="56"
-        class="legal-header__logo-mark"
-      />
+      <picture>
+        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-compact.svg')} />
+        <img
+          src={withBase('/assets/logo-primary.svg')}
+          alt=""
+          width="400"
+          height="120"
+          class="legal-header__logo-mark"
+        />
+      </picture>
     </a>
     <a href={withBase('/')} class="legal-header__back">← Back to site</a>
   </div>
@@ -47,10 +52,15 @@ import { withBase } from '../utils/url';
     white-space: nowrap;
   }
 
+  .legal-header__logo-mark {
+    width: 187px;
+    height: auto;
+  }
+
   @media (max-width: 620px) {
     .legal-header__logo-mark {
       width: 125px;
-      height: 40px;
+      height: auto;
     }
     .legal-header__inner {
       padding-block: 16px;

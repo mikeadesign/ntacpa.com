@@ -112,12 +112,16 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - **Focus-visible**: 3px `#2c5f8a`, 2px offset, on every interactive element.
 - Never hand-build or recreate the logo in HTML/CSS. The lockup renders from
   the locked exports in `_design-system/brand-assets/` (mirrored into
-  `public/assets/`) — the **compact** lockup (mark + gold rule + wordmark,
-  SVG) for the header/legal-header, and the full four-line lockup (SVG) for
-  the footer, wide above 620px and stacked-reversed below it. SVG is safe
-  here because the asset package's lockup SVGs carry their text as outlined
-  vector paths, not `<text>` + `font-family` — no webfont dependency, so
-  nothing to fall back and clip against the `viewBox`. (An earlier package
+  `public/assets/`) — the full four-line lockup (SVG) everywhere it clears
+  the asset manifest's own floor ("compact when the full lockup would fall
+  under 120px wide"): header/legal-header render it at 187px wide, swapping
+  to **compact** (mark + gold rule + wordmark, no descriptor/principal)
+  below the point where nav/layout tightens (860px header, 620px
+  legal-header). The footer's full lockup goes wide above 620px and
+  stacked-reversed below it. SVG is safe here because the asset package's
+  lockup SVGs carry their text as outlined vector paths, not `<text>` +
+  `font-family` — no webfont dependency, so nothing to fall back and clip
+  against the `viewBox`. (An earlier package
   version set live text instead; that broke exactly this way when loaded via
   `<img src="*.svg">`, which can't see the host page's loaded fonts — fixed
   upstream, and PNG is no longer needed for this.)
