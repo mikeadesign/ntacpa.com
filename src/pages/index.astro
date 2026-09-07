@@ -81,12 +81,18 @@ const taxNotice = legalLinks[1]!;
             <div>
               <h3 class="h3 services__group-heading">{group.heading}</h3>
               <ul class="service-list">
-                {group.services.map((service) => (
-                  <li class="service-list__item">
-                    <p class="service-list__name">{service.homeName}</p>
-                    <p class="service-list__summary">{service.summary}</p>
-                  </li>
-                ))}
+                {/* Teaser — capped at 4 per group (see Service.homeFeatured in
+                    site.ts). Unfiltered, the two groups ran 5 + 4 = 9 rows in
+                    one scroll with no visual break; the full list stays on
+                    the Services page. */}
+                {group.services
+                  .filter((service) => service.homeFeatured)
+                  .map((service) => (
+                    <li class="service-list__item">
+                      <p class="service-list__name">{service.homeName}</p>
+                      <p class="service-list__summary">{service.summary}</p>
+                    </li>
+                  ))}
               </ul>
             </div>
           ))
@@ -327,13 +333,16 @@ const taxNotice = legalLinks[1]!;
 
   /* ── Services overview ────────────────────────────────────────────────── */
 
-  /* Comp gives these three content sections 96px, 16px more than the
-     `.section` default (80px) other pages use — Home's own pull-quote band
-     keeps the default, so this is scoped to these ids, not `.section`. */
+  /* Comp gives these three content sections 16px more than the `.section`
+     default other pages use — Home's own pull-quote band keeps the default,
+     so this is scoped to these ids, not `.section`. Built on `--section-y`
+     itself (80px desktop / 64px ≤900px / 48px ≤620px) rather than a flat
+     96px, so it steps down at the same breakpoints as every other section
+     instead of leaving an oversized, unscaled gap on mobile. */
   #services,
   #about,
   #contact {
-    padding-block: 96px;
+    padding-block: calc(var(--section-y) + 16px);
   }
 
   .services__eyebrow {

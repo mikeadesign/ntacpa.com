@@ -151,6 +151,11 @@ export type Service = {
   summary: string;
   detail: string;
   tag: string;
+  /* Home's teaser shows only the featured 4 per group (mirrors credentials'
+     own featured flag below) — a working-memory chunking fix: unfiltered,
+     the two groups ran 5 + 4 = 9 rows in one scroll with no visual break.
+     The full list, unfiltered, still lives on the Services page. */
+  homeFeatured?: boolean;
 };
 
 export type ServiceGroup = {
@@ -175,6 +180,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Federal and state returns, prepared and signed by the person who reviewed them. Multi-state filings, investment income, K-1s, and prior years that never got filed.',
         tag: 'INDIVIDUALS · FAMILIES · HIGH-NET-WORTH',
+        homeFeatured: true,
       },
       {
         name: 'Business tax preparation',
@@ -183,6 +189,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Schedule C through S-corp, partnership, and corporate returns, with the year-end adjustments made before the return rather than after the notice.',
         tag: 'SOLE PROPRIETORS · LLCS · S-CORPS',
+        homeFeatured: true,
       },
       {
         name: 'Bookkeeping',
@@ -191,6 +198,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Monthly or quarterly close, reconciled accounts, and statements you can hand to a lender without apologising for them. Catch-up work welcome.',
         tag: 'MONTHLY · QUARTERLY · CATCH-UP',
+        homeFeatured: true,
       },
       {
         name: 'Tax planning & strategy',
@@ -209,6 +217,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           "Notices answered, examinations handled, documentation assembled. You do not have to be on the call, and in most cases you shouldn't be.",
         tag: 'NOTICES · EXAMINATIONS · APPEALS SUPPORT',
+        homeFeatured: true,
       },
     ],
   },
@@ -226,6 +235,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Acting or supporting Financial and Operations Principal: net capital computations, FOCUS reports, books and records, and the questions that arrive the week before an examination.',
         tag: 'SERIES 27 · REGISTERED 40 YEARS',
+        homeFeatured: true,
       },
       {
         name: 'Broker-dealer accounting',
@@ -235,6 +245,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Month-end close, general ledger, regulatory reporting support, and reconciliation of clearing and commission activity for registered firms.',
         tag: 'REGISTERED BROKER-DEALERS',
+        homeFeatured: true,
       },
       {
         name: 'Hedge fund accounting',
@@ -243,6 +254,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'NAV support, partner allocations, incentive and management fee calculations, and year-end packages assembled the way auditors want to receive them.',
         tag: 'FUNDS · MANAGEMENT COMPANIES',
+        homeFeatured: true,
       },
       {
         name: 'Regulatory & compliance questions',
@@ -251,6 +263,7 @@ export const serviceGroups: ServiceGroup[] = [
         detail:
           'Series 6 and Series 62 registered as well. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
         tag: 'SERIES 6 · SERIES 27 · SERIES 62',
+        homeFeatured: true,
       },
     ],
   },
