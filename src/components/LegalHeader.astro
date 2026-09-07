@@ -1,14 +1,15 @@
 ---
 /**
- * Stripped chrome for the two legal pages: full lockup, back link.
+ * Stripped chrome for the two legal pages: compact lockup, back link.
  * No nav, no CTA, not sticky — deliberately quieter than the site header.
  *
  * The logo renders from the locked brand-asset SVGs (public/assets/),
- * matching the site header's treatment: full lockup by default, swapping to
- * "compact" below 620px via <picture>, since there's no inline nav here to
- * key the breakpoint off of. The asset package's lockup SVGs carry outlined
- * text (no font-family dependency), so they're safe as an <img src> — see
- * _design-system/brand-assets/MANIFEST.md.
+ * matching the site header's treatment: compact lockup at every width — see
+ * "NTA Site Header.dc.html" and MANIFEST.md. This is still a header band
+ * (~56px logo), and `logo-primary.svg` needs a 320px minimum width before
+ * its descriptor is legible, which no header band can offer. The asset
+ * package's lockup SVGs carry outlined text (no font-family dependency),
+ * so they're safe as an <img src> — see _design-system/brand-assets/MANIFEST.md.
  */
 import { site } from '../data/site';
 import { withBase } from '../utils/url';
@@ -17,16 +18,13 @@ import { withBase } from '../utils/url';
 <header class="legal-header">
   <div class="container legal-header__inner">
     <a href={withBase('/')} class="legal-header__logo" aria-label={`${site.name} — home`}>
-      <picture>
-        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-compact.svg')} />
-        <img
-          src={withBase('/assets/logo-primary.svg')}
-          alt=""
-          width="400"
-          height="120"
-          class="legal-header__logo-mark"
-        />
-      </picture>
+      <img
+        src={withBase('/assets/logo-compact.svg')}
+        alt=""
+        width="374"
+        height="120"
+        class="legal-header__logo-mark"
+      />
     </a>
     <a href={withBase('/')} class="legal-header__back">← Back to site</a>
   </div>
@@ -53,14 +51,14 @@ import { withBase } from '../utils/url';
   }
 
   .legal-header__logo-mark {
-    width: 187px;
-    height: auto;
+    height: 56px;
+    width: auto;
   }
 
   @media (max-width: 620px) {
     .legal-header__logo-mark {
-      width: 125px;
-      height: auto;
+      height: 44px;
+      width: auto;
     }
     .legal-header__inner {
       padding-block: 16px;
