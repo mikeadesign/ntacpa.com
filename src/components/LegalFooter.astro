@@ -1,5 +1,44 @@
 ---
-/** Compact navy footer for the legal pages. */
+/**
+ * Compact navy footer for the legal pages.
+ *
+ * The lockup renders from the locked brand-asset SVGs (public/assets/),
+ * matching the main site footer's treatment — readme.md: "The footer keeps
+ * [the primary lockup] too (logo-reversed.svg), where there is width for
+ * it." This bar has that width, so it gets the same swap as Footer.astro
+ * on desktop: logo-reversed at 320px — MANIFEST.md's stated minimum width
+ * for logo-reversed/logo-primary, below which the descriptor line drops
+ * under the 9px legibility floor. Never plain text — see
+ * _design-system/brand-assets/MANIFEST.md.
+ *
+ * Below 620px this swaps to logo-compact-reversed.svg (the same asset the
+ * mobile nav bar uses in Header.astro) instead of the stacked lockup —
+ * the full stacked composition ran ~330px tall once combined with the
+ * copyright line and links, over 45% of a phone viewport, before a reader
+ * finishing a legal page could reach "Home". Compact drops the descriptor
+ * and principal lines but keeps mark + wordmark recognizable at a fraction
+ * of the height (per critique 2026-09-07, .impeccable/critique/).
+ *
+ * The alt text is intentionally short ("NTA, Inc.") rather than the full
+ * lockup text — the <footer> landmark already tells assistive tech this is
+ * closing chrome, and the full descriptor was already read once in the
+ * page header moments earlier.
+ *
+ * Bottom-aligned (`align-items: flex-end`), unlike Footer.astro's
+ * `flex-start` — deliberate, not a drift: this bar has one short nav line
+ * that's meant to pair with the copyright text's baseline as a single
+ * closing line. Footer.astro top-aligns because its nav is multi-line
+ * columns taller than its logo, where a shared baseline wouldn't mean
+ * anything. Keep this bottom-aligned if this bar stays single-line.
+ *
+ * The <img> width/height attributes (400×120) match logo-reversed.svg's own
+ * intrinsic ratio exactly, but logo-compact-reversed.svg — the mobile
+ * <source> — is actually 374×120, a different ratio a single pair of HTML
+ * attributes can't represent for both sources. Each breakpoint below sets
+ * its own `aspect-ratio` in CSS, matching whichever asset actually loads
+ * there, so the reserved box is always correct rather than relying on the
+ * default image's ratio as a stand-in for both.
+ */
 import { site } from '../data/site';
 import { withBase } from '../utils/url';
 
@@ -14,7 +53,16 @@ const { sibling } = Astro.props;
 <footer class="legal-footer">
   <div class="container legal-footer__inner">
     <div class="legal-footer__brand">
-      <span class="legal-footer__wordmark">{site.name}</span>
+      <picture>
+        <source media="(max-width: 620px)" srcset={withBase('/assets/logo-compact-reversed.svg')} />
+        <img
+          src={withBase('/assets/logo-reversed.svg')}
+          alt={site.name}
+          width="400"
+          height="120"
+          class="legal-footer__logo"
+        />
+      </picture>
       <span class="legal-footer__copy">{site.copyright}</span>
     </div>
     <div class="legal-footer__links">
@@ -44,11 +92,11 @@ const { sibling } = Astro.props;
     gap: 8px;
   }
 
-  .legal-footer__wordmark {
-    font-family: var(--font-display);
-    font-weight: var(--weight-semibold);
-    font-size: 22px;
-    color: var(--nta-white);
+  .legal-footer__logo {
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 120; /* logo-reversed.svg's real intrinsic ratio */
   }
 
   .legal-footer__copy {
@@ -56,9 +104,27 @@ const { sibling } = Astro.props;
     color: var(--nta-on-navy-muted);
   }
 
+  @media (max-width: 620px) {
+    .legal-footer__logo {
+      /* Compact-reversed loads here (see <picture> above) — a horizontal
+         lockup, so height is set and width follows, matching the header's
+         compact treatment. No 320px floor: compact carries no descriptor
+         line to protect. */
+      width: auto;
+      height: 40px;
+      aspect-ratio: 374 / 120; /* logo-compact-reversed.svg's real intrinsic ratio */
+    }
+  }
+
   .legal-footer__links {
     display: flex;
-    gap: 24px;
+    /* Both real labels ("Home", "Site policies"/"Tax advice notice") are
+       short enough to never wrap today, but a future third legal page's
+       label isn't guaranteed to be — wrap here too, not just at the outer
+       .legal-footer__inner level, so a long label breaks onto its own line
+       instead of overflowing the row. */
+    flex-wrap: wrap;
+    gap: 8px 24px;
   }
 
   .legal-footer__links a {
@@ -68,5 +134,12 @@ const { sibling } = Astro.props;
 
   .legal-footer__links a:hover {
     color: var(--nta-white);
+  }
+
+  /* The global a:focus-visible ring (global.css) is --nta-slate — ~1.9:1
+     against this footer's navy background, well under the 3:1 UI-component
+     floor. Override with white here so keyboard focus stays visible. */
+  .legal-footer__links a:focus-visible {
+    outline-color: var(--nta-white);
   }
 </style>

@@ -1,6 +1,6 @@
 ---
 /**
- * Site header. Full lockup + inline nav on desktop; compact lockup alone
+ * Site header. Compact lockup + inline nav on desktop; compact lockup alone
  * + a full-screen navy menu below 860px, per the 390px mobile reference.
  *
  * The logo renders from the locked brand-asset SVGs (public/assets/), not a
@@ -10,12 +10,11 @@
  * `<img src>` — no webfont dependency to fall back and clip against the
  * viewBox the way the v1 SVGs did.
  *
- * Full lockup (mark + gold rule + wordmark + descriptor + principal) is the
- * default — there's room for it above the same 860px breakpoint that hides
- * the inline nav. Below that, it swaps to "compact" (mark + gold rule +
- * wordmark only) via <picture>, matching MANIFEST.md's guidance that
- * compact is a scaled-down treatment for tighter spaces, not the default.
- * Compact's 32px-mark floor covers the mobile header size here.
+ * Compact (mark + gold rule + wordmark, no descriptor) is the header lockup
+ * at every width — see "NTA Site Header.dc.html" and MANIFEST.md: a header
+ * band gives the logo ~175px, and the full lockup (`logo-primary.svg`)
+ * needs a 320px minimum before its descriptor is legible, which no header
+ * band can offer. Never swap in `logo-primary.svg` here, even on desktop.
  *
  * The active page carries a 2px gold underline (see handoff, "The gold rule"
  * §3 — the one nav use, flagged as confirm-with-team).
@@ -34,16 +33,13 @@ const { current } = Astro.props;
 <header class="site-header">
   <div class="container site-header__inner">
     <a href={withBase('/')} class="site-header__logo" aria-label={`${site.name} — home`}>
-      <picture>
-        <source media="(max-width: 860px)" srcset={withBase('/assets/logo-compact.svg')} />
-        <img
-          src={withBase('/assets/logo-primary.svg')}
-          alt=""
-          width="400"
-          height="120"
-          class="site-header__logo-mark"
-        />
-      </picture>
+      <img
+        src={withBase('/assets/logo-compact.svg')}
+        alt=""
+        width="374"
+        height="120"
+        class="site-header__logo-mark"
+      />
     </a>
 
     <nav class="site-nav" aria-label="Primary">
@@ -121,8 +117,8 @@ const { current } = Astro.props;
 
   .site-header__logo-mark {
     display: block;
-    width: 187px;
-    height: auto;
+    height: 56px;
+    width: auto;
   }
 
   .site-nav {
@@ -258,8 +254,8 @@ const { current } = Astro.props;
 
   @media (max-width: 860px) {
     .site-header__logo-mark {
-      width: 125px;
-      height: auto;
+      height: 44px;
+      width: auto;
     }
     .site-header__inner {
       padding-block: 16px;
