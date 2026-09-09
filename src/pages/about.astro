@@ -19,7 +19,11 @@ const milestones = [
     event: 'Registered Series 27 — Financial and Operations Principal.',
     note: null,
   },
-  { year: '1990', event: 'Founded NTA, Inc.', note: null },
+  {
+    year: '1990',
+    event: 'Founded NTA, Inc. — individuals and small businesses from day one, alongside the regulatory work.',
+    note: null,
+  },
   {
     year: 'Today',
     event: 'Forty-plus years in the securities and futures industries, still filing.',
@@ -36,7 +40,7 @@ const milestones = [
   {/* ── Page header ── */}
   <section class="about-header">
     <div class="container about-header__inner">
-      <div>
+      <div class="about-header__copy">
         <h1 class="h1 about-header__title measure-22">{site.principal}</h1>
         {/* Page opener: the one horizontal gold rule on this page. */}
         <hr class="gold-rule about-header__rule" />
@@ -44,10 +48,10 @@ const milestones = [
           Four decades at the intersection of accounting and the markets.
         </p>
         <p class="lead measure-60 about-header__lead">
-          I have been a Certified Public Accountant since 1983. Most of the forty-odd years since
-          have been spent inside the securities and futures industries — as a registered Financial
-          and Operations Principal, in the part of a brokerage where the numbers have to reconcile to
-          the rule, not to an expectation.
+          I have been a Certified Public Accountant for more than forty years. Most of that time has
+          been spent inside the securities and futures industries — as a registered Financial and
+          Operations Principal, in the part of a brokerage where the numbers have to reconcile to the
+          rule, not to an expectation.
         </p>
         <p class="body measure-60 about-header__para">
           {site.name} has been my practice since 1990. It is deliberately one person. When you call,
@@ -57,11 +61,13 @@ const milestones = [
         <p class="body measure-60">
           That is also why the client list looks unusual: hedge funds and broker-dealers on one side,
           individuals, families and small businesses on the other. The regulatory work keeps the
-          standard high. The private work keeps it human.
+          standard high — the same rigor applies whether the filing goes to the SEC, the NFA, or the
+          IRS. The private work keeps it human: federal and state returns, including years you'd
+          rather not talk about.
         </p>
       </div>
 
-      <div>
+      <div class="about-header__media">
         {/* The ticks live in their own positioning context, deliberately not
             shared with the caption block below — see the handoff. */}
         <div class="portrait ticks">
@@ -94,6 +100,9 @@ const milestones = [
       <div class="credentials__group">
         <h2 class="h2 measure-16">Credentials &amp; registrations</h2>
         <div>
+          <p class="fine credentials__intro measure-38">
+            The same standard applies to every filing, whichever regulator is reading it.
+          </p>
           <dl class="dl">
             {
               ungroupedCredentials.map((credential) => (
@@ -273,6 +282,11 @@ const milestones = [
     margin-top: 16px;
   }
 
+  .credentials__intro {
+    margin-bottom: 18px;
+    color: var(--text-soft);
+  }
+
   .milestone {
     display: grid;
     grid-template-columns: 80px 1fr;
@@ -302,9 +316,24 @@ const milestones = [
       grid-template-columns: 1fr;
       gap: 40px;
     }
-    /* Cap the portrait so it stays a portrait rather than a full-bleed band. */
+    /* Visual-only reorder: the portrait is this page's strongest trust
+       signal ("one person, not a faceless team"), so it leads on mobile
+       instead of surfacing after several screens of body copy. `order`
+       doesn't touch DOM/reading order, so heading-then-prose stays intact
+       for assistive tech — only the sighted layout changes. */
+    .about-header__media {
+      order: -1;
+    }
+    /* Cap the portrait so it stays a portrait rather than a full-bleed band.
+       Centered now that it leads the mobile hero rather than sitting in a
+       two-column row. */
     .portrait {
       max-width: 340px;
+      margin-inline: auto;
+    }
+    .portrait__caption {
+      align-items: center;
+      text-align: center;
     }
     /* Stacked: drop the explicit placement and let each group flow as a
        heading-then-list block. */
