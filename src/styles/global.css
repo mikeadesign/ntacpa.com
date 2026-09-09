@@ -78,6 +78,19 @@ summary:focus-visible {
   outline-offset: var(--focus-offset);
 }
 
+/* --focus-ring-color (--nta-slate) computes to ~1.95:1 against navy —
+   under WCAG 2.2's 3:1 non-text-contrast floor — wherever the ring sits
+   next to navy: the site/legal footers' navy field, and any navy-filled
+   button (.btn--navy, .btn--on-navy). Centralized here instead of
+   patching each navy surface separately (see /impeccable critique,
+   src/pages/services.astro, 2026-09-09). */
+.site-footer a:focus-visible,
+.legal-footer a:focus-visible,
+.btn--navy:focus-visible,
+.btn--on-navy:focus-visible {
+  outline-color: var(--nta-white);
+}
+
 input,
 textarea,
 button {

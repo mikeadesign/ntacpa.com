@@ -12,29 +12,45 @@ import { serviceGroups } from '../data/site';
   <section class="page-header">
     <div class="container page-header__inner">
       <h1 class="h1 page-header__title measure-28">
-        Tax, Bookkeeping &amp; Regulatory Accounting Services
+        Regulatory Accounting, Tax &amp; Bookkeeping Services
       </h1>
       {/* Page opener: the one horizontal gold rule on this page. */}
       <hr class="gold-rule page-header__rule" />
       <p class="deck measure-40 page-header__deck">
-        Everyday accounting, and the regulatory work most solo practices don't do.
+        Everyday accounting for individuals and small businesses. Regulatory accounting for funds and
+        broker-dealers.
       </p>
       <p class="lead measure-62">
         Two groups of work, one accountant. If you are not sure which side of the list you belong on,
         say what you're dealing with and I'll tell you.
       </p>
+      {/* Jump control — a 9-row list across two groups otherwise forces a
+          linear scroll past whichever half doesn't apply to this reader. */}
+      <nav class="page-header__jump" aria-label="Jump to a service group">
+        {
+          serviceGroups.map((group) => (
+            <a href={`#${group.id}`} class="page-header__jump-link">
+              {group.heading}
+            </a>
+          ))
+        }
+      </nav>
     </div>
   </section>
 
-  {/* ── Service groups ── */}
+  {/* ── Service groups ──────────────────────────────────────────────────
+      Both groups get matching rule-top/rule-bottom framing regardless of
+      background — the paper/white alternation is a sitewide neutral-rhythm
+      device, but on a page with exactly two sections it was mapping 1:1
+      onto audience (Everyday framed and "elevated," Funds plain white
+      underneath it). Framing is now identical; only the background still
+      alternates, purely for rhythm. See services.astro critique,
+      2026-09-09. */}
   {
     serviceGroups.map((group, index) => (
       <section
         id={group.id}
-        class:list={[
-          'section',
-          index % 2 === 0 && 'section--paper section--rule-top section--rule-bottom',
-        ]}
+        class:list={['section', 'section--rule-top', 'section--rule-bottom', index % 2 === 0 && 'section--paper']}
       >
         <div class="container">
           <h2 class="h2 group__heading">{group.heading}</h2>
@@ -43,16 +59,31 @@ import { serviceGroups } from '../data/site';
           <div class="service-rows">
             {group.services.map((service) => (
               <article class="service-row">
-                <h3 class="service-row__name">{service.name}</h3>
-                <div>
-                  <p class="body service-row__detail">{service.detail}</p>
-                  {/* A label, not a heading — see the handoff on tracked caps. */}
+                <div class="service-row__label">
+                  {/* A label, not a heading — see the handoff on tracked
+                      caps. Leads the row now, not the detail paragraph, so
+                      "is this for me" scans before the reader commits to
+                      the full paragraph. */}
                   <span class="label label--tag">{service.tag}</span>
+                  <h3 class="service-row__name">{service.name}</h3>
                 </div>
+                <p class="body service-row__detail">{service.detail}</p>
               </article>
             ))}
           </div>
         </div>
+
+        {/* Mid-page reassurance echo — the page only had this once, at the
+            very bottom, leaving no touchpoint for a reader who stalls out
+            partway through a group that isn't theirs. */}
+        {index === 0 && (
+          <div class="container">
+            <p class="fine service-rows__reassurance">
+              Not sure this is your list? Say what you're dealing with and I'll point you to the
+              right one.
+            </p>
+          </div>
+        )}
       </section>
     ))
   }
@@ -84,6 +115,24 @@ import { serviceGroups } from '../data/site';
     margin-bottom: 24px;
   }
 
+  .page-header__jump {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .page-header__jump-link {
+    font-size: var(--type-small);
+    font-weight: var(--weight-medium);
+    color: var(--link);
+    border-bottom: 1px solid transparent;
+  }
+
+  .page-header__jump-link:hover {
+    color: var(--link-hover);
+    border-bottom-color: currentColor;
+  }
+
   .group__heading {
     margin-bottom: 14px;
   }
@@ -104,6 +153,12 @@ import { serviceGroups } from '../data/site';
     border-bottom: var(--rule-hairline) solid var(--nta-line);
   }
 
+  .service-row__label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
   .service-row__name {
     font-family: var(--font-display);
     font-weight: var(--weight-medium);
@@ -113,13 +168,17 @@ import { serviceGroups } from '../data/site';
     text-wrap: pretty;
   }
 
-  .service-row__detail {
-    margin-bottom: 10px;
+  .service-rows__reassurance {
+    margin-top: 8px;
   }
 
   @media (max-width: 860px) {
     .page-header__inner {
       padding-block: 56px 48px;
+    }
+    .page-header__jump {
+      gap: 20px;
+      flex-wrap: wrap;
     }
     .service-row {
       grid-template-columns: 1fr;

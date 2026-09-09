@@ -136,10 +136,7 @@ const { sibling } = Astro.props;
     color: var(--nta-white);
   }
 
-  /* The global a:focus-visible ring (global.css) is --nta-slate — ~1.9:1
-     against this footer's navy background, well under the 3:1 UI-component
-     floor. Override with white here so keyboard focus stays visible. */
-  .legal-footer__links a:focus-visible {
-    outline-color: var(--nta-white);
-  }
+  /* Focus-ring-on-navy override now lives globally (.legal-footer
+     a:focus-visible in global.css) so every navy surface gets the same
+     fix in one place — see services.astro critique, 2026-09-09. */
 </style>
