@@ -23,7 +23,9 @@
   --nta-white: #ffffff;
   --nta-body: #3c4652;
   --nta-body-soft: #4a5562;
-  --nta-muted-light: #b3b8bf;
+  --nta-muted: #6b7280; /* 4.83:1 on white — for small text/labels */
+  --nta-muted-light: #b3b8bf; /* NON-TEXT ONLY — 2.0:1 on white; hairlines,
+                                  decorative rules, disabled icons */
   --nta-line: #ece8df; /* warm hairline, on white or paper */
   --nta-line-warm: #e6dcc3; /* paper band edge */
   --nta-line-warm-strong: #ddd2b8; /* numbers-band divider */
