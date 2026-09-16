@@ -66,7 +66,25 @@ It's a wry, insider read on tax rules — every absolute has a carve-out. It is 
 
 **The rule that matters most:** gold is an accent, never text on a light background — `#C9A24A` on white is **2.3:1** and fails AA. Deep Gold exists precisely so gold can be typographic. Gold on navy is **5.1:1** and passes.
 
-Also never: Slate on Navy (1.9:1), white on Gold (2.1:1).
+Also never: Slate on Navy (1.9:1), white on Gold (2.1:1), or the old `--nta-muted` `#8a8f98` as text on white (3.25:1 — corrected to `#6B7280`, 4.83:1).
+
+`--nta-muted-light` `#B3B8BF` is **not a text colour** — 2.0:1 on white. It is for hairlines, decorative rules, and disabled icons only. Small labels use `--nta-muted`. There is no lighter text step: nothing above `#6B7280` clears 4.5:1 on white, so the palette has exactly one muted text tone.
+
+### Minimum width for the full lockup
+
+The full lockup is **320px wide minimum; 360px+ recommended, 400px native.** The constraint is the two descriptor lines, which scale with the lockup:
+
+| Lockup width | Mark | Wordmark | "ACCOUNTING & ADVISORY" | "NICHOLAS T. AVELLO, CPA" |
+|---|---|---|---|---|
+| 400px (native) | 120px | 42px | 11.3px | 10.8px |
+| 360px | 108px | 37.8px | 10.2px | 9.7px |
+| **320px (floor)** | 96px | 33.6px | **9.0px** | **8.6px** |
+| 280px | 84px | 29.4px | 7.9px ✗ | 7.6px ✗ |
+| 190px | 57px | 19.9px | 5.4px ✗ | 5.1px ✗ |
+
+**On contrast specifically: WCAG AA contrast ratios do not change with scale.** Every colour in the lockup passes at any size — navy wordmark and descriptor 13.15:1 on white, white on navy 13.15:1, the reversed principal tint 6.05:1 on navy. So 190px is no worse than 400px on 1.4.3 grounds. What breaks below 320px is **legibility**, not contrast: 9px is the practical floor for wide-tracked uppercase Archivo, and WCAG has no minimum type size to lean on. Below 320px use **compact**, which carries no small text at all and is therefore clean down to its 32px-mark floor (~100px wide).
+
+One caveat worth knowing: WCAG 1.4.3 exempts text that is part of a logo or brand name from the contrast requirement. We hold the lockup to 4.5:1 anyway — in a site header these lines read as information, not decoration.
 
 **The on-navy label ladder** — four steps, dimmest last, every one of them AA-safe for small tracked-uppercase type on `#16324D`:
 
@@ -111,14 +129,36 @@ A **ledger cell with registration marks**. Three ideas, in order:
 | 17–31px | Ticks off |
 | 16px | Single serif **N** |
 
-Clear space is **½ × mark height** on all sides. The full lockup **never appears below 120px wide** — below that:
+Clear space is **½ × mark height** on all sides. The full lockup **never appears below 320px wide** (`--logo-min-width`) — below that:
 
 | Configuration | Use | Floor |
 |---|---|---|
-| **primary** — mark · rule · wordmark · 2-line descriptor | Default signature: site hero, letterhead, proposals, signage | 120px wide (56px mark) |
+| **primary** — mark · rule · wordmark · 2-line descriptor | Default signature: site hero, letterhead, proposals, signage | **320px wide** (96px mark) |
 | **compact** — mark · rule · wordmark | Site header and any horizontal band; **preferred over the bare mark** when width allows, because the name still reads | 32px mark |
 | **stacked** — mark over rule over wordmark + descriptor | Narrow columns, mobile, navy footers | 48px mark |
 | **mark** | Avatars, favicons, square frames | 16px (single **N**) |
+
+### The site header
+
+**The header takes `logo-compact`, never `logo-primary`.** A header band gives a logo 150–220px of width. The full lockup's floor is 320px wide, so any header that uses it is rendering the primary lockup below its own minimum — the descriptor lines set under 7px and become texture. Compact drops both descriptor lines and keeps mark · gold rule · wordmark, so the firm's name still reads at header scale.
+
+**Use the SVG, not the PNG or a CSS-composed lockup.** `brand-assets/svg/logo-compact.svg` is 374×120 with all text converted to outlines, so the wordmark's Spectral letterforms are locked into the file and render identically whether or not the host page has loaded webfonts. Set `height` only and let width follow the 3.117:1 ratio.
+
+| State | Band height | Logo asset | `height` | Rendered width |
+|---|---|---|---|---|
+| Desktop, resting | `--header-h` 96px | `logo-compact.svg` | 56px | 175px |
+| Desktop, sticky/condensed | `--header-h-sticky` 68px | `logo-compact.svg` | 40px | 125px |
+| Mobile (<640px) | `--header-h-mobile` 72px | `logo-compact.svg` | 44px | 137px |
+| Navy header band | — | `logo-compact-reversed.svg` | same | same |
+| Below a 32px mark | — | `logo-mark-navy.svg` | 32px | 32px |
+
+Rules for the band:
+
+- **Clear space** is ½ the mark height — 28px at the resting size. That is the minimum gap between the logo and the first nav item, and it sets the band's inner padding.
+- **The logo is a link to `/`** and needs a real label: `alt="NTA, Inc. — Nicholas T. Avello, CPA"`. An empty `alt` on the header mark leaves the home link unnamed for screen readers.
+- **Never scale the logo on scroll with a CSS `transform`.** Animate `height`; a transform-scaled SVG re-rasterises soft in Safari.
+- **The primary lockup belongs below the header** — hero, letterhead, proposals, signage, the OG card. The footer keeps it too (`logo-reversed.svg`), where there is width for it.
+- One background tone per band: White, Paper, or Navy. A navy band swaps to the reversed compact asset — not a CSS filter.
 
 Static exports for all eight configurations live in `brand-assets/svg/` with **text converted to outlines** — no `<text>`, no `font-family`, so they are safe inside an `<img>` tag, where the host page's webfonts are unavailable. Prefer them over the PNGs anywhere SVG is accepted.
 

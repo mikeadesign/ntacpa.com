@@ -17,7 +17,8 @@ number scales the whole lockup.
 The degradation rules are enforced inside the component, not left to the caller:
 corner ticks drop below 32px, the mark becomes a single "N" at 16px and under,
 `circular` swaps the ticks for a gold underscore, and `variant="primary"` falls
-back to `stacked` below 56px (the full lockup's 120px minimum width).
+back to `stacked` below a 96px mark (the full lockup's 320px minimum width — below
+it the descriptor lines set under 9px).
 
 Tones: `navy` (default, on light), `reversed` (on navy), and `mono-navy` /
 `mono-black` / `mono-white` for stamps, engraving, fax, and single-plate print.

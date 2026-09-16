@@ -16,8 +16,10 @@
   --nta-black:       #111111;
   --nta-body:        #3c4652;
   --nta-body-soft:   #4a5562;
-  --nta-muted:       #8a8f98;
-  --nta-muted-light: #b3b8bf;
+  --nta-muted:       #6b7280;  /* 4.83:1 on white — was #8a8f98 at 3.25:1, failed AA */
+  --nta-muted-light: #b3b8bf;  /* NON-TEXT ONLY — 2.0:1 on white. Hairlines,
+                                  decorative rules, disabled icons. For small
+                                  labels use --nta-muted (#6b7280, 4.83:1). */
   --nta-line:        #ece8df;
   --nta-line-cool:   #e2e5e9;
 

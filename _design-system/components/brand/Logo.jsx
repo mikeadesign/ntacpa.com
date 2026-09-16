@@ -9,8 +9,9 @@ import React from "react";
  *   • ticks drop below 32px
  *   • the mark reduces to a single "N" at 16px and under
  *   • circular crops replace the ticks with a gold underscore
- *   • the full lockup refuses to render below 120px wide and falls back to
- *     the stacked configuration
+ *   • the full lockup refuses to render below 320px wide (a 96px mark) and
+ *     falls back to the stacked configuration — below that its descriptor
+ *     lines render under 9px and stop being legible
  *   • variant="compact" drops the descriptor lines for header-scale use;
  *     every variant accepts tone="reversed" for navy backgrounds
  */
@@ -178,8 +179,11 @@ export function Logo({
   }
 
   // primary — mark, gold rule, wordmark stack. Falls back to stacked below the
-  // 120px minimum width defined in the brand standards.
-  if (size < 56) {
+  // 320px minimum width defined in the brand standards: at a 96px mark the
+  // descriptor sets at 9px, and that is the legibility floor for tracked
+  // uppercase. Contrast is scale-independent and passes at every size; this
+  // threshold is about legibility, not contrast.
+  if (size < 96) {
     return (
       <Logo variant="stacked" tone={tone} size={size} showDescriptor={showDescriptor} showName={showName} style={style} {...rest} />
     );

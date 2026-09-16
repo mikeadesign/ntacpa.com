@@ -25,4 +25,4 @@ Three rules break this brand faster than anything else — check them first:
 1. **Gold (`#C9A24A`) is never text on a light background** — 2.3:1, fails AA. Use Deep Gold `#8A6A1E` for gold type on white or Paper.
 2. **Every uppercase tracked descriptor needs `white-space: nowrap`** — the tracking leaves zero slack, so those lines silently re-break without it.
 3. **Square corners, no shadows on the logo, no gradients anywhere.** This identity is print-derived; cards sit on tone or a hairline.
-4. **Never hand-build a lockup.** The full lockup below 120px wide is the most common break — use `variant="compact"` (32px mark floor) for headers, `variant="mark"` below that.
+4. **Never hand-build a lockup, and never scale the full one below 320px wide.** Its descriptor lines set at 9px there and are unreadable below it — contrast passes at every size, legibility does not. Use `variant="compact"` (no small text, 32px mark floor) for headers and `variant="mark"` below that.

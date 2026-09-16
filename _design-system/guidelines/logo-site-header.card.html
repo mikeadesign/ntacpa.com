@@ -1,0 +1,47 @@
+<!-- @dsCard group="Brand" viewport="760x560" subtitle="Compact lockup SVG at three band heights — never the primary lockup" name="Logo · site header" --><!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>*,*::before,*::after{box-sizing:border-box}html,body{margin:0;font-family:var(--font-text)}.w{padding:22px 26px;display:flex;flex-direction:column;gap:16px}.lbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--nta-muted);text-transform:uppercase;white-space:nowrap}.nav{display:flex;align-items:center;gap:26px;font-size:11px;letter-spacing:.6px;color:var(--nta-body)}.nav-r{display:flex;align-items:center;gap:26px;font-size:11px;letter-spacing:.6px;color:var(--nta-on-navy-soft)}.band{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border-hairline)}.note{font-size:10.5px;line-height:1.6;color:var(--nta-muted)}.bad{display:flex;align-items:center;gap:10px;font-size:10.5px;line-height:1.5;color:var(--nta-muted)}code{font-size:10px}</style></head><body><div class="w" style="background:var(--nta-white)">
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="lbl">Desktop, resting — 96px band · 56px logo · 175px wide</div>
+    <div class="band" style="height:96px;padding:0 28px;background:var(--nta-white)">
+      <img src="../brand-assets/svg/logo-compact.svg" alt="NTA, Inc. — Nicholas T. Avello, CPA" style="height:56px;width:auto;display:block">
+      <div class="nav"><span>Services</span><span>About</span><span style="padding:9px 16px;background:var(--nta-navy);color:var(--nta-white);letter-spacing:1px;font-size:10px">START A CONVERSATION</span></div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:8px">
+      <div class="lbl">Sticky — 68px band · 40px logo</div>
+      <div class="band" style="height:68px;padding:0 20px;background:var(--nta-paper)">
+        <img src="../brand-assets/svg/logo-compact.svg" alt="NTA, Inc. — Nicholas T. Avello, CPA" style="height:40px;width:auto;display:block">
+        <div class="nav"><span>Services</span><span>About</span></div>
+      </div>
+    </div>
+    <div style="flex:0 1 220px;display:flex;flex-direction:column;gap:8px">
+      <div class="lbl">Mobile — 72px band · 44px logo</div>
+      <div class="band" style="height:72px;padding:0 18px;background:var(--nta-white)">
+        <img src="../brand-assets/svg/logo-compact.svg" alt="NTA, Inc. — Nicholas T. Avello, CPA" style="height:44px;width:auto;display:block">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="width:20px;height:1px;background:var(--nta-navy)"></div>
+          <div style="width:20px;height:1px;background:var(--nta-navy)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="lbl">Navy band — logo-compact-reversed.svg, not a CSS filter</div>
+    <div class="band" style="height:96px;padding:0 28px;background:var(--nta-navy);border-color:var(--nta-navy)">
+      <img src="../brand-assets/svg/logo-compact-reversed.svg" alt="NTA, Inc. — Nicholas T. Avello, CPA" style="height:56px;width:auto;display:block">
+      <div class="nav-r"><span>Services</span><span>About</span><span style="padding:9px 16px;background:var(--nta-gold);color:var(--nta-navy);letter-spacing:1px;font-size:10px">START A CONVERSATION</span></div>
+    </div>
+  </div>
+
+  <div class="bad">
+    <div style="flex:0 0 auto;display:flex;align-items:center;height:44px;padding:0 14px;border:1px dashed var(--nta-danger);background:var(--nta-white)">
+      <img src="../brand-assets/svg/logo-primary.svg" alt="" style="height:38px;width:auto;display:block;opacity:.85">
+    </div>
+    <div><strong style="color:var(--nta-danger)">Don't.</strong> <code>logo-primary.svg</code> at header scale renders ~127px wide — the descriptor lines set under 4px and become texture. Its floor is <strong style="color:var(--nta-navy)">320px wide / 96px mark</strong>, which no header band can give it.</div>
+  </div>
+
+  <div class="note">Use the outlined <strong style="color:var(--nta-navy)">SVG</strong>, not the PNG or a CSS-composed lockup — the wordmark is filled vector paths, so Spectral is locked into the file and renders identically with no webfont loaded. Set <code>height</code> only; width follows the 374×120 ratio. Clear space is <strong style="color:var(--nta-navy)">½ the mark height</strong> (28px at rest) between logo and first nav item. Animate <code>height</code> on scroll, never <code>transform: scale()</code>. Tokens: <code>--header-h</code>, <code>--header-logo-h</code>.</div>
+</div></body></html>

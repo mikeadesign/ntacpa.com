@@ -55,9 +55,12 @@ Earlier versions set this text with `font-family: Spectral, serif`. That silentl
 
 ## Rules that matter
 - Gold is **never** text on a light background (2.3:1, fails AA) — use Deep Gold `#8A6A1E`.
-- The full lockup (`logo-primary` / `logo-reversed-on-navy`) shouldn't render below **120px wide** — swap to `logo-compact` (header bands), `logo-stacked` (narrow columns), or a mark SVG instead.
+- The full lockup (`logo-primary` / `logo-reversed`) shouldn't render below **320px wide** — swap to `logo-compact` (header bands), `logo-stacked` (narrow columns), or a mark SVG instead.
 - **Compact** is the preferred scaled-down header lockup — the bare mark only when the space is square. Its floor is a **32px mark**; below that, mark only.
 - Clear space around any lockup: **½ the mark's height**, all sides.
+- **The full lockup (`logo-primary` / `logo-reversed`) has a 320px minimum width** — 360px+ preferred. At 320px its descriptor sets at 9px, the legibility floor; below that the two descriptor lines are unreadable. Contrast passes at every size (13.15:1), so this is a legibility floor, not a contrast one. Under 320px use `logo-compact`, which carries no small text.
+- The principal line in `logo-primary.svg` / `logo-stacked.svg` is `#6B7280` (4.83:1 on white). It was `#8a8f98` at 3.25:1 and failed AA at any size.
+- **Site header = `logo-compact.svg` at `height:56px` (40px sticky, 44px mobile), `logo-compact-reversed.svg` on navy.** Never `logo-primary.svg` — a header band cannot give it 320px. Set `height` only; width follows the 374×120 ratio. Always `alt="NTA, Inc. — Nicholas T. Avello, CPA"` on the home link.
 - Prefer the `/svg` lockups over the `/png` equivalents in the site header, footer, and legal header — text is outlined, so they are portable *and* resolution-independent.
 - Square corners everywhere except the app icon (10px radius, applied by the OS) and circular crops.
 - Corner ticks disappear below 32px and on any circular crop (replaced by the gold underscore, already baked into `logo-mark-circular.svg` and `linkedin-avatar-400.png`).

@@ -32,6 +32,20 @@
 
   /* Logo geometry */
   --logo-clear-space:  0.5;    /* × mark height, on all sides */
-  --logo-min-width:    120px;  /* full lockup floor */
+  --logo-min-width:    320px;  /* full lockup floor: 96px mark, 9px descriptor.
+                                  Was 120px — that put the descriptor at 3.4px. */
+  --logo-compact-min-width: 100px; /* compact floor: 32px mark, no small text */
   --logo-tick-inset:   0.085;  /* × mark size */
+
+  /* Site header — the header is a COMPACT-lockup band, never a primary one.
+     The primary lockup's 320px floor implies a 96px mark, which forces a
+     ~144px-tall band once clear space is honoured. Compact at a 56px mark
+     reads at 175px wide and fits a 96px band. */
+  --header-h:              96px;   /* resting band height */
+  --header-h-sticky:       68px;   /* condensed on scroll */
+  --header-h-mobile:       72px;
+  --header-logo-h:         56px;   /* = compact mark size → 175px wide */
+  --header-logo-h-sticky:  40px;   /* → 125px wide */
+  --header-logo-h-mobile:  44px;   /* → 137px wide */
+  --header-logo-h-min:     32px;   /* compact floor; below this, mark only */
 }
