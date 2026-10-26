@@ -64,7 +64,7 @@ import { serviceGroups } from '../data/site';
                       caps. Leads the row now, not the detail paragraph, so
                       "is this for me" scans before the reader commits to
                       the full paragraph. */}
-                  <span class="label label--tag">{service.tag}</span>
+                  {service.tag && <span class="label label--tag">{service.tag.split(' · ').map((item, i, all) => <Fragment>{i > 0 && ' '}<span class="label__item">{i < all.length - 1 ? `${item} ·` : item}</span></Fragment>)}</span>}
                   <h3 class="service-row__name">{service.name}</h3>
                 </div>
                 <p class="body service-row__detail">{service.detail}</p>
