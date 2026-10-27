@@ -6,7 +6,7 @@ import { serviceGroups } from '../data/site';
 
 <Base
   title="Services"
-  description="Individual and business tax preparation, bookkeeping, tax planning, and IRS representation — plus FINOP engagements, broker-dealer and hedge fund accounting. One accountant, both kinds of work."
+  description="Individual and business tax preparation, bookkeeping, tax planning, and help composing written responses to IRS notices and examinations — plus FINOP engagements, broker-dealer and hedge fund accounting. One accountant, both kinds of work."
 >
   {/* ── Page header ── */}
   <section class="page-header">
@@ -64,7 +64,7 @@ import { serviceGroups } from '../data/site';
                       caps. Leads the row now, not the detail paragraph, so
                       "is this for me" scans before the reader commits to
                       the full paragraph. */}
-                  <span class="label label--tag">{service.tag}</span>
+                  {service.tag && <span class="label label--tag">{service.tag.split(' · ').map((item, i, all) => <Fragment>{i > 0 && ' '}<span class="label__item">{i < all.length - 1 ? `${item} ·` : item}</span></Fragment>)}</span>}
                   <h3 class="service-row__name">{service.name}</h3>
                 </div>
                 <p class="body service-row__detail">{service.detail}</p>

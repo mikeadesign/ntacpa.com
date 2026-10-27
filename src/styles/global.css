@@ -265,6 +265,11 @@ button {
 
 .label--tag {
   letter-spacing: var(--track-name);
+  white-space: normal; /* tag breaks between items only; each item stays nowrap (No-Wrap Rule's intent: no mid-label re-break) */
+}
+
+.label__item {
+  white-space: nowrap;
 }
 
 .label--strong {

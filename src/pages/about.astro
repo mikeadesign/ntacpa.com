@@ -26,7 +26,7 @@ const milestones = [
   },
   {
     year: 'Today',
-    event: 'Forty-plus years in the securities and futures industries, still filing.',
+    event: 'Forty-plus years in the securities and futures industries, and still up to date on the myriad of never-ending changes to the rules.',
     note: null,
   },
 ];
@@ -35,7 +35,7 @@ const milestones = [
 <Base
   fullTitle={`${site.principal} — ${site.name}`}
   title="About"
-  description="Nicholas T. Avello has been a Certified Public Accountant since 1983 and a registered Series 27 Financial and Operations Principal for four decades. NTA, Inc. has been his practice since 1990."
+  description="Nicholas T. Avello has been a Certified Public Accountant since 1983 and a registered Series 27 Financial and Operations Principal since 1986. NTA, Inc. has been his practice since 1990."
 >
   {/* ── Page header ── */}
   <section class="about-header">
@@ -285,6 +285,23 @@ const milestones = [
   .credentials__intro {
     margin-bottom: 18px;
     color: var(--text-soft);
+  }
+
+  /* Credentials rows (not Milestones): a long label wraps inside its own
+     box while the value stays on the first line at the right edge, rather
+     than the whole value dropping below. Same treatment as the Home card. */
+  .credentials .dl__row:not(.milestone) {
+    flex-wrap: nowrap;
+    align-items: baseline;
+  }
+
+  .credentials .dl__row:not(.milestone) .dl__term {
+    min-width: 0;
+    text-wrap: balance;
+  }
+
+  .credentials .dl__row:not(.milestone) .dl__value {
+    flex: none;
   }
 
   .milestone {

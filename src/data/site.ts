@@ -58,22 +58,22 @@ export const legalLinks: NavLink[] = [
    Two renderings of the same facts: the short form for the Home card, the
    long form for the About page. Kept as one source so they can't drift.
 
-   `featured` picks the short list for the Home card (CPA + the headline
-   FINOP registration); About always renders the full list. This is
-   Nicholas's confirmed current registration set (Aug 2026) — verified
-   against his FINRA/NFA exam-history report, which also corrected the
-   original list he gave verbally: Series 4, 7, 9/10, 23/24, and 26 don't
-   appear on his actual record and were removed; Series 30 and 99 do and
-   were added. */
+   `featured` picks the short list for the Home card (CPA, Series 27
+   Financial & Operations Principal, Series 30 NFA Branch Manager); About
+   always renders the full list. This is Nicholas's confirmed current
+   registration set (Aug 2026) — verified against his FINRA/NFA
+   exam-history report, which also corrected the original list he gave
+   verbally: Series 4, 7, 9/10, 23/24, and 26 don't appear on his actual
+   record and were removed; Series 30 and 99 do and were added. */
 
 export type Credential = {
   short: string;
   long: string;
   value: string;
   featured?: boolean;
-  /* Home's teaser only shows the featured 4 — this picks their order there
-     (leads with the FINOP registration, the practice's headline
-     differentiator) independent of the full list's own order below. */
+  /* Home's teaser only shows the 3 featured rows — this picks their order
+     there (CPA, then Series 27, then Series 30) independent of
+     the full list's own order below. */
   featuredOrder?: number;
   /* About groups the full list by this — undefined (CPA) leads, ungrouped.
      Confirmed directly by Nicholas (Aug 2026): he wants 27 and 30 shown as
@@ -107,14 +107,12 @@ export const credentials: Credential[] = [
     short: 'Series 6 — Investment Company',
     long: 'Series 6 — Investment Company Products',
     value: 'registered',
-    featured: true,
-    featuredOrder: 3,
     group: 'general',
   },
   {
-    short: 'Series 27 — FINOP',
+    short: 'Series 27 — Financial & Operations Principal',
     long: 'Series 27 — Financial & Operations Principal',
-    value: '40 years',
+    value: 'since 1986',
     featured: true,
     featuredOrder: 2,
     group: 'supervisory',
@@ -122,15 +120,15 @@ export const credentials: Credential[] = [
   {
     short: 'Series 30 — NFA Branch Manager',
     long: 'Series 30 — NFA Branch Manager',
-    value: 'registered',
+    value: 'since 2021',
+    featured: true,
+    featuredOrder: 3,
     group: 'supervisory',
   },
   {
     short: 'Series 62 — Corporate Securities',
     long: 'Series 62 — Corporate Securities',
     value: 'registered',
-    featured: true,
-    featuredOrder: 4,
     group: 'general',
   },
   {
@@ -150,7 +148,9 @@ export type Service = {
   homeName: string;
   summary: string;
   detail: string;
-  tag: string;
+  /* Optional: a row with nothing useful to label goes without one rather
+     than carrying a placeholder (Regulatory & compliance questions). */
+  tag?: string;
   /* Home's teaser shows only the featured 4 per group (mirrors credentials'
      own featured flag below) — a working-memory chunking fix: unfiltered,
      the two groups ran 5 + 4 = 9 rows in one scroll with no visual break.
@@ -185,10 +185,11 @@ export const serviceGroups: ServiceGroup[] = [
       {
         name: 'Business tax preparation',
         homeName: 'Business tax preparation',
-        summary: 'Sole proprietors through S-corps and partnerships.',
+        summary:
+          'Sole proprietors through LLCs, C and S corporations, and partnerships.',
         detail:
-          'Schedule C through S-corp, partnership, and corporate returns, with the year-end adjustments made before the return rather than after the notice.',
-        tag: 'SOLE PROPRIETORS · LLCS · S-CORPS',
+          'LLC, partnership, and corporate returns, with the year-end adjustments made before the return rather than after the notice.',
+        tag: 'SOLE PROPRIETORS · PARTNERSHIPS · LLCS · CORPORATIONS',
         homeFeatured: true,
       },
       {
@@ -210,13 +211,13 @@ export const serviceGroups: ServiceGroup[] = [
         tag: 'YEAR-ROUND · PRE-TRANSACTION',
       },
       {
-        name: 'IRS representation & audit support',
-        homeName: 'IRS representation',
+        name: 'IRS notices & audit support',
+        homeName: 'IRS notices & audits',
         summary:
-          'Notices, examinations, and audit support — I deal with them directly.',
+          'Notices, examinations, and audit support — I assist with composing your written response.',
         detail:
-          "Notices answered, examinations handled, documentation assembled. You do not have to be on the call, and in most cases you shouldn't be.",
-        tag: 'NOTICES · EXAMINATIONS · APPEALS SUPPORT',
+          'When the IRS sends a notice or a query, I will assist with composing your answer: working out what is actually being asked, assembling the documentation that supports it, and drafting a written response that addresses it.',
+        tag: 'NOTICES · EXAMINATIONS · WRITTEN RESPONSES',
         homeFeatured: true,
       },
     ],
@@ -225,16 +226,16 @@ export const serviceGroups: ServiceGroup[] = [
     id: 'funds',
     heading: 'Funds & broker-dealers',
     intro:
-      'Forty years in the securities and futures industries, and forty years registered as a Series 27 Financial and Operations Principal.',
+      'In the securities and futures industries for four decades, and a registered Series 27 Financial and Operations Principal since 1986.',
     services: [
       {
         name: 'FINOP engagements',
         homeName: 'FINOP engagements',
         summary:
-          'Series 27 registered for forty years. Net capital, FOCUS reports, books and records.',
+          'Series 27 registered since 1986. Net capital, FOCUS reports, books and records.',
         detail:
           'Acting or supporting Financial and Operations Principal: net capital computations, FOCUS reports, books and records, and the questions that arrive the week before an examination.',
-        tag: 'SERIES 27 · REGISTERED 40 YEARS',
+        tag: 'SERIES 27 · SINCE 1986',
         homeFeatured: true,
       },
       {
@@ -259,10 +260,9 @@ export const serviceGroups: ServiceGroup[] = [
       {
         name: 'Regulatory & compliance questions',
         homeName: 'Compliance-side questions',
-        summary: 'Forty years in the securities and futures industries, on call.',
+        summary: 'Securities and futures regulatory questions, on call.',
         detail:
-          'Series 6 and Series 62 registered as well. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
-        tag: 'SERIES 6 · SERIES 27 · SERIES 62',
+          'Series 6, Series 62, and Series 99 registered, with more than forty years of experience on regulatory questions. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
         homeFeatured: true,
       },
     ],

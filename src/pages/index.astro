@@ -32,9 +32,10 @@ const taxNotice = legalLinks[1]!;
       {/* Page opener: the one horizontal gold rule on this page. */}
       <hr class="gold-rule gold-rule--hero hero__rule" />
       <p class="hero__lede measure-55">
-        Every absolute in the tax code has a carve-out, and the carve-outs are where the work is. I
-        prepare returns, keep books, and handle regulatory accounting — for individuals and small
-        businesses, and for the hedge funds and broker-dealers I have worked with for four decades.
+        Every absolute in the tax code has a carve-out, and the carve-outs are changing all the time.
+        I prepare returns, keep books and records, and handle regulatory accounting — for individuals
+        and small businesses, and for the hedge funds and broker-dealers I have worked with for four
+        decades. Every filing is prepared on the latest interpretation of the rules.
       </p>
       <a href={withBase(ctaHref)} class="btn btn--on-navy btn--lg btn--block-mobile">{ctaLabel}</a>
     </div>
@@ -144,7 +145,7 @@ const taxNotice = legalLinks[1]!;
         <dl class="dl">
           {
             /* Teaser card — only the headline registrations. The full list
-               (10 entries as of Aug 2026) lives on About, where there's
+               (7 entries as of Oct 2026) lives on About, where there's
                room for it; see credentials' `featured` flag in site.ts. */
             credentials
               .filter((credential) => credential.featured)
@@ -452,10 +453,18 @@ const taxNotice = legalLinks[1]!;
   /* The Home credentials card runs a slightly tighter row than About's. */
   .dl__row--tight {
     padding: 14px 0;
+    flex-wrap: nowrap;
+    align-items: baseline;
   }
 
   .dl__term--sm {
     font-size: 15px;
+    min-width: 0;
+    text-wrap: balance;
+  }
+
+  .dl__row--tight .dl__value {
+    flex: none;
   }
 
   .contact__heading {

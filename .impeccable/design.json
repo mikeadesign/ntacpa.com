@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T00:00:00Z",
+  "generatedAt": "2026-10-27T04:03:21.274Z",
   "title": "Design System: NTA, Inc.",
   "extensions": {
     "colorMeta": {
@@ -435,6 +435,13 @@
       "css": ".ds-card { background: var(--nta-paper, #faf8f3); border: 1px solid var(--nta-line, #ece8df); border-radius: 0; padding: 36px 32px; max-width: 420px; } .ds-card__heading { font-family: Spectral, Georgia, 'Times New Roman', serif; font-weight: 600; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; color: var(--nta-navy, #16324d); margin: 0 0 22px; } .ds-card__body { font-family: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.7; color: var(--nta-body, #3c4652); margin: 0; }"
     },
     {
+      "name": "Service Tag",
+      "kind": "chip",
+      "description": "Tracked uppercase tag above a service name on Services. Multi-item tags break between items only: each item is nowrap and the separator trails its item.",
+      "html": "<span class=\"ds-tag\"><span class=\"ds-tag__item\">SOLE PROPRIETORS ·</span> <span class=\"ds-tag__item\">PARTNERSHIPS ·</span> <span class=\"ds-tag__item\">LLCS ·</span> <span class=\"ds-tag__item\">CORPORATIONS</span></span>",
+      "css": ".ds-tag { display: block; max-width: 340px; font-family: var(--font-text, Archivo, system-ui, sans-serif); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; line-height: 1.6; text-transform: uppercase; color: #4a5562; white-space: normal; } .ds-tag__item { white-space: nowrap; }"
+    },
+    {
       "name": "Definition List Row",
       "kind": "custom",
       "description": "The system's workhorse label/value row - credentials, milestones, contact details. Reads as a ruled ledger block.",
@@ -500,7 +507,7 @@
       },
       {
         "name": "The No-Wrap Rule",
-        "body": "Every tracked uppercase label carries white-space: nowrap. The tracking consumes the last pixel of the line box, so a label silently re-breaks on a font fallback. A label that will not fit at 390px gets shorter copy — the label__long / label__short pair — never a wrap.",
+        "body": "Every tracked uppercase label carries white-space: nowrap. The tracking consumes the last pixel of the line box, so a label silently re-breaks on a font fallback. A label that will not fit at 390px gets shorter copy — the label__long / label__short pair — never a wrap. One exception, ratified Oct 2026: a multi-item tag (the Services page's .label--tag) may break between items only, never inside one. Each item is a .label__item span with white-space: nowrap, and the · separator trails its item, so no line starts with a separator and a font fallback can't re-break mid-item. Single-phrase labels are unchanged: still nowrap, still shorter copy at 390px.",
         "section": "typography"
       },
       {
@@ -537,11 +544,11 @@
     "dos": [
       "Do use Deep Gold (#8a6a1e) whenever gold must be typographic on a light ground; Registration Gold is trim only.",
       "Do invert the card's ground against its section — paper card on white, white card on paper. That inversion is the entire elevation system.",
-      "Do give a tracked uppercase label white-space: nowrap, and shorten its copy rather than let it wrap at 390px.",
+      "Do give a tracked uppercase label white-space: nowrap, and shorten its copy rather than let it wrap at 390px (multi-item tags break between items only; see The No-Wrap Rule).",
       "Do hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.",
       "Do scale type with clamp() from the mobile reference and express letter-spacing in em so it tracks.",
       "Do set line measure per block with the ch helpers rather than letting text fill the container.",
-      "Do render the logo from the locked brand-asset files in public/assets/ — the compact lockup (PNG) for header/legal-header, the full lockup (PNG, wide/stacked-reversed by breakpoint) for the footer. Never rebuild it from live text/CSS, and never use the text-bearing lockup SVGs as an <img src> — they clip without the page's webfonts. PNG only for any lockup with a wordmark.",
+      "Do render the logo from the locked brand-asset files in public/assets/ — logo-primary.svg in the header and legal header (swapping to logo-compact.svg below the breakpoint), logo-reversed.svg in the footer (swapping to logo-stacked-reversed.svg on mobile). Never rebuild it from live text/CSS. The asset package's lockup SVGs carry outlined text, so they are safe as an <img src>; a lockup SVG with live <text> is not — it clips without the page's webfonts.",
       "Do keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling."
     ],
     "donts": [
