@@ -69,7 +69,9 @@ export const legalLinks: NavLink[] = [
 export type Credential = {
   short: string;
   long: string;
-  value: string;
+  /* The general registrations (Series 3, 6, 62, 99) carry no value per Round 3;
+     templates render an empty dd so the dl stays valid. */
+  value?: string;
   featured?: boolean;
   /* Home's teaser only shows the 3 featured rows — this picks their order
      there (CPA, then Series 27, then Series 30) independent of
@@ -100,13 +102,11 @@ export const credentials: Credential[] = [
   {
     short: 'Series 3 — Commodity Futures',
     long: 'Series 3 — Commodity Futures Representative',
-    value: 'registered',
     group: 'general',
   },
   {
     short: 'Series 6 — Investment Company',
     long: 'Series 6 — Investment Company Products',
-    value: 'registered',
     group: 'general',
   },
   {
@@ -128,13 +128,11 @@ export const credentials: Credential[] = [
   {
     short: 'Series 62 — Corporate Securities',
     long: 'Series 62 — Corporate Securities',
-    value: 'registered',
     group: 'general',
   },
   {
     short: 'Series 99 — Operations Professional',
     long: 'Series 99 — Operations Professional',
-    value: 'registered',
     group: 'general',
   },
 ];

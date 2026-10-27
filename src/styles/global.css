@@ -272,6 +272,10 @@ button {
   white-space: nowrap;
 }
 
+.label--segmented {
+  white-space: normal; /* multi-segment label (About's group heads) breaks between authored segments only; each .label__item stays nowrap */
+}
+
 .label--strong {
   font-weight: var(--weight-bold);
   letter-spacing: var(--track-name);
