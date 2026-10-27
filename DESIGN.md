@@ -311,7 +311,7 @@ Drafted-but-unconfirmed legal language: 15px soft grey on paper with a 3px gold 
 - **Do** hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.
 - **Do** scale type with `clamp()` from the mobile reference and express letter-spacing in `em` so it tracks.
 - **Do** set line measure per block with the `ch` helpers rather than letting text fill the container.
-- **Do** render the logo from the locked brand-asset files in `public/assets/` — the compact lockup (PNG) for header/legal-header, the full lockup (PNG, wide/stacked-reversed by breakpoint) for the footer. Never rebuild it from live text/CSS, and never use the text-bearing lockup SVGs as an `<img src>` — they clip without the page's webfonts. PNG only for any lockup with a wordmark.
+- **Do** render the logo from the locked brand-asset files in `public/assets/` — `logo-primary.svg` in the header and legal header (swapping to `logo-compact.svg` below the breakpoint), `logo-reversed.svg` in the footer (swapping to `logo-stacked-reversed.svg` on mobile). Never rebuild it from live text/CSS. The asset package's lockup SVGs carry outlined text, so they are safe as an `<img src>`; a lockup SVG with live `<text>` is not — it clips without the page's webfonts.
 - **Do** keep the 3px slate focus ring at 2px offset on every interactive element — it is an accessibility requirement, not styling.
 
 ### Don't:
