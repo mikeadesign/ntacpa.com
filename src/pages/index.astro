@@ -453,10 +453,18 @@ const taxNotice = legalLinks[1]!;
   /* The Home credentials card runs a slightly tighter row than About's. */
   .dl__row--tight {
     padding: 14px 0;
+    flex-wrap: nowrap;
+    align-items: baseline;
   }
 
   .dl__term--sm {
     font-size: 15px;
+    min-width: 0;
+    text-wrap: balance;
+  }
+
+  .dl__row--tight .dl__value {
+    flex: none;
   }
 
   .contact__heading {

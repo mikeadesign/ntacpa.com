@@ -58,23 +58,21 @@ export const legalLinks: NavLink[] = [
    Two renderings of the same facts: the short form for the Home card, the
    long form for the About page. Kept as one source so they can't drift.
 
-   `featured` picks the short list for the Home card (CPA, Series 27 FINOP,
-   Series 30 NFA Branch Manager); About always renders the full list. This is
-   Nicholas's confirmed current registration set (Aug 2026) — verified
-   against his FINRA/NFA exam-history report, which also corrected the
-   original list he gave verbally: Series 4, 7, 9/10, 23/24, and 26 don't
-   appear on his actual record and were removed; Series 30 and 99 do and
-   were added. */
+   `featured` picks the short list for the Home card (CPA, Series 27
+   Financial & Operations Principal, Series 30 NFA Branch Manager); About
+   always renders the full list. This is Nicholas's confirmed current
+   registration set (Aug 2026) — verified against his FINRA/NFA
+   exam-history report, which also corrected the original list he gave
+   verbally: Series 4, 7, 9/10, 23/24, and 26 don't appear on his actual
+   record and were removed; Series 30 and 99 do and were added. */
 
 export type Credential = {
   short: string;
   long: string;
-  /* Optional: Series 30 carries no value. Templates still render an empty
-     `dd` so the `dl` stays valid. */
-  value?: string;
+  value: string;
   featured?: boolean;
   /* Home's teaser only shows the 3 featured rows — this picks their order
-     there (CPA, then the FINOP registration, then Series 30) independent of
+     there (CPA, then Series 27, then Series 30) independent of
      the full list's own order below. */
   featuredOrder?: number;
   /* About groups the full list by this — undefined (CPA) leads, ungrouped.
@@ -112,7 +110,7 @@ export const credentials: Credential[] = [
     group: 'general',
   },
   {
-    short: 'Series 27 — FINOP',
+    short: 'Series 27 — Financial & Operations Principal',
     long: 'Series 27 — Financial & Operations Principal',
     value: 'since 1986',
     featured: true,
@@ -122,6 +120,7 @@ export const credentials: Credential[] = [
   {
     short: 'Series 30 — NFA Branch Manager',
     long: 'Series 30 — NFA Branch Manager',
+    value: 'since 2021',
     featured: true,
     featuredOrder: 3,
     group: 'supervisory',
@@ -212,13 +211,13 @@ export const serviceGroups: ServiceGroup[] = [
         tag: 'YEAR-ROUND · PRE-TRANSACTION',
       },
       {
-        name: 'IRS representation & audit support',
-        homeName: 'IRS representation',
+        name: 'IRS notices & audit support',
+        homeName: 'IRS notices & audits',
         summary:
-          'Notices, examinations, and audit support — I assist in written responses.',
+          'Notices, examinations, and audit support — I assist with composing your written response.',
         detail:
-          "Notices answered, examinations handled, documentation assembled. You do not have to be on the call, and in most cases you shouldn't be.",
-        tag: 'NOTICES · EXAMINATIONS · APPEALS SUPPORT',
+          'When the IRS sends a notice or a query, I will assist with composing your answer: working out what is actually being asked, assembling the documentation that supports it, and drafting a written response that addresses it.',
+        tag: 'NOTICES · EXAMINATIONS · WRITTEN RESPONSES',
         homeFeatured: true,
       },
     ],
@@ -263,7 +262,7 @@ export const serviceGroups: ServiceGroup[] = [
         homeName: 'Compliance-side questions',
         summary: 'Forty years in the securities and futures industries, on call.',
         detail:
-          'Series 6 and Series 62 registered, with more than forty years of experience on regulatory questions. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
+          'Series 6, Series 62, and Series 99 registered, with more than forty years of experience on regulatory questions. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
         homeFeatured: true,
       },
     ],
