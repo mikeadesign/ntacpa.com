@@ -287,6 +287,23 @@ const milestones = [
     color: var(--text-soft);
   }
 
+  /* Credentials rows (not Milestones): a long label wraps inside its own
+     box while the value stays on the first line at the right edge, rather
+     than the whole value dropping below. Same treatment as the Home card. */
+  .credentials .dl__row:not(.milestone) {
+    flex-wrap: nowrap;
+    align-items: baseline;
+  }
+
+  .credentials .dl__row:not(.milestone) .dl__term {
+    min-width: 0;
+    text-wrap: balance;
+  }
+
+  .credentials .dl__row:not(.milestone) .dl__value {
+    flex: none;
+  }
+
   .milestone {
     display: grid;
     grid-template-columns: 80px 1fr;

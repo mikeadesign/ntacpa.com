@@ -72,7 +72,9 @@ src/
     legal.css           shared by the two legal pages
   components/
     Header.astro        desktop nav + full-screen mobile menu
-    Footer.astro        LegalHeader/LegalFooter for the stripped legal chrome
+    Footer.astro        full navy site footer
+    LegalHeader.astro   stripped header for the legal pages
+    LegalFooter.astro   stripped footer for the legal pages
     ContactForm.astro   form → sent panel swap
     CtaBand.astro  PullQuote.astro
   layouts/Base.astro    document shell, meta, chrome selection
@@ -103,7 +105,10 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - **Tracked uppercase labels always `white-space: nowrap`.** The tracking leaves
   zero slack, so they silently re-break on a font fallback. Where a label will
   not fit at 390px, it gets *shorter copy* (`.label__long` / `.label__short`),
-  never a wrap.
+  never a wrap. The one ratified exception is multi-item service tags (the
+  Services page's `.label--tag`), which may break between items only: each
+  item is a `.label__item` span with `nowrap`, and the separator trails its
+  item (see DESIGN.md, The No-Wrap Rule).
 - **The gold rule has exactly two uses**: one horizontal rule under a page's own
   H1, and a vertical rule binding two things that belong together (the logo
   lockup, a pull quote to its attribution).
@@ -179,8 +184,13 @@ Every one of these is deliberate; revert any you disagree with.
   series number (`src/data/site.ts`), but About re-groups it into "Principal &
   Supervisory" (27, 30) and "General Industry & Product" (3, 6, 62, 99) — not
   in the comps at all, added at Nicholas's request to match how his own
-  FINRA/NFA exam-history record categorizes them. Home still shows an
-  unwrapped four-entry teaser; the grouping only applies to About's full list.
+  FINRA/NFA exam-history record categorizes them. Home shows a three-entry
+  teaser (CPA, Series 27 Financial & Operations Principal, Series 30 NFA Branch
+  Manager); the grouping only applies to About's full list.
+- **Credential rows let a long label wrap inside its own box.** On the Home
+  card and About's credentials, the value stays on the first line at the right
+  edge rather than the whole value dropping below the label, which kept rows
+  uneven. (The Milestones list is a separate grid and is unaffected.)
 
 ## Contact constants
 
