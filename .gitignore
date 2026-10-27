@@ -5,3 +5,7 @@ dist/
 .env.production
 .DS_Store
 .impeccable/live/
+
+# Local working files: review notes, QA screenshots and subagent definitions
+_feedback/
+.claude/agents/
