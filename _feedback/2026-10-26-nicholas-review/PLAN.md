@@ -148,3 +148,22 @@ Rewritten in Round 2 for the new values. The earlier checks (empty Series 30 `dd
 - The Regulatory row on Services is still tagless and its name lines up with the rows around it.
 - Playwright screenshots of `/`, `/services` and `/about` at 390, 860 and 1280 wide, saved to `_feedback/2026-10-26-nicholas-review/qa/`.
 - Hooks: run the immediate tier manually if needed. The Stop deep pass is unconfirmed.
+
+## Round 3 decisions (About credentials only; Nicholas's further feedback, Oct 2026)
+
+Branch `nicholas-feedback-2026-10-r3`, cut from `main` after PR #7. These win over any earlier text, including §7's "no empty `dd` anywhere" (superseded for About's four general rows).
+
+- **R3.1 Group labels** in `about.astro`, copy exact, not shortened or reworded:
+  - "PRINCIPAL & SUPERVISORY" becomes "PRINCIPAL & SUPERVISORY REGISTRATIONS"
+  - "GENERAL INDUSTRY & PRODUCT" becomes "GENERAL INDUSTRY & PRODUCT REGISTRATIONS"
+  These are tracked-caps labels, so the No-Wrap Rule (and its Round 2 between-items exception) governs the 390px layout. The advisor picks the layout fix; DESIGN.md is updated to match.
+- **R3.2 Values removed:** "registered" is deleted from Series 3, Series 6, Series 62 and Series 99 in `site.ts`. `Credential.value` becomes optional again (`value?: string`) and the type comment is updated. About renders an empty `<dd class="dl__value"></dd>` for those rows so the `dl` stays valid. The Home card shows only CPA, 27 and 30, which keep their values, so it is unaffected.
+- **R3.3 No change:** CPA "since 1983", Series 27 "since 1986", Series 30 "since 2021", the "Licensure jurisdiction: Illinois" line, and the Services copy "Series 6, Series 62, and Series 99 registered…".
+- Nicholas typed "Since" capitalised on the Series 27 and 30 values; the site keeps lowercase "since" to match "since 1983".
+
+### Round 3 acceptance checks
+- `npm run check` and `npm run build` clean.
+- `dist/about.html` has both new group labels; zero `>registered<` in the credentials list.
+- The four general rows have empty `dd`s and line up with the dated rows.
+- The Home card is unchanged: 3 rows (CPA, 27, 30).
+- Screenshots of `/about` and `/` at 390, 860 and 1280 in `qa/r3/`.
