@@ -105,10 +105,12 @@ stated as named rules in [`DESIGN.md`](DESIGN.md):
 - **Tracked uppercase labels always `white-space: nowrap`.** The tracking leaves
   zero slack, so they silently re-break on a font fallback. Where a label will
   not fit at 390px, it gets *shorter copy* (`.label__long` / `.label__short`),
-  never a wrap. The one ratified exception is multi-item service tags (the
-  Services page's `.label--tag`), which may break between items only: each
-  item is a `.label__item` span with `nowrap`, and the separator trails its
-  item (see DESIGN.md, The No-Wrap Rule).
+  never a wrap. There are two ratified exceptions: multi-item service tags (the
+  Services page's `.label--tag`), which may break between items only, and
+  multi-segment labels (About's credentials group labels,
+  `.label--segmented`), which may break between authored segments only. Each
+  item or segment is a `.label__item` span with `nowrap`, and a tag's separator
+  trails its item (see DESIGN.md, The No-Wrap Rule).
 - **The gold rule has exactly two uses**: one horizontal rule under a page's own
   H1, and a vertical rule binding two things that belong together (the logo
   lockup, a pull quote to its attribution).

@@ -206,7 +206,7 @@ A cool navy authority set on warm paper, with a single metallic accent held in r
 
 **The Real Heading Rule.** Tracked uppercase is a label, never a heading level. If a line is an H2 or H3, it gets real serif type at real heading size. Caps treatment marks an eyebrow, tag, column head, or field label — nothing else.
 
-**The No-Wrap Rule.** Every tracked uppercase label carries `white-space: nowrap`. The tracking consumes the last pixel of the line box, so a label silently re-breaks on a font fallback. A label that will not fit at 390px gets *shorter copy* — the `label__long` / `label__short` pair — never a wrap. One exception, ratified Oct 2026: a multi-item tag (the Services page's `.label--tag`) may break *between* items only, never inside one. Each item is a `.label__item` span with `white-space: nowrap`, and the `·` separator trails its item, so no line starts with a separator and a font fallback can't re-break mid-item. Single-phrase labels are unchanged: still nowrap, still shorter copy at 390px.
+**The No-Wrap Rule.** Every tracked uppercase label carries `white-space: nowrap`. The tracking consumes the last pixel of the line box, so a label silently re-breaks on a font fallback. A label that will not fit at 390px gets *shorter copy* — the `label__long` / `label__short` pair — never a wrap. Two exceptions, ratified Oct 2026. First, a multi-item tag (the Services page's `.label--tag`) may break *between* items only, never inside one. Each item is a `.label__item` span with `white-space: nowrap`, and the `·` separator trails its item, so no line starts with a separator and a font fallback can't re-break mid-item. Second, a multi-segment label (About's credentials group labels, `.label--segmented`) may break only between its authored segments, each a `.label__item` span with `white-space: nowrap`. Single-phrase labels are unchanged: still nowrap, still shorter copy at 390px.
 
 **The One Size Per Level Rule.** At the 390px reference, every H1 is 34px, every H2 is 24px, every H3 is 22px — across marketing and legal pages alike. Clamp ceilings differ; the mobile floor does not. Four sizes doing the work of two heading levels is the failure this rule prevents.
 
@@ -307,7 +307,7 @@ Drafted-but-unconfirmed legal language: 15px soft grey on paper with a 3px gold 
 ### Do:
 - **Do** use Deep Gold (`#8a6a1e`) whenever gold must be typographic on a light ground; Registration Gold is trim only.
 - **Do** invert the card's ground against its section — paper card on white, white card on paper. That inversion is the entire elevation system.
-- **Do** give a tracked uppercase label `white-space: nowrap`, and shorten its copy rather than let it wrap at 390px (multi-item tags break between items only; see The No-Wrap Rule).
+- **Do** give a tracked uppercase label `white-space: nowrap`, and shorten its copy rather than let it wrap at 390px (multi-item tags and multi-segment labels break between items or segments only; see The No-Wrap Rule).
 - **Do** hold one size per heading level at the 390px reference: H1 34px, H2 24px, H3 22px, on every page type.
 - **Do** scale type with `clamp()` from the mobile reference and express letter-spacing in `em` so it tracks.
 - **Do** set line measure per block with the `ch` helpers rather than letting text fill the container.
