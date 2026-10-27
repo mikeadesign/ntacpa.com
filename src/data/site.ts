@@ -168,7 +168,7 @@ export const serviceGroups: ServiceGroup[] = [
     id: 'everyday',
     heading: 'Everyday accounting',
     intro:
-      'For individuals, families, and small businesses — including the ones whose books need catching up before anything else can happen.',
+      'For individuals, families, and small businesses, including the ones whose books need catching up before anything else can happen.',
     services: [
       {
         name: 'Individual tax preparation',
@@ -176,7 +176,7 @@ export const serviceGroups: ServiceGroup[] = [
         summary:
           "Federal and state returns, including years you'd rather not talk about.",
         detail:
-          'Federal and state returns, prepared and signed by the person who reviewed them. Multi-state filings, investment income, K-1s, and prior years that never got filed.',
+          'Federal and state returns, prepared and signed by the person who reviewed them. Multistate filings, investment income, K-1s, and prior years that never got filed.',
         tag: 'INDIVIDUALS · FAMILIES · HIGH-NET-WORTH',
         homeFeatured: true,
       },
@@ -205,14 +205,14 @@ export const serviceGroups: ServiceGroup[] = [
         summary:
           'Decisions made in March cost less than the ones made in April.',
         detail:
-          'Entity choice, timing, retirement and distribution planning. Decisions made in March cost less than the ones made in April — that is most of the value here.',
+          'Entity choice, timing, retirement and distribution planning. Decisions made in March cost less than the ones made in April. That is most of the value here.',
         tag: 'YEAR-ROUND · PRE-TRANSACTION',
       },
       {
         name: 'IRS notices & audit support',
         homeName: 'IRS notices & audits',
         summary:
-          'Notices, examinations, and audit support — I assist with composing your written response.',
+          'Notices, examinations, and audit support. I assist with composing your written response.',
         detail:
           'When the IRS sends a notice or a query, I will assist with composing your answer: working out what is actually being asked, assembling the documentation that supports it, and drafting a written response that addresses it.',
         tag: 'NOTICES · EXAMINATIONS · WRITTEN RESPONSES',
