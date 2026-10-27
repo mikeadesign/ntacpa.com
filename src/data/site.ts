@@ -226,16 +226,16 @@ export const serviceGroups: ServiceGroup[] = [
     id: 'funds',
     heading: 'Funds & broker-dealers',
     intro:
-      'Forty years in the securities and futures industries, and forty years registered as a Series 27 Financial and Operations Principal.',
+      'In the securities and futures industries for four decades, and a registered Series 27 Financial and Operations Principal since 1986.',
     services: [
       {
         name: 'FINOP engagements',
         homeName: 'FINOP engagements',
         summary:
-          'Series 27 registered for forty years. Net capital, FOCUS reports, books and records.',
+          'Series 27 registered since 1986. Net capital, FOCUS reports, books and records.',
         detail:
           'Acting or supporting Financial and Operations Principal: net capital computations, FOCUS reports, books and records, and the questions that arrive the week before an examination.',
-        tag: 'SERIES 27 · REGISTERED 40 YEARS',
+        tag: 'SERIES 27 · SINCE 1986',
         homeFeatured: true,
       },
       {
@@ -260,7 +260,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         name: 'Regulatory & compliance questions',
         homeName: 'Compliance-side questions',
-        summary: 'Forty years in the securities and futures industries, on call.',
+        summary: 'Securities and futures regulatory questions, on call.',
         detail:
           'Series 6, Series 62, and Series 99 registered, with more than forty years of experience on regulatory questions. When a rule has an exception, the useful question is whether yours is the exception — and that is usually a phone call, not an engagement.',
         homeFeatured: true,
