@@ -222,7 +222,7 @@ export const serviceGroups: ServiceGroup[] = [
   },
   {
     id: 'funds',
-    heading: 'Funds & broker-dealers',
+    heading: 'Funds & Broker-Dealers',
     intro:
       'In the securities and futures industries for four decades, and a registered Series 27 Financial and Operations Principal since 1986.',
     services: [
@@ -237,8 +237,8 @@ export const serviceGroups: ServiceGroup[] = [
         homeFeatured: true,
       },
       {
-        name: 'Broker-dealer accounting',
-        homeName: 'Broker-dealer accounting',
+        name: 'Broker-Dealer accounting',
+        homeName: 'Broker-Dealer accounting',
         summary:
           'Month-end close and regulatory reporting support for registered firms.',
         detail:
