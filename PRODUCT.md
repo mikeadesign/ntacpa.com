@@ -71,6 +71,7 @@ Voice, confirmed and binding:
 | First person singular | One CPA, not a faceless "we." "I'll review your filings," not "our team will." |
 
 - **Sentence case** for headings and body. Uppercase is reserved for descriptors, eyebrows, badges, and labels, always with wide tracking.
+- **Punctuation:** em dashes sparingly, at most one per page of prose, never in headings, service summaries, or tags. Prefer periods, commas, and colons; parentheses only where they do not demote one half of the 50/50 audience content. Hyphens only for real compounds (Broker-Dealer, year-end, prior-year, high-net-worth). A dash used as a divider in a label or page title (for example "Series 27 — Financial & Operations Principal") is typography, not prose, and stays.
 - **No emoji** — not in UI, not in copy, not in marketing.
 - **Tagline:** *Where regulatory expertise meets personal service.*
 - **Reserved copy, site only:** *"Always, Never, Except For…"* — the client's own phrase from the current site, approved and wanted for the website, but deliberately not part of the identity system and not for use in a lockup. Do not rewrite it.
