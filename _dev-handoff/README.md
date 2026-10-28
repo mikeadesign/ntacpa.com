@@ -34,7 +34,7 @@ The hero is **navy** — confirmed final.
 
 ### 4. Contact (`nta-contact.dc.html`)
 - H1 "Contact" (72px) + 30px deck "Tell me what you're dealing with." (max 30ch).
-- Contact details block: labelled TELEPHONE / EMAIL rows (this is the one place a raw phone number is appropriate outside the footer).
+- Contact details block: labeled TELEPHONE / EMAIL rows (this is the one place a raw phone number is appropriate outside the footer).
 - Form: Name / Email / Message only (no phone field), floating 11px caps labels, 1px border inputs (`#e2e5e9`), navy focus ring (`#2c5f8a`, 3px, offset 2px), submit button navy/white. Success state (`sent` flag) swaps the form for a "Received. Thank you." confirmation with a reset button — implement as local component state, not page navigation.
 
 ### 5. Site policies (`nta-site-policies.dc.html`) & 6. Tax advice notice (`nta-tax-notice.dc.html`)
@@ -95,7 +95,7 @@ No other horizontal or vertical gold rules should appear — several were added 
 - `assets/nicholas-avello-headshot.png` — real, final photo (confirmed), 1122×1402px, used on About (4:5 crop) and Home hero (1:1 crop). Only image asset in the site; everything else is type/color/geometry.
 
 ## Open Items — needs resolution before ship
-1. **Legal review required**: 7 `[CONFIRM]` blocks across Site policies and Tax advice notice — analytics retention period, IP anonymisation setting, applicable state privacy statute, governing-law state, Circular 230 wording, licensure jurisdiction, PTIN disclosure. Do not ship this copy as final; route to counsel.
+1. **Legal review required**: 7 `[CONFIRM]` blocks across Site policies and Tax advice notice — analytics retention period, IP anonymization setting, applicable state privacy statute, governing-law state, Circular 230 wording, licensure jurisdiction, PTIN disclosure. Do not ship this copy as final; route to counsel.
 2. **Two content facts still pending** (phone number is now confirmed — 312-339-3750, live everywhere): licensure jurisdiction (every page footer + both legal pages, currently `[STATE JURISDICTION TO CONFIRM]`), and Series 27 registration year (About milestones list, currently "[year to confirm]"; the "40 years registered" figure elsewhere is separately confirmed). PTIN if the practice uses one.
 3. Per-page `<title>` / meta description tags are now live on every page (see each file's `<helmet>`) — review the drafted copy.
 4. Favicon, apple-touch-icon, and OG share image are wired in from `assets/` — confirm the OG image once real photography/brand assets are finalized upstream.
