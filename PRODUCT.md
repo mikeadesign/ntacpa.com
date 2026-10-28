@@ -54,7 +54,7 @@ Inquiries frequently arrive mid-problem — the week before an examination, or a
 - A GitHub Pages beta preview deploys from `main` for review; it is `noindex` and excluded from analytics. Google Analytics fires on the production build only.
 - **Contact form transport: confirmed as email-to-Nicholas** via a static-hosting-compatible form service (Formspree, Web3Forms, or equivalent). Not yet implemented — `PUBLIC_CONTACT_ENDPOINT` is unset, and until it is, the form deliberately does *not* fake success; it shows a panel pointing at the phone number and email. The specific service is not yet chosen.
 - **Cutover requires URL/SEO preservation.** The existing ntacpa.com has paths that must stay reachable — via preserved URLs or redirects — when this site replaces it. Inventoried in `URL-AUDIT.md`: a 7-page legacy site, 5 of those URLs need a redirect rule, and the canonical host/scheme, `robots.txt`, and sitemap all still need setting up at cutover.
-- **Legal copy is drafted, not reviewed.** `[CONFIRM]` blocks remain across the two legal pages (analytics retention, IP anonymisation, applicable state privacy statute), plus the legal effective date. This copy must go to counsel before launch and must not be presented as final.
+- **Legal copy is drafted, not reviewed.** `[CONFIRM]` blocks remain across the two legal pages (analytics retention, IP anonymization, applicable state privacy statute), plus the legal effective date. This copy must go to counsel before launch and must not be presented as final.
 - Terminology is used at full strength, not translated down — "Form 1099," "Series 27," "net capital," "FOCUS report" appear as themselves.
 
 ## Brand Commitments

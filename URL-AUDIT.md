@@ -140,7 +140,7 @@ All are time-frozen at roughly 2009 and are now wrong:
 - "September 1990 – Present (18+ years)" — now 35+.
 - "Series 6, 27 [FINOP], 62 [Corp Sec]" — the verified FINRA/NFA record is CPA
   plus Series 3, 6, 27, 30, 62, and 99.
-- `ntainc@att.net` — retired in favour of `contact@ntacpa.com`.
+- `ntainc@att.net` — retired in favor of `contact@ntacpa.com`.
 - Copyright 2009.
 - **231 S LaSalle Street #650, Chicago, IL 60604** — confirmed by Nicholas as
   no longer the office; the practice is now home-based / remote. `PRODUCT.md`'s

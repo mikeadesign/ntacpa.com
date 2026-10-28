@@ -39,6 +39,38 @@ delete DENY.analyses_verb; // "analyses" is also the valid plural noun in US Eng
 
 const pattern = new RegExp(String.raw`\b(${Object.keys(DENY).join('|')})\b`, 'gi');
 
+// Pattern rules catch British endings the DENY list doesn't name yet.
+// Real US words that share an ending go in the allow lists below; add to them if a
+// legitimate word ever trips the check.
+const ISE = /\b([a-z]*is)(e|ed|es|ing)\b/gi; // organise, standardised, itemising
+const ISE_OK = ['advis', 'advertis', 'aris', 'ris', 'wis', 'chastis', 'circumcis', 'compris', 'compromis',
+  'concis', 'precis', 'cris', 'demis', 'despis', 'devis', 'disguis', 'guis', 'enterpris', 'excis', 'exercis',
+  'expertis', 'franchis', 'improvis', 'incis', 'merchandis', 'nois', 'pois', 'paradis', 'prais', 'premis',
+  'promis', 'rais', 'revis', 'supervis', 'surmis', 'surpris', 'televis', 'treatis', 'cruis', 'bruis', 'anis',
+  'mortis', 'valis', 'tortois', 'porpois', 'repris', 'chemis', 'ceris'];
+const ISATION = /\b([a-z]+)isations?\b/gi; // organisation, anonymisation
+const ISATION_OK = ['improvisation', 'improvisations'];
+const OUR = /\b([a-z]*our)(s|ed|ing|ite|ites|able|ful|hood|hoods|less|ly)?\b/gi; // colour, favourite, neighbourhood
+const OUR_EXACT_OK = ['our', 'your', 'dour', 'scour', 'amour', 'glamour', 'velour'];
+const OUR_SUFFIX_OK = ['four', 'hour', 'pour', 'tour', 'sour', 'flour', 'devour', 'contour', 'troubadour', 'paramour'];
+
+function patternHits(line) {
+  const hits = [];
+  for (const m of line.matchAll(ISE)) {
+    const stem = m[1].toLowerCase();
+    if (stem.length > 3 && !ISE_OK.some((ok) => stem.endsWith(ok))) hits.push([m[0], m[0].replace(/is(?=e|ed|es|ing)/i, 'iz')]);
+  }
+  for (const m of line.matchAll(ISATION)) {
+    if (!ISATION_OK.includes(m[0].toLowerCase())) hits.push([m[0], m[0].replace(/isation/i, 'ization')]);
+  }
+  for (const m of line.matchAll(OUR)) {
+    const stem = m[1].toLowerCase();
+    if (stem.length <= 3 || OUR_EXACT_OK.includes(stem) || OUR_SUFFIX_OK.some((ok) => stem.endsWith(ok))) continue;
+    hits.push([m[0], m[0].replace(/our/i, 'or')]);
+  }
+  return hits;
+}
+
 function* walk(dir) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -53,6 +85,11 @@ for (const file of walk(ROOT)) {
     for (const m of line.matchAll(pattern)) {
       failures++;
       console.error(`${file}:${i + 1}: "${m[0]}" is a British spelling; use "${DENY[m[0].toLowerCase()]}"`);
+    }
+    for (const [word, us] of patternHits(line)) {
+      if (DENY[word.toLowerCase()]) continue; // already reported above
+      failures++;
+      console.error(`${file}:${i + 1}: "${word}" looks like a British spelling; use "${us}" (or add it to an allow list if it's a real US word)`);
     }
   });
 }

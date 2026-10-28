@@ -140,7 +140,7 @@ guessed at. The remaining placeholders live in `pending` in
 [`src/data/site.ts`](src/data/site.ts).
 
 1. **Legal review.** Three `[CONFIRM]` blocks across the two legal pages —
-   IP anonymisation and the cookie banner, analytics and inquiry retention,
+   IP anonymization and the cookie banner, analytics and inquiry retention,
    and applicable state privacy statute — plus the legal effective date.
    **This copy is drafted, not reviewed. Route it to counsel before launch.**
 2. **The contact form has no transport.** The intake decision is made — email
@@ -174,7 +174,7 @@ Every one of these is deliberate; revert any you disagree with.
   dimension; the Services/About/Contact/legal comps omit it. Took the rule.
 - **The contact form has an error state.** Not in the comps, which only had
   `sent` / `not sent`. Reuses the confirmation panel's treatment — no new
-  colours or geometry.
+  colors or geometry.
 - **Service names are `<h3>`** on Services, and the Home service list is a
   `<ul>`. The comps used styled `<div>`s; the handoff flags this for fixing.
 - **`aria-label`led landmarks, `<figure>`/`<blockquote>` for pull quotes, and a
