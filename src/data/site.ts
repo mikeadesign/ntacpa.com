@@ -195,7 +195,7 @@ export const serviceGroups: ServiceGroup[] = [
         homeName: 'Bookkeeping',
         summary: 'Monthly or quarterly, reconciled and ready for the filing.',
         detail:
-          'Monthly or quarterly close, reconciled accounts, and statements you can hand to a lender without apologising for them. Catch-up work welcome.',
+          'Monthly or quarterly close, reconciled accounts, and statements you can hand to a lender without apologizing for them. Catch-up work welcome.',
         tag: 'MONTHLY · QUARTERLY · CATCH-UP',
         homeFeatured: true,
       },

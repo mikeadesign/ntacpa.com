@@ -289,7 +289,7 @@ const { current } = Astro.props;
       if (e.key === 'Escape' && !panel.hidden) setOpen(false);
     });
 
-    // The menu is a viewport-width behaviour; if the window grows past the
+    // The menu is a viewport-width behavior; if the window grows past the
     // breakpoint while it is open, close it so focus doesn't get stranded.
     const mq = window.matchMedia('(min-width: 861px)');
     mq.addEventListener('change', (e) => {
