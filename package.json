@@ -6,7 +6,8 @@
   "description": "NTA, Inc. — Nicholas T. Avello, CPA. Marketing site.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "check:spelling": "node scripts/check-spelling.mjs",
+    "build": "npm run check:spelling && astro build",
     "preview": "astro preview",
     "check": "astro check"
   },

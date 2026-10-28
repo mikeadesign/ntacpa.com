@@ -70,6 +70,7 @@ Voice, confirmed and binding:
 | Calm | No urgency tactics, countdowns, or exclamation marks. Nobody panic-buys an accountant. |
 | First person singular | One CPA, not a faceless "we." "I'll review your filings," not "our team will." |
 
+- **Language and spelling:** all copy is American English. Never use British spellings (recognize, not recognise; color, not colour). Check new or edited copy for US spelling before finishing any task; `npm run check:spelling` enforces it.
 - **Sentence case** for headings and body. Uppercase is reserved for descriptors, eyebrows, badges, and labels, always with wide tracking.
 - **Punctuation:** em dashes sparingly, at most one per page of prose, never in headings, service summaries, or tags. Prefer periods, commas, and colons; parentheses only where they do not demote one half of the 50/50 audience content. Hyphens only for real compounds (Broker-Dealer, year-end, prior-year, high-net-worth). A dash used as a divider in a label or page title (for example "Series 27 — Financial & Operations Principal") is typography, not prose, and stays.
 - **No emoji** — not in UI, not in copy, not in marketing.
